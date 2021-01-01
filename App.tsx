@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 0,
 
-    backgroundColor: '#000',
+    backgroundColor: '#555',
     height: windowHeight,
     width: windowWidth,
   },
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     width: windowWidth - 1,
     height: windowHeight - 50,
   },
-  contentContainer: { // ScrollView
+  contentContainer: {
     borderColor: '#ff0',
     borderWidth: 0,
 
@@ -176,30 +176,33 @@ const styles = StyleSheet.create({
     paddingBottom: '1%',
   },
   playlistsContainer: {
+    marginTop: 15,
+
     borderColor: '#f0f',
     borderWidth: 0,
 
     height: 200,
     width: '100%',
   },
-  titles: {  // falta ver began
+  titles: {
     color: '#fff',
+
     fontSize: 25,
     fontWeight: "bold",
-    marginBottom: 5,
   },
   playlistsView: {
     height: 150,
-  },
-  playlists: { // ScrollView
-    borderColor: '#f00',
-    borderWidth: 0,
     width: '100%',
   },
-  playlist: {   // falta ver end
+  playlists: {
+    borderColor: '#f00',
+    borderWidth: 0,
+  },
+  playlist: {
     borderColor: '#0ff',
     borderWidth: 1,
-    width: 150,
+
+    width: 125,
     height: 150,
     marginRight: 10,
   },
@@ -225,7 +228,7 @@ const styles = StyleSheet.create({
   itemNavigationBar: {
     borderColor: '#0ff',
     borderWidth: 1,
-    
+
     height: '100%',
     width: 50,
   },
