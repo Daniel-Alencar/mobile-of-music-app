@@ -97,10 +97,15 @@ export default function App() {
           <View style={styles.itemNavigationBar}>
           
           </View>
+          <View style={styles.itemNavigationBar}>
+          
+          </View>
+          <View style={styles.itemNavigationBar}>
+          
+          </View>
         </View>
       </View>
 
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -108,25 +113,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    borderWidth: 0,
-    flex: 1,
+    borderWidth: 3,
     backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
   },
   contentContainerView: {
     width: '100%',
-    height: '100%',
+    height: '92%',
   },
   contentContainer: {
-    borderColor: '#fff',
-    borderWidth: 0,
-    marginTop: '20%',
+    borderColor: '#ff0',
+    borderWidth: 1,
     padding: '6%',
     paddingTop: '1%'
   },
   playlistsContainer: {
-    borderColor: '#fff',
+    borderColor: '#f0f',
     borderWidth: 0,
     height: 200,
   },
@@ -140,27 +143,40 @@ const styles = StyleSheet.create({
     height: 150,
   },
   playlists: {
-    borderColor: '#555',
-    borderWidth: 1,
+    borderColor: '#f00',
+    borderWidth: 0,
     width: '100%',
   },
   playlist: {
-    borderColor: '#555',
+    borderColor: '#0ff',
     borderWidth: 1,
     width: 150,
     height: 150,
     marginRight: 10,
   },
   navigationBar: {
-    borderColor: '#555',
+    borderColor: '#0f0',
     borderWidth: 1,
-    height: 100,
+
+    alignItems: 'center',
+
+    height: 50,
     width: '100%'
   },
   subNavigationBar: {
+    borderColor: '#0f0',
+    borderWidth: 1,
 
+    height: '100%',
+    width: '70%',
+
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   itemNavigationBar: {
-
+    borderColor: '#0ff',
+    borderWidth: 1,
+    height: '100%',
+    width: 50,
   },
 });
