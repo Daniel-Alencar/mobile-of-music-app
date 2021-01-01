@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   contentContainerView: {
     width: '100%',
-    height: '92%',
+    height: '93%',
   },
   contentContainer: {
     borderColor: '#ff0',
