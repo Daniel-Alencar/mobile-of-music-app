@@ -1,7 +1,11 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import NavigationBar from './src/components/NavigationBar';
+import PlaylistContainer from './src/components/PlaylistContainer';
+import ArtistContainer from './src/components/ArtistContainer';
+
+import { Feather } from '@expo/vector-icons';
+
 
 export default function App() {
   return (
@@ -19,83 +23,22 @@ export default function App() {
             <View style={styles.playlistsView}>
               <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
 
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
               </ScrollView>
             </View>
           </View>
 
-          <View style={styles.playlistsContainer}>
+          <View style={styles.artistsContainer}>
             <Text style={styles.titles}>Artistas favoritos</Text>
-            <View style={styles.playlistsView}>
-              <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
+            <View style={styles.artistsView}>
+              <ScrollView overScrollMode="never" horizontal style={styles.artists}>
                 
-                <View style={styles.artistContainer}>
-                  <View style={styles.artist}>
-
-                  </View>
-                  <Text style={styles.artistName}>
-                    John Mayer
-                  </Text>
-                </View>
-
-                <View style={styles.artistContainer}>
-                  <View style={styles.artist}>
-
-                  </View>
-                  <Text style={styles.artistName}>
-                    Guns N' Rouses
-                  </Text>
-                </View>
-
-                <View style={styles.artistContainer}>
-                  <View style={styles.artist}>
-
-                  </View>
-                  <Text style={styles.artistName}>
-                    The White Buffalo
-                  </Text>
-                </View>
-
-                <View style={styles.artistContainer}>
-                  <View style={styles.artist}>
-
-                  </View>
-                  <Text style={styles.artistName}>
-                    NEED TO BREATHE
-                  </Text>
-                </View>
+                <ArtistContainer/>
+                <ArtistContainer/>
+                <ArtistContainer/>
 
               </ScrollView>
             </View>
@@ -106,39 +49,10 @@ export default function App() {
             <View style={styles.playlistsView}>
               <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
 
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
               </ScrollView>
             </View>
           </View>
@@ -148,39 +62,10 @@ export default function App() {
             <View style={styles.playlistsView}>
               <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
+                <PlaylistContainer/>
 
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
-                <View style={styles.playlistContainer}>
-                  <View style={styles.playlist}>
-
-                  </View>
-                  <Text style={styles.playlistName}>
-                    Lo-Fi
-                  </Text>
-                  <Text style={styles.playlistCreator}>
-                    Chilled cow
-                  </Text>
-                </View>
               </ScrollView>
             </View>
           </View>
@@ -228,11 +113,15 @@ const styles = StyleSheet.create({
     borderColor: '#f0f',
     borderWidth: 0,
   },
+
+
+
+
   playlistsContainer: {
     marginTop: 20,
 
     borderColor: '#f0f',
-    borderWidth: 0,
+    borderWidth: 1,
 
     height: 215,
     width: '100%',
@@ -257,59 +146,23 @@ const styles = StyleSheet.create({
   },
 
 
-  playlistContainer: {
-    borderColor: '#0ff',
+  artistsContainer: {
+    marginTop: 20,
+
+    borderColor: '#f0f',
     borderWidth: 0,
 
-    width: 125,
-    height: 175,
-    marginLeft: 15,
-  },
-  playlist: {
+    height: 215,
     width: '100%',
-    height: 125,
-
-    backgroundColor: '#342d2d',
-
-    borderColor: '#0ff',
-    borderWidth: 0,
   },
-  playlistName: {
-    color: '#fff',
-    fontSize: 20,
-  },
-  playlistCreator: {
-    color: '#b7b7b7',
-    fontSize: 12,
-  },
-
-  
-  artistContainer: {
-    borderColor: '#0ff',
-    borderWidth: 0,
-
-    width: 125,
-    height: 175,
-    marginLeft: 15,
-  },
-  artist: {
+  artistsView: {
+    height: 180,
     width: '100%',
-    height: 125,
-
-    backgroundColor: '#342d2d',
-
-    borderColor: '#0ff',
-    borderWidth: 0,
-    borderRadius: 100,
   },
-  artistName: {
-    color: '#b7b7b7',
-    fontSize: 16,
-
-    borderColor: '#0ff',
+  artists: {
+    borderColor: '#f00',
     borderWidth: 0,
 
-    textAlignVertical: 'center',
-    textAlign: 'center',
+    marginTop: 7,
   },
 });
