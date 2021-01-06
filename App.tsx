@@ -14,122 +14,41 @@ export default function App() {
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
 
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
                 </View>
               </ScrollView>
             </View>
           </View>
+
 
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
 
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-              </ScrollView>
-            </View>
-          </View>
-
-          <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
-            <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
                 </View>
               </ScrollView>
             </View>
           </View>
-
-          <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
-            <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-              </ScrollView>
-            </View>
-          </View>
-
-          <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
-            <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-              </ScrollView>
-            </View>
-          </View>
-
-          <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
-            <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-                <View style={styles.playlist}>
-
-                </View>
-              </ScrollView>
-            </View>
-          </View>
-
+          
         </ScrollView>
       </View>
 
@@ -159,7 +78,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 0,
 
-    backgroundColor: '#555',
+    backgroundColor: '#000',
     height: windowHeight,
     width: windowWidth,
   },
@@ -191,24 +110,43 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   playlistsView: {
-    height: 150,
+    height: 180,
     width: '100%',
   },
   playlists: {
     borderColor: '#f00',
-    borderWidth: 0,
+    borderWidth: 1,
   },
-  playlist: {
+  playlistContainer: {
     borderColor: '#0ff',
     borderWidth: 1,
 
     width: 125,
-    height: 150,
+    height: 175,
     marginRight: 10,
   },
-  navigationBar: {
-    borderColor: '#0f0',
+  playlist: {
+    width: '100%',
+    height: 125,
+
+    backgroundColor: '#342d2d',
+
+    borderColor: '#0ff',
     borderWidth: 1,
+  },
+  playlistName: {
+    color: '#fff',
+    fontSize: 20,
+  },
+  playlistCreator: {
+    color: '#b7b7b7',
+    fontSize: 12,
+  },
+  navigationBar: {
+    backgroundColor: '#4e4b4b',
+
+    borderColor: '#0f0',
+    borderWidth: 0,
 
     alignItems: 'center',
 
@@ -217,7 +155,7 @@ const styles = StyleSheet.create({
   },
   subNavigationBar: {
     borderColor: '#0f0',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: '100%',
     width: '70%',
