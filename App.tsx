@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
+import homeIcon from './src/images/home-icon.png';
 
 export default function App() {
   return (
@@ -14,6 +15,29 @@ export default function App() {
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
+                
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
                 <View style={styles.playlistContainer}>
                   <View style={styles.playlist}>
 
@@ -29,11 +53,33 @@ export default function App() {
             </View>
           </View>
 
-
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
+                
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
                 <View style={styles.playlistContainer}>
                   <View style={styles.playlist}>
 
@@ -88,23 +134,25 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#ff0',
-    borderWidth: 0,
+    borderWidth: 1,
 
-    padding: '6%',
+    padding: '0%',
     paddingTop: '1%',
     paddingBottom: '1%',
   },
   playlistsContainer: {
-    marginTop: 15,
+    marginTop: 0,
 
     borderColor: '#f0f',
-    borderWidth: 0,
+    borderWidth: 1,
 
-    height: 200,
+    height: 215,
     width: '100%',
   },
   titles: {
     color: '#fff',
+
+    marginLeft: '6%',
 
     fontSize: 25,
     fontWeight: "bold",
@@ -119,7 +167,7 @@ const styles = StyleSheet.create({
   },
   playlistContainer: {
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     width: 125,
     height: 175,
