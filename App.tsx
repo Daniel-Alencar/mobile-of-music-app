@@ -1,9 +1,10 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, View, Dimensions, TouchableOpacity } from 'react-native';
 
 import NavigationBar from './src/components/NavigationBar';
-import ArtistContainer from './src/components/ArtistContainer';
+
 import PlaylistsContainer from './src/components/PlaylistsContainer';
+import ArtistsContainer from './src/components/ArtistsContainer';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -11,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 export default function App() {
   return (
     <View style={styles.container}>
+
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
@@ -19,20 +21,7 @@ export default function App() {
           </TouchableOpacity>
 
           <PlaylistsContainer/>
-
-          <View style={styles.artistsContainer}>
-            <Text style={styles.titles}>Artistas favoritos</Text>
-            <View style={styles.artistsView}>
-              <ScrollView overScrollMode="never" horizontal style={styles.artists}>
-                
-                <ArtistContainer/>
-                <ArtistContainer/>
-                <ArtistContainer/>
-
-              </ScrollView>
-            </View>
-          </View>
-          
+          <ArtistsContainer/>
           <PlaylistsContainer/>
           <PlaylistsContainer/>
 
@@ -40,6 +29,7 @@ export default function App() {
       </View>
 
       <NavigationBar/>
+
     </View>
   );
 }
@@ -77,28 +67,5 @@ const styles = StyleSheet.create({
 
     borderColor: '#f0f',
     borderWidth: 0,
-  },
-
-
-
-
-  artistsContainer: {
-    marginTop: 20,
-
-    borderColor: '#f0f',
-    borderWidth: 0,
-
-    height: 215,
-    width: '100%',
-  },
-  artistsView: {
-    height: 180,
-    width: '100%',
-  },
-  artists: {
-    borderColor: '#f00',
-    borderWidth: 0,
-
-    marginTop: 7,
   },
 });
