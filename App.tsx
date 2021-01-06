@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import homeIcon from './src/images/home-icon.png';
@@ -11,6 +11,97 @@ export default function App() {
 
         <ScrollView style={styles.contentContainer}>
 
+          <TouchableOpacity style={styles.settingsContainer}>
+            <Feather name="settings" size={30} color="white"></Feather>
+          </TouchableOpacity>
+
+          <View style={styles.playlistsContainer}>
+            <Text style={styles.titles}>Mais ouvidas</Text>
+            <View style={styles.playlistsView}>
+              <ScrollView horizontal style={styles.playlists}>
+                
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
+                <View style={styles.playlistContainer}>
+                  <View style={styles.playlist}>
+
+                  </View>
+                  <Text style={styles.playlistName}>
+                    Lo-Fi
+                  </Text>
+                  <Text style={styles.playlistCreator}>
+                    Chilled cow
+                  </Text>
+                </View>
+              </ScrollView>
+            </View>
+          </View>
+
+          <View style={styles.playlistsContainer}>
+            <Text style={styles.titles}>Artistas favoritos</Text>
+            <View style={styles.playlistsView}>
+              <ScrollView horizontal style={styles.playlists}>
+                
+                <View style={styles.artistContainer}>
+                  <View style={styles.artist}>
+
+                  </View>
+                  <Text style={styles.artistName}>
+                    John Mayer
+                  </Text>
+                </View>
+
+                <View style={styles.artistContainer}>
+                  <View style={styles.artist}>
+
+                  </View>
+                  <Text style={styles.artistName}>
+                    John Mayer
+                  </Text>
+                </View>
+
+                <View style={styles.artistContainer}>
+                  <View style={styles.artist}>
+
+                  </View>
+                  <Text style={styles.artistName}>
+                    John Mayer
+                  </Text>
+                </View>
+
+                <View style={styles.artistContainer}>
+                  <View style={styles.artist}>
+
+                  </View>
+                  <Text style={styles.artistName}>
+                    John Mayer
+                  </Text>
+                </View>
+
+              </ScrollView>
+            </View>
+          </View>
+          
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
@@ -101,13 +192,22 @@ export default function App() {
       <View style={styles.navigationBar}>
         <View style={styles.subNavigationBar}>
           <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Feather name="home" size={35}/>
+            <Image
+              style={styles.icon}
+              source={require('./src/images/home-icon.png')}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Feather name="search" size={35}/>
+            <Image
+              style={styles.icon}
+              source={require('./src/images/search-icon.png')}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Feather name="disc" size={35}/>
+            <Image
+              style={styles.icon}
+              source={require('./src/images/library-icon.png')}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -139,6 +239,11 @@ const styles = StyleSheet.create({
     padding: '0%',
     paddingTop: '1%',
     paddingBottom: '1%',
+  },
+  settingsContainer: {
+    position: 'relative',
+    left: windowWidth - 55,
+    top: 15,
   },
   playlistsContainer: {
     marginTop: 0,
@@ -206,7 +311,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     height: '100%',
-    width: '70%',
+    width: '60%',
 
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -220,5 +325,39 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    height: 35,
+    width: 35,
+  },
+
+
+  artistContainer: {
+    borderColor: '#0ff',
+    borderWidth: 0,
+
+    width: 125,
+    height: 175,
+    marginLeft: 15,
+  },
+  artist: {
+    width: '100%',
+    height: 125,
+
+    backgroundColor: '#342d2d',
+
+    borderColor: '#0ff',
+    borderWidth: 0,
+    borderRadius: 100,
+  },
+  artistName: {
+    color: '#b7b7b7',
+    fontSize: 18,
+
+    borderColor: '#0ff',
+    borderWidth: 0,
+
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
 });
