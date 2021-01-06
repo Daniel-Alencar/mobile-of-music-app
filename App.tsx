@@ -16,7 +16,7 @@ export default function App() {
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Tocadas recentemente</Text>
             <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
+              <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
                 <View style={styles.playlistContainer}>
                   <View style={styles.playlist}>
@@ -58,7 +58,7 @@ export default function App() {
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Artistas favoritos</Text>
             <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
+              <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
                 <View style={styles.artistContainer}>
                   <View style={styles.artist}>
@@ -74,7 +74,7 @@ export default function App() {
 
                   </View>
                   <Text style={styles.artistName}>
-                    John Mayer
+                    Guns N' Rouses
                   </Text>
                 </View>
 
@@ -83,7 +83,7 @@ export default function App() {
 
                   </View>
                   <Text style={styles.artistName}>
-                    John Mayer
+                    The White Buffalo
                   </Text>
                 </View>
 
@@ -92,7 +92,7 @@ export default function App() {
 
                   </View>
                   <Text style={styles.artistName}>
-                    John Mayer
+                    NEED TO BREATHE
                   </Text>
                 </View>
 
@@ -103,7 +103,7 @@ export default function App() {
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Mais ouvidas</Text>
             <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
+              <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
                 <View style={styles.playlistContainer}>
                   <View style={styles.playlist}>
@@ -145,7 +145,7 @@ export default function App() {
           <View style={styles.playlistsContainer}>
             <Text style={styles.titles}>Recomendações</Text>
             <View style={styles.playlistsView}>
-              <ScrollView horizontal style={styles.playlists}>
+              <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
                 
                 <View style={styles.playlistContainer}>
                   <View style={styles.playlist}>
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
 
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   playlistsContainer: {
     marginTop: 20,
