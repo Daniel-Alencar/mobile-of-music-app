@@ -1,7 +1,7 @@
-
 import React from 'react';
+import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
 import homeIcon from './src/images/home-icon.png';
 
 export default function App() {
@@ -100,15 +100,15 @@ export default function App() {
 
       <View style={styles.navigationBar}>
         <View style={styles.subNavigationBar}>
-          <View style={styles.itemNavigationBar}>
-          
-          </View>
-          <View style={styles.itemNavigationBar}>
-          
-          </View>
-          <View style={styles.itemNavigationBar}>
-          
-          </View>
+          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+            <Feather name="home" size={35}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+            <Feather name="search" size={35}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+            <Feather name="disc" size={35}/>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#ff0',
-    borderWidth: 1,
+    borderWidth: 0,
 
     padding: '0%',
     paddingTop: '1%',
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
 
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: 215,
     width: '100%',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   titles: {
     color: '#fff',
 
-    marginLeft: '6%',
+    marginLeft: '4%',
 
     fontSize: 25,
     fontWeight: "bold",
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   playlists: {
     borderColor: '#f00',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   playlistContainer: {
     borderColor: '#0ff',
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 
     width: 125,
     height: 175,
-    marginRight: 10,
+    marginLeft: 15,
   },
   playlist: {
     width: '100%',
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#342d2d',
 
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   playlistName: {
     color: '#fff',
@@ -213,9 +213,12 @@ const styles = StyleSheet.create({
   },
   itemNavigationBar: {
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: '100%',
     width: 50,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
