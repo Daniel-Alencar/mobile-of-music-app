@@ -2,8 +2,6 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import homeIcon from './src/images/home-icon.png';
-
 export default function App() {
   return (
     <View style={styles.container}>
@@ -12,11 +10,11 @@ export default function App() {
         <ScrollView style={styles.contentContainer}>
 
           <TouchableOpacity style={styles.settingsContainer}>
-            <Feather name="settings" size={30} color="white"></Feather>
+            <Feather name="settings" size={25} color="white"></Feather>
           </TouchableOpacity>
 
           <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
+            <Text style={styles.titles}>Tocadas recentemente</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
                 
@@ -145,7 +143,7 @@ export default function App() {
           </View>
 
           <View style={styles.playlistsContainer}>
-            <Text style={styles.titles}>Mais ouvidas</Text>
+            <Text style={styles.titles}>Recomendações</Text>
             <View style={styles.playlistsView}>
               <ScrollView horizontal style={styles.playlists}>
                 
@@ -241,12 +239,17 @@ const styles = StyleSheet.create({
     paddingBottom: '1%',
   },
   settingsContainer: {
-    position: 'relative',
-    left: windowWidth - 55,
+    position: 'absolute',
+    right: 15,
     top: 15,
+
+    zIndex: 1,
+
+    borderColor: '#f0f',
+    borderWidth: 1,
   },
   playlistsContainer: {
-    marginTop: 0,
+    marginTop: 20,
 
     borderColor: '#f0f',
     borderWidth: 0,
@@ -259,7 +262,7 @@ const styles = StyleSheet.create({
 
     marginLeft: '4%',
 
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
   },
   playlistsView: {
@@ -269,6 +272,8 @@ const styles = StyleSheet.create({
   playlists: {
     borderColor: '#f00',
     borderWidth: 0,
+
+    marginTop: 7,
   },
   playlistContainer: {
     borderColor: '#0ff',
@@ -352,7 +357,7 @@ const styles = StyleSheet.create({
   },
   artistName: {
     color: '#b7b7b7',
-    fontSize: 18,
+    fontSize: 16,
 
     borderColor: '#0ff',
     borderWidth: 0,
