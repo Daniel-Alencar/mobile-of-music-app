@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import NavigationBar from './src/components/NavigationBar';
 
 export default function App() {
   return (
@@ -187,28 +188,7 @@ export default function App() {
         </ScrollView>
       </View>
 
-      <View style={styles.navigationBar}>
-        <View style={styles.subNavigationBar}>
-          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Image
-              style={styles.icon}
-              source={require('./src/images/home-icon.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Image
-              style={styles.icon}
-              source={require('./src/images/search-icon.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
-            <Image
-              style={styles.icon}
-              source={require('./src/images/library-icon.png')}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <NavigationBar/>
 
     </View>
   );
@@ -275,6 +255,8 @@ const styles = StyleSheet.create({
 
     marginTop: 7,
   },
+
+
   playlistContainer: {
     borderColor: '#0ff',
     borderWidth: 0,
@@ -300,43 +282,8 @@ const styles = StyleSheet.create({
     color: '#b7b7b7',
     fontSize: 12,
   },
-  navigationBar: {
-    backgroundColor: '#4e4b4b',
 
-    borderColor: '#0f0',
-    borderWidth: 0,
-
-    alignItems: 'center',
-
-    height: 50,
-    width: windowWidth,
-  },
-  subNavigationBar: {
-    borderColor: '#0f0',
-    borderWidth: 0,
-
-    height: '100%',
-    width: '60%',
-
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  itemNavigationBar: {
-    borderColor: '#0ff',
-    borderWidth: 0,
-
-    height: '100%',
-    width: 50,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    height: 35,
-    width: 35,
-  },
-
-
+  
   artistContainer: {
     borderColor: '#0ff',
     borderWidth: 0,
