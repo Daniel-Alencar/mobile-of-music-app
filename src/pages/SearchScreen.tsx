@@ -7,7 +7,7 @@ export default function SearchScreen() {
     <View style={styles.container}>
 
       <View style={styles.contentContainerView}>
-        <ScrollView style={styles.contentContainer}>
+        <ScrollView style={styles.contentContainer} contentContainerStyle={{ flexGrow: 1 }} >
 
           <View style={styles.searchBarContainer} >
             <TextInput style={styles.searchBar}>
@@ -149,6 +149,7 @@ export default function SearchScreen() {
 
 
           </View>
+
         </ScrollView>
       </View>
 
@@ -193,7 +194,6 @@ const styles = StyleSheet.create({
 
     padding: '0%',
 
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -209,12 +209,11 @@ const styles = StyleSheet.create({
   },
   genresContainer: {
     width: '100%',
-    height: windowHeight - 150,
+    height: '100%',
 
     borderColor: '#f9f9f9',
     borderWidth: 1,
 
-    flex: 1,
     alignItems: 'center',
   },
   genreContainer: {
