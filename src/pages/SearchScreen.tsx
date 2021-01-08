@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground } from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
@@ -9,6 +9,25 @@ export default function SearchScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
+          <View style={styles.searchBarContainer} >
+            <TextInput style={styles.searchBar}>
+              
+            </TextInput>
+          </View>
+
+          <View style={styles.genresContainer}>
+            <View style={styles.genreContainer}>
+              <ImageBackground 
+                imageStyle={{ borderRadius: 16 }}
+                style={styles.backgroundGenreContainer} 
+                source={require('../images/background/background-rock.jpg')}
+              >
+                <Text style={styles.genreName}>
+                  Rock
+                </Text>
+              </ImageBackground>
+            </View>
+          </View>
         </ScrollView>
       </View>
 
@@ -41,5 +60,59 @@ const styles = StyleSheet.create({
     padding: '0%',
     paddingTop: '1%',
     paddingBottom: '1%',
+
+  },
+
+  searchBarContainer: {
+    borderWidth: 0,
+    borderColor: '#ff0',
+
+    width: '100%',
+    height: 100,
+
+    padding: '0%',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchBar: {
+    width: '90%',
+    height: 60,
+
+    borderRadius: 16,
+
+    backgroundColor: '#fff',
+  },
+  genresContainer: {
+    width: '100%',
+    height: windowHeight - 150,
+
+    borderColor: '#f9f9f9',
+    borderWidth: 0,
+
+    alignItems: 'center',
+  },
+  genreContainer: {
+    width: '90%',
+    height: 100,
+
+    backgroundColor: '#fff',
+
+    borderRadius: 16,
+
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  backgroundGenreContainer: {
+    width: '100%',
+    height: '100%',
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  genreName: {
+    color: '#d4d4d4',
+    
+    fontSize: 30,
   },
 });
