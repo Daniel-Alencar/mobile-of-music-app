@@ -7,6 +7,7 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 import Home from './pages/Home';
 import SearchScreen from './pages/SearchScreen';
+import LibraryScreen from './pages/LibraryScreen';
 
 export default function Routes() {
   return (
@@ -20,6 +21,11 @@ export default function Routes() {
         <Screen 
           name="SearchScreen" 
           component={SearchScreen} 
+        />
+
+        <Screen 
+          name="LibraryScreen" 
+          component={LibraryScreen} 
         />
       </Navigator>
     </NavigationContainer>

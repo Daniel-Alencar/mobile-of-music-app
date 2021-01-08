@@ -9,11 +9,17 @@ export default function() {
   function handleNavigateToSearchScreen() {
     navigation.navigate('SearchScreen');
   }
+  function handleNavigateToHome() {
+    navigation.navigate('Home');
+  }
+  function handleNavigateToLibraryScreen() {
+    navigation.navigate('LibraryScreen');
+  }
 
   return (
     <View style={styles.navigationBar}>
       <View style={styles.subNavigationBar}>
-        <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+        <TouchableOpacity style={styles.itemNavigationBar} onPress={handleNavigateToHome}>
           <Image
             style={styles.icon}
             source={require('../images/home-icon.png')}
@@ -25,7 +31,7 @@ export default function() {
             source={require('../images/search-icon.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+        <TouchableOpacity style={styles.itemNavigationBar} onPress={handleNavigateToLibraryScreen}>
           <Image
             style={styles.icon}
             source={require('../images/library-icon.png')}

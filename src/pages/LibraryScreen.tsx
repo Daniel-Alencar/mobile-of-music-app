@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 
-export default function SearchScreen() {
+export default function LibraryScreen() {
   return (
     <View style={styles.container}>
 
