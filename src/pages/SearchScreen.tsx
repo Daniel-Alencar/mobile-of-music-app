@@ -1,5 +1,7 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground, Image } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
@@ -11,7 +13,10 @@ export default function SearchScreen() {
 
           <View style={styles.searchBarContainer} >
             <TextInput style={styles.searchBar}>
-              
+              <Feather name="search" size={25} color='#000'/>
+              <Text>
+                Artistas, músicas ou podcasts
+              </Text>
             </TextInput>
           </View>
 
@@ -43,7 +48,6 @@ export default function SearchScreen() {
               </ImageBackground>
             </View>
 
-
             <View style={styles.genreContainer}>
 
               <ImageBackground 
@@ -54,7 +58,7 @@ export default function SearchScreen() {
 
                 <View 
                   style={{ 
-                    backgroundColor: '#00000055', 
+                    backgroundColor: '#00000085', 
                     width: '100%', 
                     height: '100%',         
                     alignItems: 'center',
@@ -69,7 +73,6 @@ export default function SearchScreen() {
               </ImageBackground>
             </View>
 
-
             <View style={styles.genreContainer}>
 
               <ImageBackground 
@@ -80,7 +83,7 @@ export default function SearchScreen() {
 
                 <View 
                   style={{ 
-                    backgroundColor: '#00000055', 
+                    backgroundColor: '#00000085', 
                     width: '100%', 
                     height: '100%',         
                     alignItems: 'center',
@@ -95,7 +98,6 @@ export default function SearchScreen() {
               </ImageBackground>
             </View>
 
-
             <View style={styles.genreContainer}>
 
               <ImageBackground 
@@ -106,7 +108,7 @@ export default function SearchScreen() {
 
                 <View 
                   style={{ 
-                    backgroundColor: '#00000055', 
+                    backgroundColor: '#00000085', 
                     width: '100%', 
                     height: '100%',         
                     alignItems: 'center',
@@ -121,6 +123,30 @@ export default function SearchScreen() {
               </ImageBackground>
             </View>
 
+            <View style={styles.genreContainer}>
+
+              <ImageBackground 
+                imageStyle={{ borderRadius: 16 }}
+                style={styles.backgroundGenreContainer} 
+                source={require('../images/background/background-rock.jpg')}
+              >
+
+                <View 
+                  style={{ 
+                    backgroundColor: '#00000085', 
+                    width: '100%', 
+                    height: '100%',         
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Text style={styles.genreName}>
+                    Rock
+                  </Text>
+                </View>
+                
+              </ImageBackground>
+            </View>
 
             <View style={styles.genreContainer}>
 
@@ -132,7 +158,7 @@ export default function SearchScreen() {
 
                 <View 
                   style={{ 
-                    backgroundColor: '#00000055', 
+                    backgroundColor: '#00000085', 
                     width: '100%', 
                     height: '100%',         
                     alignItems: 'center',
@@ -177,7 +203,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#ff0',
-    borderWidth: 1,
+    borderWidth: 0,
 
     padding: '0%',
     paddingTop: '1%',
@@ -205,14 +231,14 @@ const styles = StyleSheet.create({
 
     backgroundColor: '#fff',
 
-    position: 'relative',
+    alignItems: 'center',
   },
   genresContainer: {
     width: '100%',
     height: '100%',
 
     borderColor: '#f9f9f9',
-    borderWidth: 1,
+    borderWidth: 0,
 
     alignItems: 'center',
   },
