@@ -23,7 +23,7 @@ export default function SearchScreen() {
           <View style={styles.genresContainer}>
 
 
-            <View style={styles.genreContainer}>
+            <View style={styles.genreContainere}>
 
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
@@ -225,13 +225,13 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: '90%',
-    height: 60,
+    height: 55,
 
     borderRadius: 16,
 
     backgroundColor: '#fff',
 
-    alignItems: 'center',
+    position: 'absolute',
   },
   genresContainer: {
     width: '100%',
@@ -252,6 +252,21 @@ const styles = StyleSheet.create({
 
     marginTop: 10,
     marginBottom: 10,
+  },
+  genreContainere: {
+    width: '90%',
+    height: 100,
+
+    backgroundColor: '#fff',
+
+    borderRadius: 16,
+
+    marginTop: 10,
+    marginBottom: 10,
+
+    position: 'absolute',
+    top: 50,
+    zIndex: 1,
   },
   backgroundGenreContainer: {
     width: '100%',
