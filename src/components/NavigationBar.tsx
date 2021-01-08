@@ -1,7 +1,15 @@
 import React from 'react';
 import { TouchableOpacity, View, Image, StyleSheet, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function() {
+
+  const navigation = useNavigation()
+
+  function handleNavigateToSearchScreen() {
+    navigation.navigate('SearchScreen');
+  }
+
   return (
     <View style={styles.navigationBar}>
       <View style={styles.subNavigationBar}>
@@ -11,7 +19,7 @@ export default function() {
             source={require('../images/home-icon.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.itemNavigationBar} onPress={() => {}}>
+        <TouchableOpacity style={styles.itemNavigationBar} onPress={handleNavigateToSearchScreen}>
           <Image
             style={styles.icon}
             source={require('../images/search-icon.png')}
