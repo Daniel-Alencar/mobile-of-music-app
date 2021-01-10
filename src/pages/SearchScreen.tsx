@@ -5,6 +5,9 @@ import { Feather } from '@expo/vector-icons';
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
+
+  const [value, setValue] = React.useState("Artistas, músicas e podcasts");
+
   return (
     <View style={styles.container}>
 
@@ -16,7 +19,11 @@ export default function SearchScreen() {
         >
 
           <View style={styles.searchBarContainer} >
-            <TextInput style={styles.searchBar}>
+            <TextInput 
+              style={styles.searchBar}
+              onChangeText={text => setValue(text)}
+              defaultValue={value}
+            >
             </TextInput>
           </View>
 
@@ -212,8 +219,9 @@ const styles = StyleSheet.create({
   },
 
   searchBarContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#ff0',
+    backgroundColor: '#000',
 
     width: '100%',
     height: 100,
@@ -226,13 +234,15 @@ const styles = StyleSheet.create({
     width: 300,
     height: '50%',
 
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#ff0',
     borderRadius: 15,
 
     margin: 25,
 
     backgroundColor: '#fff',
+
+    padding: 10
   },
   genresContainer: {
     width: '100%',
