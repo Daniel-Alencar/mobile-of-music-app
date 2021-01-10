@@ -9,21 +9,21 @@ export default function SearchScreen() {
     <View style={styles.container}>
 
       <View style={styles.contentContainerView}>
-        <ScrollView style={styles.contentContainer} contentContainerStyle={{ flexGrow: 1 }} >
+        <ScrollView 
+          style={styles.contentContainer} 
+          contentContainerStyle={{ flexGrow: 1 }} 
+          stickyHeaderIndices={[0]}
+        >
 
           <View style={styles.searchBarContainer} >
             <TextInput style={styles.searchBar}>
-              <Feather name="search" size={25} color='#000'/>
-              <Text>
-                Artistas, músicas ou podcasts
-              </Text>
             </TextInput>
           </View>
 
           <View style={styles.genresContainer}>
 
 
-            <View style={styles.genreContainere}>
+            <View style={styles.genreContainer}>
 
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
@@ -208,30 +208,31 @@ const styles = StyleSheet.create({
     padding: '0%',
     paddingTop: '1%',
     paddingBottom: '1%',
-
+    
   },
 
   searchBarContainer: {
-    borderWidth: 0,
+    borderWidth: 1,
     borderColor: '#ff0',
 
     width: '100%',
     height: 100,
-
-    padding: '0%',
-
+    
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   searchBar: {
-    width: '90%',
-    height: 55,
+    width: 300,
+    height: '50%',
 
-    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#ff0',
+    borderRadius: 15,
+
+    margin: 25,
 
     backgroundColor: '#fff',
-
-    position: 'absolute',
   },
   genresContainer: {
     width: '100%',
@@ -252,21 +253,6 @@ const styles = StyleSheet.create({
 
     marginTop: 10,
     marginBottom: 10,
-  },
-  genreContainere: {
-    width: '90%',
-    height: 100,
-
-    backgroundColor: '#fff',
-
-    borderRadius: 16,
-
-    marginTop: 10,
-    marginBottom: 10,
-
-    position: 'absolute',
-    top: 50,
-    zIndex: 1,
   },
   backgroundGenreContainer: {
     width: '100%',
