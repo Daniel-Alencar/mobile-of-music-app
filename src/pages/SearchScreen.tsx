@@ -14,8 +14,8 @@ export default function SearchScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView 
           style={styles.contentContainer} 
-          contentContainerStyle={{ flexGrow: 1 }} 
-          stickyHeaderIndices={[0]}
+          contentContainerStyle={{ borderWidth: 0, borderColor: 'white' }}
+          showsVerticalScrollIndicator={false}
         >
 
           <View style={styles.searchBarContainer} >
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     padding: '0%',
-    paddingTop: '1%',
+    paddingTop: '0%',
     paddingBottom: '1%',
     
   },
