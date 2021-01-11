@@ -1,14 +1,16 @@
-import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
+
+import { Feather } from '@expo/vector-icons';
 
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
 
-  const [value, setValue] = React.useState("Digite uma música para ouvir");
+  const [textOnSearchBar, setTextOnSearchBar] = useState("");
   const [fontsLoaded] = useFonts({
     Nunito_600SemiBold
   });
@@ -37,8 +39,9 @@ export default function SearchScreen() {
           <View style={styles.searchBarContainer} >
             <TextInput 
               style={styles.searchBar}
-              onChangeText={text => setValue(text)}
-              defaultValue={value}
+              onChangeText={(text) => setTextOnSearchBar(text)}
+              value={textOnSearchBar}
+              placeholder={"Que música você quer ouvir?"}
             >
             </TextInput>
           </View>
