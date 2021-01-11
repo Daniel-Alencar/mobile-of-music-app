@@ -16,6 +16,7 @@ export default function SearchScreen() {
           style={styles.contentContainer} 
           contentContainerStyle={{ borderWidth: 0, borderColor: 'white' }}
           showsVerticalScrollIndicator={false}
+          stickyHeaderIndices={[0]}
         >
 
           <View style={styles.searchBarContainer} >
