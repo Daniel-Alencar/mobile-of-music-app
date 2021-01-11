@@ -1,12 +1,21 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground, Image } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground } from 'react-native';
+
+import { useFonts } from 'expo-font';
+import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
 
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
 
-  const [value, setValue] = React.useState("Artistas, músicas e podcasts");
+  const [value, setValue] = React.useState("Digite uma música para ouvir");
+  const [fontsLoaded] = useFonts({
+    Nunito_600SemiBold
+  });
+
+  if(!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -229,6 +238,7 @@ const styles = StyleSheet.create({
   searchTitle: {
     color: 'white',
     fontSize: 40,
+    fontFamily: 'Nunito_600SemiBold',
   },
 
   searchBarContainer: {
@@ -280,7 +290,7 @@ const styles = StyleSheet.create({
   },
   genreName: {
     color: '#d4d4d4',
-    
+    fontFamily: 'Nunito_600SemiBold',
     fontSize: 30,
   },
 });
