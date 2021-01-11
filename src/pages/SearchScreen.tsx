@@ -16,8 +16,14 @@ export default function SearchScreen() {
           style={styles.contentContainer} 
           contentContainerStyle={{ borderWidth: 0, borderColor: 'white' }}
           showsVerticalScrollIndicator={false}
-          stickyHeaderIndices={[0]}
+          stickyHeaderIndices={[1]}
         >
+
+          <View style={styles.searchBarContainer} >
+            <Text style={styles.searchTitle}>
+              Explore
+            </Text>
+          </View>
 
           <View style={styles.searchBarContainer} >
             <TextInput 
@@ -217,34 +223,37 @@ const styles = StyleSheet.create({
     paddingTop: '0%',
     paddingBottom: '1%',
     
+    flex: 1,
+  },
+
+  searchTitle: {
+    color: 'white',
+    fontSize: 40,
   },
 
   searchBarContainer: {
     borderWidth: 0,
-    borderColor: '#ff0',
+    borderColor: '#fff',
+
     backgroundColor: '#000',
-
     width: '100%',
-    height: 100,
-    
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 90,
 
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   searchBar: {
-    width: 300,
-    height: '50%',
-
-    borderWidth: 0,
-    borderColor: '#ff0',
-    borderRadius: 15,
-
-    margin: 25,
-
     backgroundColor: '#fff',
+    width: windowWidth - 30,
+    height: 50,
 
-    padding: 10
+    borderRadius: 10,
+    marginBottom: 15,
+    marginTop: 25,
+    padding: 10,
   },
+
   genresContainer: {
     width: '100%',
     height: '100%',
