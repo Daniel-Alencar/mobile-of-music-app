@@ -4,8 +4,6 @@ import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackgro
 import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
 
-import { Feather } from '@expo/vector-icons';
-
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
@@ -39,23 +37,19 @@ export default function SearchScreen() {
             </Text>
           </View>
 
-
-
           <View style={styles.searchBarContainer} >
-            {/* <TextInput 
+             <TextInput
               returnKeyType="search"
               style={styles.searchBar}
               onChangeText={(text) => setTextOnSearchBar(text)}
               value={textOnSearchBar}
               placeholder={"Que música você quer ouvir?"}
             />
-            <TouchableOpacity style={styles.xButton}>
+            
+            {/* <TouchableOpacity style={styles.xButton}>
               <Feather name="x" size={30} color="#f00"/>
             </TouchableOpacity> */}
           </View>
-
-
-
 
           <View style={styles.genresContainer}>
 
@@ -159,13 +153,87 @@ export default function SearchScreen() {
               </ImageBackground>
             </View>
 
+            <View style={styles.genreContainer}>
+
+              <ImageBackground 
+                imageStyle={{ borderRadius: 16 }}
+                style={styles.backgroundGenreContainer} 
+                source={require('../images/background/background-rock.jpg')}
+              >
+
+                <View 
+                  style={{ 
+                    backgroundColor: '#00000085', 
+                    width: '100%', 
+                    height: '100%',         
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Text style={styles.genreName}>
+                    Rock
+                  </Text>
+                </View>
+                
+              </ImageBackground>
+            </View>
+
+            <View style={styles.genreContainer}>
+
+              <ImageBackground 
+                imageStyle={{ borderRadius: 16 }}
+                style={styles.backgroundGenreContainer} 
+                source={require('../images/background/background-rock.jpg')}
+              >
+
+                <View 
+                  style={{ 
+                    backgroundColor: '#00000085', 
+                    width: '100%', 
+                    height: '100%',         
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Text style={styles.genreName}>
+                    Rock
+                  </Text>
+                </View>
+                
+              </ImageBackground>
+            </View>
+
+            <View style={styles.genreContainer}>
+
+              <ImageBackground 
+                imageStyle={{ borderRadius: 16 }}
+                style={styles.backgroundGenreContainer} 
+                source={require('../images/background/background-rock.jpg')}
+              >
+
+                <View 
+                  style={{ 
+                    backgroundColor: '#00000085', 
+                    width: '100%', 
+                    height: '100%',         
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Text style={styles.genreName}>
+                    Rock
+                  </Text>
+                </View>
+                
+              </ImageBackground>
+            </View>
 
           </View>
 
         </ScrollView>
       </View>
 
-      {/* <NavigationBar/> */}
+      <NavigationBar/>
 
     </View>
   );
@@ -177,7 +245,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     backgroundColor: '#000',
     height: windowHeight,
@@ -189,7 +257,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#0f0',
-    borderWidth: 1,
+    borderWidth: 0,
 
     paddingBottom: '2%',
   },
@@ -198,7 +266,6 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: '#fff',
 
-    backgroundColor: '#f00',
     width: '100%',
     height: 90,
 
@@ -215,7 +282,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: '#fff',
 
-    backgroundColor: '#0f0',
+    backgroundColor: '#000000aa',
     width: '100%',
     height: 90,
 
@@ -223,12 +290,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchBar: {
-    backgroundColor: '#fff',
+    backgroundColor: '#B7A9A7',
     width: windowWidth - 30,
     height: 50,
 
     borderRadius: 10,
     padding: 10,
+
+    marginTop: 30,
   },
   xButton: {
     borderWidth: 0,
@@ -246,8 +315,7 @@ const styles = StyleSheet.create({
     minHeight: windowHeight - 180 - 54,
 
     borderColor: '#fff',
-    borderWidth: 3,
-    backgroundColor: '#f00',
+    borderWidth: 0,
 
     alignItems: 'center',
   },
