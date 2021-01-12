@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, TextInput, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { ScrollView, View, Dimensions, StyleSheet, Text, ImageBackground } from 'react-native';
 
 import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
 
+import SearchBar from '../components/SearchBar';
 import NavigationBar from '../components/NavigationBar';
 
 export default function SearchScreen() {
 
-  const [textOnSearchBar, setTextOnSearchBar] = useState("");
   const [fontsLoaded] = useFonts({
     Nunito_600SemiBold
   });
 
-  if(!fontsLoaded) {
+  if(fontsLoaded == false) {
     return null;
   }
 
@@ -37,19 +37,7 @@ export default function SearchScreen() {
             </Text>
           </View>
 
-          <View style={styles.searchBarContainer} >
-             <TextInput
-              returnKeyType="search"
-              style={styles.searchBar}
-              onChangeText={(text) => setTextOnSearchBar(text)}
-              value={textOnSearchBar}
-              placeholder={"Que música você quer ouvir?"}
-            />
-            
-            {/* <TouchableOpacity style={styles.xButton}>
-              <Feather name="x" size={30} color="#f00"/>
-            </TouchableOpacity> */}
-          </View>
+          <SearchBar/>
 
           <View style={styles.genresContainer}>
 
@@ -276,38 +264,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 40,
     fontFamily: 'Nunito_600SemiBold',
-  },
-
-  searchBarContainer: {
-    borderWidth: 0,
-    borderColor: '#fff',
-
-    backgroundColor: '#000000aa',
-    width: '100%',
-    height: 90,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  searchBar: {
-    backgroundColor: '#B7A9A7',
-    width: windowWidth - 30,
-    height: 50,
-
-    borderRadius: 10,
-    padding: 10,
-
-    marginTop: 30,
-  },
-  xButton: {
-    borderWidth: 0,
-    borderColor: '#fff',
-
-    width: 30,
-    height: 30,
-
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
   genresContainer: {

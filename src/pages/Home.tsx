@@ -59,12 +59,10 @@ const styles = StyleSheet.create({
     height: windowHeight - 50,
   },
   contentContainer: {
-    borderColor: '#ff0',
+    borderColor: '#0f0',
     borderWidth: 0,
 
-    padding: '0%',
-    paddingTop: '1%',
-    paddingBottom: '1%',
+    paddingBottom: '2%',
   },
   settingsContainer: {
     position: 'absolute',
