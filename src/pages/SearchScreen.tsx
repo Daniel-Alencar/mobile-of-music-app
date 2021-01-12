@@ -25,79 +25,39 @@ export default function SearchScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView 
           style={styles.contentContainer} 
-          contentContainerStyle={{ borderWidth: 0, borderColor: 'white' }}
+          contentContainerStyle={{ 
+            borderWidth: 0, 
+            borderColor: 'white',
+          }}
           showsVerticalScrollIndicator={false}
           stickyHeaderIndices={[1]}
         >
 
-          <View style={styles.searchBarContainer} >
+          <View style={styles.searchTitleContainer} >
             <Text style={styles.searchTitle}>
               Explore
             </Text>
           </View>
 
+
+
           <View style={styles.searchBarContainer} >
-            <TextInput 
+            {/* <TextInput 
+              returnKeyType="search"
               style={styles.searchBar}
               onChangeText={(text) => setTextOnSearchBar(text)}
               value={textOnSearchBar}
               placeholder={"Que música você quer ouvir?"}
-            >
-            </TextInput>
+            />
+            <TouchableOpacity style={styles.xButton}>
+              <Feather name="x" size={30} color="#f00"/>
+            </TouchableOpacity> */}
           </View>
 
+
+
+
           <View style={styles.genresContainer}>
-
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
 
             <View style={styles.genreContainer}>
 
@@ -205,11 +165,11 @@ export default function SearchScreen() {
         </ScrollView>
       </View>
 
-      <NavigationBar/>
+      {/* <NavigationBar/> */}
+
     </View>
   );
 }
-
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -217,27 +177,34 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    borderWidth: 0,
+    borderWidth: 1,
 
     backgroundColor: '#000',
     height: windowHeight,
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 1,
+    width: windowWidth - 2,
     height: windowHeight - 50,
   },
   contentContainer: {
-    borderColor: '#ff0',
-    borderWidth: 0,
+    borderColor: '#0f0',
+    borderWidth: 1,
 
-    padding: '0%',
-    paddingTop: '0%',
-    paddingBottom: '1%',
-    
-    flex: 1,
+    paddingBottom: '2%',
   },
 
+  searchTitleContainer: {
+    borderWidth: 0,
+    borderColor: '#fff',
+
+    backgroundColor: '#f00',
+    width: '100%',
+    height: 90,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   searchTitle: {
     color: 'white',
     fontSize: 40,
@@ -248,13 +215,12 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: '#fff',
 
-    backgroundColor: '#000',
+    backgroundColor: '#0f0',
     width: '100%',
     height: 90,
 
-    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   searchBar: {
     backgroundColor: '#fff',
@@ -262,25 +228,32 @@ const styles = StyleSheet.create({
     height: 50,
 
     borderRadius: 10,
-    marginBottom: 15,
-    marginTop: 25,
     padding: 10,
+  },
+  xButton: {
+    borderWidth: 0,
+    borderColor: '#fff',
+
+    width: 30,
+    height: 30,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   genresContainer: {
     width: '100%',
-    height: '100%',
+    minHeight: windowHeight - 180 - 54,
 
-    borderColor: '#f9f9f9',
-    borderWidth: 0,
+    borderColor: '#fff',
+    borderWidth: 3,
+    backgroundColor: '#f00',
 
     alignItems: 'center',
   },
   genreContainer: {
     width: '90%',
     height: 100,
-
-    backgroundColor: '#fff',
 
     borderRadius: 16,
 

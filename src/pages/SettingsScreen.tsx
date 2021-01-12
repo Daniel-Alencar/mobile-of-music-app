@@ -24,14 +24,14 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     backgroundColor: '#000',
     height: windowHeight,
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 1,
+    width: windowWidth - 2,
     height: windowHeight - 50,
   },
   contentContainer: {

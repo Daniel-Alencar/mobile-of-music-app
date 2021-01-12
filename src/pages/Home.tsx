@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 1,
+    width: windowWidth - 2,
     height: windowHeight - 50,
   },
   contentContainer: {
