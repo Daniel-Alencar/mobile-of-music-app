@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { Feather } from '@expo/vector-icons';
 
 export default function() {
   const [textOnSearchBar, setTextOnSearchBar] = useState("");
 
+  function clearInput() {
+    setTextOnSearchBar("");
+  }
+
   return (
-    <View style={styles.searchBarContainer} >
-        <TextInput
+    <View style={styles.container} >
+      <TextInput
         returnKeyType="search"
         style={styles.searchBar}
         onChangeText={(text) => setTextOnSearchBar(text)}
         value={textOnSearchBar}
         placeholder={"Que música você quer ouvir?"}
-        />
-    
-        <TouchableOpacity style={styles.xButton}>
-            <Feather name="x" size={30} color="#f00"/>
-        </TouchableOpacity>
+      />
+  
+      <RectButton onPress={() => clearInput()} style={styles.xButton}>
+        <Feather name="x" size={30} color="#f00"/>
+      </RectButton>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  searchBarContainer: {
+  container: {
     borderWidth: 0,
     borderColor: '#fff',
 
@@ -46,6 +51,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
     padding: 10,
+
+    // Porque o borderRadius direcionado para os cantos isolados do botão (rectButton) não funcionam
+    marginLeft: 10,
   },
   xButton: {
     backgroundColor: '#B7A9A7',
@@ -55,7 +63,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
-    borderBottomEndRadius: 10,
-    borderTopEndRadius: 10,
+    borderRadius: 10,
+
+    // Porque o borderRadius direcionado para os cantos isolados do botão (rectButton) não funcionam
+    position: 'relative',
+    right: 10,
   },
 });
