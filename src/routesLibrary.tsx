@@ -5,14 +5,14 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 const { Navigator, Screen } = createMaterialTopTabNavigator();
 
-import ArtistsScreen from './ArtistsScreen';
-import PlaylistsScreen from './PlaylistsScreen';
-import DownloadsScreen from './DownloadsScreen';
+import ArtistsScreen from './pages/ArtistsScreen';
+import PlaylistsScreen from './pages/PlaylistsScreen';
+import DownloadsScreen from './pages/DownloadsScreen';
 
-export default function Routes() {
+export default function routesLibrary() {
   return (
     <NavigationContainer>
-      <Navigator>
+      <Navigator initialRouteName="ArtistsScreen" >
         <Screen 
           name="ArtistsScreen" 
           component={ArtistsScreen} 

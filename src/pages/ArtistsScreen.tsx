@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, Text } from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 
 export default function SettingsScreen() {
@@ -9,6 +9,10 @@ export default function SettingsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
+          <Text style={{ color: 'white', fontSize: 40 }}>
+            Hello
+          </Text>
+          
         </ScrollView>
       </View>
 
