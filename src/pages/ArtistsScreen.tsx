@@ -4,7 +4,7 @@ import NavigationBar from '../components/NavigationBar';
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 
-export default function SettingsScreen() {
+export default function ArtistsScreen() {
   return (
     <View style={styles.container}>
 
@@ -125,6 +125,7 @@ export default function SettingsScreen() {
         <RectButton style={styles.plusButton} onPress={() => {}} >
           <Feather name="plus" size={30} color="#000"/>
         </RectButton>
+
       <NavigationBar/>
     </View>
   );

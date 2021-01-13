@@ -12,8 +12,8 @@ export default function() {
   function handleNavigateToHome() {
     navigation.navigate('Home');
   }
-  function handleNavigateToArtistsScreen() {
-    navigation.navigate('ArtistsScreen');
+  function handleNavigateToPlaylistsScreen() {
+    navigation.navigate('PlaylistsScreen');
   }
 
   return (
@@ -31,7 +31,7 @@ export default function() {
             source={require('../images/search-icon.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.itemNavigationBar} onPress={handleNavigateToArtistsScreen}>
+        <TouchableOpacity style={styles.itemNavigationBar} onPress={handleNavigateToPlaylistsScreen}>
           <Image
             style={styles.icon}
             source={require('../images/library-icon.png')}

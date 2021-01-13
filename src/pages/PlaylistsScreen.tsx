@@ -1,17 +1,131 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import NavigationBar from '../components/NavigationBar';
+import { Feather } from '@expo/vector-icons';
+import { RectButton } from 'react-native-gesture-handler';
 
-export default function SettingsScreen() {
+export default function PlaylistsScreen() {
   return (
     <View style={styles.container}>
 
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                DAdaafad
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
         </ScrollView>
       </View>
 
+        <RectButton style={styles.plusButton} onPress={() => {}} >
+          <Feather name="plus" size={30} color="#000"/>
+        </RectButton>
+        
       <NavigationBar/>
     </View>
   );
@@ -39,5 +153,44 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     paddingBottom: '2%',
+  },
+
+  artistContainer: {
+    height: 85,
+
+    justifyContent: 'center',
+  },
+  artistButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    paddingLeft: 20,
+  },
+  imageArtist: {
+    height: 65,
+    width: 65,
+
+    borderRadius: 50,
+  },
+  artistText:{
+    color: '#FFF',
+    
+    fontSize: 18,
+    margin: 10,
+  },
+
+  plusButton: {
+    backgroundColor: 'white',
+    height: 60,
+    width: 60,
+
+    borderRadius: 50,
+
+    position: 'absolute',
+    bottom: 70,
+    right: 20,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
