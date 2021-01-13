@@ -7,7 +7,7 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 import Home from './pages/Home';
 import SearchScreen from './pages/SearchScreen';
-import LibraryScreen from './pages/LibraryScreen';
+import LibraryScreen from './pages/Routes';
 import SettingsScreen from './pages/SettingsScreen';
 
 export default function Routes() {
