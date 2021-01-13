@@ -23,10 +23,106 @@ export default function SettingsScreen() {
             
           </View>
           
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
+          
         </ScrollView>
       </View>
 
-        <RectButton style={styles.plusButton}>
+        <RectButton style={styles.plusButton} onPress={() => {}} >
           <Feather name="plus" size={30} color="#000"/>
         </RectButton>
       <NavigationBar/>
@@ -59,8 +155,7 @@ const styles = StyleSheet.create({
   },
 
   artistContainer: {
-    backgroundColor: 'white',
-    height: 80,
+    height: 85,
 
     justifyContent: 'center',
   },
@@ -68,19 +163,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
 
-    backgroundColor: '#f00',
-    padding: 0,
+    paddingLeft: 20,
   },
   imageArtist: {
-    height: 70,
-    width: 70,
+    height: 65,
+    width: 65,
 
     borderRadius: 50,
   },
   artistText:{
-    backgroundColor: '#f7f7f7',
-
-    fontSize: 22,
+    color: '#FFF',
+    
+    fontSize: 18,
     margin: 10,
   },
 
