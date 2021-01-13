@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, Text } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import NavigationBar from '../components/NavigationBar';
+import { Feather } from '@expo/vector-icons';
+import { RectButton } from 'react-native-gesture-handler';
 
 export default function SettingsScreen() {
   return (
@@ -9,13 +11,24 @@ export default function SettingsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
-          <Text style={{ color: 'white', fontSize: 40 }}>
-            Hello
-          </Text>
+          <View style={styles.artistContainer}>
+
+            <TouchableOpacity style={styles.artistButton}>
+              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.artistText}>
+                John Mayer
+              </Text>
+            </TouchableOpacity>
+            
+          </View>
           
         </ScrollView>
       </View>
 
+        <RectButton style={styles.plusButton}>
+          <Feather name="plus" size={30} color="#000"/>
+        </RectButton>
       <NavigationBar/>
     </View>
   );
@@ -43,5 +56,46 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     paddingBottom: '2%',
+  },
+
+  artistContainer: {
+    backgroundColor: 'white',
+    height: 80,
+
+    justifyContent: 'center',
+  },
+  artistButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    backgroundColor: '#f00',
+    padding: 0,
+  },
+  imageArtist: {
+    height: 70,
+    width: 70,
+
+    borderRadius: 50,
+  },
+  artistText:{
+    backgroundColor: '#f7f7f7',
+
+    fontSize: 22,
+    margin: 10,
+  },
+
+  plusButton: {
+    backgroundColor: 'white',
+    height: 60,
+    width: 60,
+
+    borderRadius: 50,
+
+    position: 'absolute',
+    bottom: 70,
+    right: 20,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
