@@ -101,8 +101,6 @@ export default function PlaylistsScreen() {
         <RectButton style={styles.plusButton} onPress={() => {}} >
           <Feather name="plus" size={30} color="#000"/>
         </RectButton>
-        
-        <NavigationBar/>
     </View>
   );
 }

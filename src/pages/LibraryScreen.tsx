@@ -15,10 +15,10 @@ const Tab = createMaterialTopTabNavigator();
 export default function LibraryScreen() {
   return (
     <NavigationContainer independent >
-      <Tab.Navigator initialRouteName="ArtistsScreen">
-        <Tab.Screen name="ArtistsScreen" component={ArtistsScreen} />
-        <Tab.Screen name="PlaylistsScreen" component={PlaylistsScreen} />
-      </Tab.Navigator>
+        <Tab.Navigator initialRouteName="ArtistsScreen">
+            <Tab.Screen name="ArtistsScreen" component={ArtistsScreen} />
+            <Tab.Screen name="PlaylistsScreen" component={PlaylistsScreen} />
+        </Tab.Navigator>
     </NavigationContainer>
   );
 }
