@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     backgroundColor: '#000',
-    height: windowHeight - 50 - 50,
+    height: windowHeight - 50,
     width: windowWidth,
   },
   contentContainerView: {
