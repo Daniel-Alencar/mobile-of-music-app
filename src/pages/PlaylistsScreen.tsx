@@ -11,114 +11,90 @@ export default function PlaylistsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
-          <View style={styles.artistContainer}>
+          <View style={styles.playlistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
 
-              <Text style={styles.artistText}>
-                DAdaafad
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+          <View style={styles.playlistContainer}>
 
-              <Text style={styles.artistText}>
-                John Mayer
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
+        
+          <View style={styles.playlistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
 
-              <Text style={styles.artistText}>
-                John Mayer
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+          <View style={styles.playlistContainer}>
 
-              <Text style={styles.artistText}>
-                John Mayer
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
+        
+          <View style={styles.playlistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
 
-              <Text style={styles.artistText}>
-                John Mayer
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+          <View style={styles.playlistContainer}>
 
-              <Text style={styles.artistText}>
-                John Mayer
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
+
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
+        
+          <View style={styles.playlistContainer}>
 
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
+            <TouchableOpacity style={styles.playlistButton}>
+              <Image style={styles.playlistImage} source={require('../images/Artists/JohnMayer.png')} />
 
-              <Text style={styles.artistText}>
-                John Mayer
+              <Text style={styles.playlistText}>
+                Lo-fi
               </Text>
             </TouchableOpacity>
             
           </View>
-          
-          <View style={styles.artistContainer}>
-
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
-
-              <Text style={styles.artistText}>
-                John Mayer
-              </Text>
-            </TouchableOpacity>
-            
-          </View>
-          
-          <View style={styles.artistContainer}>
-
-            <TouchableOpacity style={styles.artistButton}>
-              <Image style={styles.imageArtist} source={require('../images/Artists/JohnMayer.png')} />
-
-              <Text style={styles.artistText}>
-                John Mayer
-              </Text>
-            </TouchableOpacity>
-            
-          </View>
-          
+        
         </ScrollView>
       </View>
 
@@ -126,7 +102,7 @@ export default function PlaylistsScreen() {
           <Feather name="plus" size={30} color="#000"/>
         </RectButton>
         
-      <NavigationBar/>
+        <NavigationBar/>
     </View>
   );
 }
@@ -147,6 +123,9 @@ const styles = StyleSheet.create({
   contentContainerView: {
     width: windowWidth - 2,
     height: windowHeight - 50,
+
+    borderColor: '#00f',
+    borderWidth: 0,
   },
   contentContainer: {
     borderColor: '#0f0',
@@ -155,24 +134,24 @@ const styles = StyleSheet.create({
     paddingBottom: '2%',
   },
 
-  artistContainer: {
+  playlistContainer: {
     height: 85,
 
     justifyContent: 'center',
   },
-  artistButton: {
+  playlistButton: {
     flexDirection: 'row',
     alignItems: 'center',
 
     paddingLeft: 20,
   },
-  imageArtist: {
-    height: 65,
-    width: 65,
+  playlistImage: {
+    height: 70,
+    width: 70,
 
-    borderRadius: 50,
+    borderRadius: 0,
   },
-  artistText:{
+  playlistText:{
     color: '#FFF',
     
     fontSize: 18,
