@@ -24,7 +24,7 @@ function TabsOfLibraryScreen() {
       screenOptions={{  }}
       tabBarPosition={"top"}
       initialLayout={{ width: windowWidth }}
-      style={{ backgroundColor: '#0f0', borderRadius: 30, marginTop: 40 }}
+      style={{ backgroundColor: '#0f0', borderRadius: 0, marginTop: 40 }}
     >
       <Tab.Screen name="Artistas" component={ArtistsScreen} />
       <Tab.Screen name="Playlists" component={PlaylistsScreen} />
