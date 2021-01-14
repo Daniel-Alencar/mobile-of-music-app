@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     backgroundColor: '#000',
-    height: windowHeight,
+    height: windowHeight - 50 - 50,
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 2,
-    height: windowHeight - 50,
+    width: windowWidth - 4,
+    height: '100%',
 
     borderColor: '#00f',
     borderWidth: 0,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     borderColor: '#0f0',
     borderWidth: 0,
 
-    paddingBottom: '2%',
+    paddingBottom: '0%',
   },
 
   playlistContainer: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
 
     position: 'absolute',
-    bottom: 70,
+    bottom: 20,
     right: 20,
 
     justifyContent: 'center',

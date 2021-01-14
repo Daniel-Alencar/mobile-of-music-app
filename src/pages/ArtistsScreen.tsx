@@ -125,6 +125,7 @@ export default function ArtistsScreen() {
         <RectButton style={styles.plusButton} onPress={() => {}} >
           <Feather name="plus" size={30} color="#000"/>
         </RectButton>
+
     </View>
   );
 }
@@ -139,18 +140,21 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     backgroundColor: '#000',
-    height: windowHeight,
+    height: windowHeight - 50 - 50,
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 2,
-    height: windowHeight - 50,
+    width: windowWidth - 4,
+    height: '100%',
+
+    borderColor: '#00f',
+    borderWidth: 0,
   },
   contentContainer: {
     borderColor: '#0f0',
     borderWidth: 0,
 
-    paddingBottom: '2%',
+    paddingBottom: '0%',
   },
 
   artistContainer: {
@@ -185,7 +189,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
 
     position: 'absolute',
-    bottom: 70,
+    bottom: 20,
     right: 20,
 
     justifyContent: 'center',
