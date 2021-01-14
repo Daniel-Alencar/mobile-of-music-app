@@ -11,20 +11,13 @@ import { Feather } from '@expo/vector-icons';
 
 
 export default function Home() {
-
-  const navigation = useNavigation();
-  
-  function handleNavigateToSettingsScreen() {
-    navigation.navigate('SettingsScreen');
-  }
-
   return (
     <View style={styles.container}>
 
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
-          <TouchableOpacity onPress={handleNavigateToSettingsScreen} style={styles.settingsContainer}>
+          <TouchableOpacity onPress={() => {}} style={styles.settingsContainer}>
             <Feather name="settings" size={25} color="white"></Feather>
           </TouchableOpacity>
 

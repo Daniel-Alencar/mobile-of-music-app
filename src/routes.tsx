@@ -28,11 +28,6 @@ export default function Routes() {
           name="LibraryScreen" 
           component={LibraryScreen} 
         />
-
-        <Screen 
-          name="SettingsScreen" 
-          component={SettingsScreen} 
-        />
       </Navigator>
     </NavigationContainer>
   );
