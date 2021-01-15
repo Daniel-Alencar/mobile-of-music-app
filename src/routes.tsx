@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Dimensions } from 'react-native';
+import { Dimensions, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -11,7 +11,7 @@ import SearchScreen from './pages/SearchScreen';
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 
-
+import { Feather } from '@expo/vector-icons';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -35,10 +35,59 @@ function TabsOfLibraryScreen() {
 const Bottom = createBottomTabNavigator();
 function BottomsOfAllApp() {
   return(
-    <Bottom.Navigator screenOptions={{ tabBarVisible: true }}>
+    <Bottom.Navigator 
+      screenOptions={
+
+        ({route}) => ({ 
+          tabBarIcon: ({color, size}) => {
+            let iconName = 'circle';
+
+            switch (route.name) {
+              case 'Home':
+                iconName = 'home';
+                break;
+              case 'SearchScreen':
+                iconName = 'search';
+                break;
+              case 'LibraryScreen':
+                iconName = 'user';
+                break;
+            }
+            return <Feather name={iconName} color={color} size={size}/>
+          },
+          tabBarBadgeStyle: {
+            backgroundColor: '#555',
+          },
+          tabBarLabel: ({focused, color, position}) => {
+            let string;
+
+            switch (route.name) {
+              case 'Home':
+                string = 'Casa';
+                break;
+              case 'SearchScreen':
+                string = 'Pesquise';
+                break;
+              case 'LibraryScreen':
+                string = 'Salvos';
+                break;
+              default:
+                string = 'circle';
+                break;
+            }
+            return <Text style={{ fontSize: 10 }}>{string}</Text>;
+          },
+          tabBarBadge: undefined,
+          tabBarTestID: 'tabBar',
+        })
+      }
+    >
       <Bottom.Screen 
         name="Home" 
-        component={Home} 
+        component={Home}
+        options={{
+          
+        }}
       />
 
       <Bottom.Screen 
