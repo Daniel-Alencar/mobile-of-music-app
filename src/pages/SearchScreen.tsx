@@ -221,8 +221,6 @@ export default function SearchScreen() {
         </ScrollView>
       </View>
 
-      <NavigationBar/>
-
     </View>
   );
 }

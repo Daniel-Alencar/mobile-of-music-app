@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   contentContainerView: {
     width: windowWidth - 4,
-    height: '100%',
+    height: windowHeight - 60 - 75,
 
     borderColor: '#00f',
     borderWidth: 0,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
 
     position: 'absolute',
-    bottom: 20,
+    bottom: 95,
     right: 20,
 
     justifyContent: 'center',

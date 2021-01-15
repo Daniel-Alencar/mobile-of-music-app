@@ -29,8 +29,6 @@ export default function Home() {
         </ScrollView>
       </View>
 
-      <NavigationBar/>
-
     </View>
   );
 }
