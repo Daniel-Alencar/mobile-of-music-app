@@ -29,7 +29,6 @@ function TabsOfLibraryScreen() {
         borderRadius: 0, 
         marginTop: 24,
       }}
-      
       tabBarOptions={{
         activeTintColor: '#fff',
         inactiveTintColor: '#ffffff66',
@@ -40,12 +39,12 @@ function TabsOfLibraryScreen() {
           width: windowWidth - 170,
         },
         labelStyle: {
-          fontSize: 30,
+          fontSize: 35,
           fontStyle: 'normal',
 
           width: 200,
-
-          backgroundColor: '#f00',
+          textTransform: 'none',
+          backgroundColor: '#000',
         },
         style: {
           borderColor: '#00f',
