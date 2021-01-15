@@ -2,7 +2,9 @@ import React from 'react';
 import { TouchableOpacity, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function() {
+import { BottomTabBarProps, BottomTabBarOptions } from '@react-navigation/bottom-tabs';
+
+export default function(props: BottomTabBarProps<BottomTabBarOptions>) {
 
   const navigation = useNavigation()
 

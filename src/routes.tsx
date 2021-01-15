@@ -4,6 +4,8 @@ import { Dimensions, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { Feather } from '@expo/vector-icons';
+
 
 import Home from './pages/Home';
 import SearchScreen from './pages/SearchScreen';
@@ -11,7 +13,9 @@ import SearchScreen from './pages/SearchScreen';
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 
-import { Feather } from '@expo/vector-icons';
+
+import NavigationBar from './components/NavigationBar';
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -36,8 +40,8 @@ const Bottom = createBottomTabNavigator();
 function BottomsOfAllApp() {
   return(
     <Bottom.Navigator 
+      // tabBar={(props) => <NavigationBar {...props} />}
       screenOptions={
-
         ({route}) => ({ 
           tabBarIcon: ({color, size}) => {
             let iconName = 'circle';
@@ -79,6 +83,7 @@ function BottomsOfAllApp() {
           },
           tabBarBadge: undefined,
           tabBarTestID: 'tabBar',
+          tabBarVisible: true,
         })
       }
     >
