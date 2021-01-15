@@ -14,8 +14,6 @@ import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 import DownloadsScreen from './pages/DownloadsScreen';
 
-
-
 const windowWidth = Dimensions.get('window').width;
 
 const Tab = createMaterialTopTabNavigator();
@@ -29,21 +27,35 @@ function TabsOfLibraryScreen() {
       style={{ 
         backgroundColor: '#0f0', 
         borderRadius: 0, 
-        marginTop: 25 
+        marginTop: 24,
       }}
+      
       tabBarOptions={{
-        activeTintColor: '#f00',
-        inactiveTintColor: '#000',
+        activeTintColor: '#fff',
+        inactiveTintColor: '#ffffff66',
         scrollEnabled: true,
         tabStyle: {
-          backgroundColor: '#0f0',
+          backgroundColor: '#000',
           height: 60,
-          width: windowWidth - 200,
+          width: windowWidth - 170,
         },
         labelStyle: {
-          fontSize: 25,
-          backgroundColor: '#333',
-        }
+          fontSize: 30,
+          fontStyle: 'normal',
+
+          width: 200,
+
+          backgroundColor: '#f00',
+        },
+        style: {
+          borderColor: '#00f',
+          boderWidth: 3,
+        },
+        indicatorStyle: {
+        },
+        iconStyle: {
+
+        },
       }}
     >
       <Tab.Screen name="Artistas" component={ArtistsScreen} />
