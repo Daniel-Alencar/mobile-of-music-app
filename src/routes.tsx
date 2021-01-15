@@ -12,9 +12,7 @@ import SearchScreen from './pages/SearchScreen';
 
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
-
-
-import NavigationBar from './components/NavigationBar';
+import DownloadsScreen from './pages/DownloadsScreen';
 
 
 
@@ -28,10 +26,29 @@ function TabsOfLibraryScreen() {
       screenOptions={{  }}
       tabBarPosition={"top"}
       initialLayout={{ width: windowWidth }}
-      style={{ backgroundColor: '#0f0', borderRadius: 0, marginTop: 40 }}
+      style={{ 
+        backgroundColor: '#0f0', 
+        borderRadius: 0, 
+        marginTop: 25 
+      }}
+      tabBarOptions={{
+        activeTintColor: '#f00',
+        inactiveTintColor: '#000',
+        scrollEnabled: true,
+        tabStyle: {
+          backgroundColor: '#0f0',
+          height: 60,
+          width: windowWidth - 200,
+        },
+        labelStyle: {
+          fontSize: 25,
+          backgroundColor: '#333',
+        }
+      }}
     >
       <Tab.Screen name="Artistas" component={ArtistsScreen} />
       <Tab.Screen name="Playlists" component={PlaylistsScreen} />
+      <Tab.Screen name="Downloads" component={DownloadsScreen} />
     </Tab.Navigator>
   );
 }
@@ -40,7 +57,6 @@ const Bottom = createBottomTabNavigator();
 function BottomsOfAllApp() {
   return(
     <Bottom.Navigator 
-      // tabBar={(props) => <NavigationBar {...props} />}
       screenOptions={
         ({route}) => ({ 
           tabBarIcon: ({color, size}) => {
@@ -58,9 +74,6 @@ function BottomsOfAllApp() {
                 break;
             }
             return <Feather name={iconName} color={color} size={size}/>
-          },
-          tabBarBadgeStyle: {
-            backgroundColor: '#555',
           },
           tabBarLabel: ({focused, color, position}) => {
             let string;
@@ -81,9 +94,6 @@ function BottomsOfAllApp() {
             }
             return <Text style={{ fontSize: 10 }}>{string}</Text>;
           },
-          tabBarBadge: undefined,
-          tabBarTestID: 'tabBar',
-          tabBarVisible: true,
         })
       }
     >
