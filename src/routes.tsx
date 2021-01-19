@@ -45,7 +45,7 @@ function TabsOfLibraryScreen() {
           scrollEnabled: true,
           tabStyle: {
             backgroundColor: '#000',
-            height: 60,
+            height: 50,
             width: windowWidth - 170,
           },
           labelStyle: {
