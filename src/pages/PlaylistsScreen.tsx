@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Dimensions, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-import NavigationBar from '../components/NavigationBar';
+
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -115,21 +115,16 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     backgroundColor: '#000',
-    height: windowHeight - 50,
+    height: '100%',
     width: windowWidth,
   },
   contentContainerView: {
-    width: windowWidth - 4,
-    height: windowHeight - 60 - 75,
-
     borderColor: '#00f',
     borderWidth: 0,
   },
   contentContainer: {
     borderColor: '#0f0',
     borderWidth: 0,
-
-    paddingBottom: '0%',
   },
 
   playlistContainer: {
@@ -164,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
 
     position: 'absolute',
-    bottom: 95,
+    bottom: 20,
     right: 20,
 
     justifyContent: 'center',

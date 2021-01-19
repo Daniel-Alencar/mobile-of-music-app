@@ -229,7 +229,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#fff',
+    borderColor: '#4b4b4b',
     borderWidth: 0,
 
     backgroundColor: '#000',

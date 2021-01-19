@@ -22,51 +22,51 @@ function TabsOfLibraryScreen() {
   const insets = useSafeAreaInsets();
 
   return(
+    <Tab.Navigator 
+      initialRouteName="Artistas"
+      tabBarPosition="top"
+      
+      style={{ 
+        backgroundColor: '#4e4b4b', 
+        paddingTop: insets.top,
+      }}
 
-      <Tab.Navigator 
-        sceneContainerStyle={{
-          borderWidth: 0,
-          borderColor: '#f00',
-        }}
-        initialRouteName="Artistas"
-        screenOptions={{ 
+      tabBarOptions={{
+        activeTintColor: '#fff',
+        inactiveTintColor: '#ffffff66',
 
-        }}
-        tabBarPosition="top"
-        initialLayout={{ width: windowWidth }}
+        scrollEnabled: true,
 
-        style={{ 
-          backgroundColor: '#000', 
-          paddingTop: insets.top,
-        }}
-        tabBarOptions={{
-          activeTintColor: '#fff',
-          inactiveTintColor: '#ffffff66',
-          scrollEnabled: true,
-          tabStyle: {
-            backgroundColor: '#000',
-            height: 50,
-            width: windowWidth - 170,
-          },
-          labelStyle: {
-            fontSize: 35,
-            fontStyle: 'normal',
+        style: {
+          backgroundColor: '#000',
+          height: 50,
+          width: windowWidth,
+        },
+        tabStyle: {
+          backgroundColor: '#000',
+          width: 'auto',
 
-            width: 200,
-            textTransform: 'none',
-            backgroundColor: '#000',
-          },
-          style: {
-            borderColor: '#00f',
-            boderWidth: 0,
-          },
-        }}
-      >
-        <Tab.Screen name="Artistas" component={ArtistsScreen} />
-        <Tab.Screen name="Playlists" component={PlaylistsScreen} />
-        <Tab.Screen name="Downloads" component={DownloadsScreen} />
-      </Tab.Navigator>
+          paddingLeft: 10,
+          paddingRight: 10,
+          padding: 0,
+        },
+        labelStyle: {
+          fontSize: 32,
 
+          textTransform: 'none',
+          backgroundColor: '#000',
+        },
+      }}
+
+      sceneContainerStyle={{
+        borderWidth: 0,
+        borderColor: '#f00',
+      }}
+    >
+      <Tab.Screen name="Artistas" component={ArtistsScreen} />
+      <Tab.Screen name="Playlists" component={PlaylistsScreen} />
+      <Tab.Screen name="Downloads" component={DownloadsScreen} />
+    </Tab.Navigator>
   );
 }
 

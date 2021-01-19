@@ -1,12 +1,22 @@
 import React from 'react';
-import {View, Dimensions, StyleSheet, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
-export default function PlaylistsScreen() {
+import { RectButton } from 'react-native-gesture-handler';
+import { Feather } from '@expo/vector-icons';
+
+export default function DownloadsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={{color: 'white'}}>
-      </Text>
+
+      <View style={styles.contentContainerView}>
+        <ScrollView style={styles.contentContainer}>
+
+        </ScrollView>
+      </View>
+
+        <RectButton style={styles.plusButton} onPress={() => {}} >
+          <Feather name="plus" size={30} color="#000"/>
+        </RectButton>
     </View>
   );
 }
@@ -21,7 +31,30 @@ const styles = StyleSheet.create({
     borderWidth: 0,
 
     backgroundColor: '#000',
-    height: windowHeight - 50,
+    height: '100%',
     width: windowWidth,
+  },
+  contentContainerView: {
+    borderColor: '#00f',
+    borderWidth: 0,
+  },
+  contentContainer: {
+    borderColor: '#0f0',
+    borderWidth: 0,
+  },
+
+  plusButton: {
+    backgroundColor: 'white',
+    height: 60,
+    width: 60,
+
+    borderRadius: 50,
+
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
