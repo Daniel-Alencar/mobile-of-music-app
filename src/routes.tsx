@@ -68,6 +68,16 @@ const Bottom = createBottomTabNavigator();
 function BottomsOfAllApp() {
   return(
     <Bottom.Navigator 
+      tabBarOptions={{
+        activeBackgroundColor: '#4e4b4b',
+        adaptive: true,
+        allowFontScaling: true,
+        style: {
+          backgroundColor: '#4e4b4b',
+          paddingLeft: 30,
+          paddingRight: 30,
+        }
+      }}
       screenOptions={
         ({route}) => ({ 
           tabBarIcon: ({color, size}) => {
@@ -84,7 +94,7 @@ function BottomsOfAllApp() {
                 iconName = 'user';
                 break;
             }
-            return <Feather name={iconName} color={color} size={size}/>
+            return <Feather name={iconName} color='#fff' size={30}/>
           },
           tabBarLabel: ({focused, color, position}) => {
             let string;
@@ -103,7 +113,7 @@ function BottomsOfAllApp() {
                 string = 'circle';
                 break;
             }
-            return <Text style={{ fontSize: 10 }}>{string}</Text>;
+            return <Text style={{ fontSize: 10, color: '#fff' }}>{string}</Text>;
           },
         })
       }
