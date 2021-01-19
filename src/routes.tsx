@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Dimensions, Text } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Feather } from '@expo/vector-icons';
-
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Home from './pages/Home';
 import SearchScreen from './pages/SearchScreen';
@@ -18,49 +18,55 @@ const windowWidth = Dimensions.get('window').width;
 
 const Tab = createMaterialTopTabNavigator();
 function TabsOfLibraryScreen() {
+  
+  const insets = useSafeAreaInsets();
+
   return(
-    <Tab.Navigator 
-      initialRouteName="Artistas"
-      screenOptions={{  }}
-      tabBarPosition={"top"}
-      initialLayout={{ width: windowWidth }}
-      style={{ 
-        backgroundColor: '#0f0', 
-        borderRadius: 0, 
-        marginTop: 24,
-      }}
-      tabBarOptions={{
-        activeTintColor: '#fff',
-        inactiveTintColor: '#ffffff66',
-        scrollEnabled: true,
-        tabStyle: {
-          backgroundColor: '#000',
-          height: 60,
-          width: windowWidth - 170,
-        },
-        labelStyle: {
-          fontSize: 35,
-          fontStyle: 'normal',
 
-          width: 200,
-          textTransform: 'none',
-          backgroundColor: '#000',
-        },
-        style: {
-          borderColor: '#00f',
-          boderWidth: 3,
-        },
-        indicatorStyle: {
-        },
-        iconStyle: {
+      <Tab.Navigator 
+        sceneContainerStyle={{
+          borderWidth: 0,
+          borderColor: '#f00',
+        }}
+        initialRouteName="Artistas"
+        screenOptions={{ 
 
-        },
-      }}
-    >
-      <Tab.Screen name="Artistas" component={ArtistsScreen} />
-      <Tab.Screen name="Playlists" component={PlaylistsScreen} />
-      <Tab.Screen name="Downloads" component={DownloadsScreen} />
-    </Tab.Navigator>
+        }}
+        tabBarPosition="top"
+        initialLayout={{ width: windowWidth }}
+
+        style={{ 
+          backgroundColor: '#000', 
+          paddingTop: insets.top,
+        }}
+        tabBarOptions={{
+          activeTintColor: '#fff',
+          inactiveTintColor: '#ffffff66',
+          scrollEnabled: true,
+          tabStyle: {
+            backgroundColor: '#000',
+            height: 60,
+            width: windowWidth - 170,
+          },
+          labelStyle: {
+            fontSize: 35,
+            fontStyle: 'normal',
+
+            width: 200,
+            textTransform: 'none',
+            backgroundColor: '#000',
+          },
+          style: {
+            borderColor: '#00f',
+            boderWidth: 0,
+          },
+        }}
+      >
+        <Tab.Screen name="Artistas" component={ArtistsScreen} />
+        <Tab.Screen name="Playlists" component={PlaylistsScreen} />
+        <Tab.Screen name="Downloads" component={DownloadsScreen} />
+      </Tab.Navigator>
+
   );
 }
 
@@ -70,13 +76,21 @@ function BottomsOfAllApp() {
     <Bottom.Navigator 
       tabBarOptions={{
         activeBackgroundColor: '#4e4b4b',
+        inactiveBackgroundColor: '#4e4b4b',
+        activeTintColor: '#fff',
+        inactiveTintColor: '#000',
+
         adaptive: true,
-        allowFontScaling: true,
+
         style: {
           backgroundColor: '#4e4b4b',
           paddingLeft: 30,
           paddingRight: 30,
-        }
+        },
+
+        labelStyle: {
+          color: '#fff',
+        },
       }}
       screenOptions={
         ({route}) => ({ 
@@ -85,7 +99,7 @@ function BottomsOfAllApp() {
 
             switch (route.name) {
               case 'Home':
-                iconName = 'home';
+                iconName = 'headphones';
                 break;
               case 'SearchScreen':
                 iconName = 'search';
@@ -94,36 +108,36 @@ function BottomsOfAllApp() {
                 iconName = 'user';
                 break;
             }
-            return <Feather name={iconName} color='#fff' size={30}/>
+            return <Feather name={iconName} color={color} size={30}/>
           },
           tabBarLabel: ({focused, color, position}) => {
             let string;
 
             switch (route.name) {
               case 'Home':
-                string = 'Casa';
+                string = 'Tela inicial';
                 break;
               case 'SearchScreen':
-                string = 'Pesquise';
+                string = 'Pesquisa';
                 break;
               case 'LibraryScreen':
-                string = 'Salvos';
+                string = 'Seus salvos';
                 break;
               default:
                 string = 'circle';
                 break;
             }
-            return <Text style={{ fontSize: 10, color: '#fff' }}>{string}</Text>;
+            return <Text style={{ fontSize: 10, color: color }}>{string}</Text>;
           },
         })
       }
+      sceneContainerStyle={{
+        height: '100%',
+      }}
     >
       <Bottom.Screen 
         name="Home" 
         component={Home}
-        options={{
-          
-        }}
       />
 
       <Bottom.Screen 
@@ -141,8 +155,10 @@ function BottomsOfAllApp() {
 
 export default function Routes() {
   return (
-    <NavigationContainer>
-      <BottomsOfAllApp/>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <BottomsOfAllApp/>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ScrollView, StyleSheet, View, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import NavigationBar from '../components/NavigationBar';
 import PlaylistsContainer from '../components/PlaylistsContainer';
 import ArtistsContainer from '../components/ArtistsContainer';
@@ -12,7 +12,7 @@ import { Feather } from '@expo/vector-icons';
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
@@ -29,7 +29,7 @@ export default function Home() {
         </ScrollView>
       </View>
 
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   contentContainerView: {
     width: windowWidth - 2,
-    height: windowHeight - 50,
+    height: windowHeight - 72,
   },
   contentContainer: {
     borderColor: '#0f0',

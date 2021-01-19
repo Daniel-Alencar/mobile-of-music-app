@@ -5,8 +5,7 @@ import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
 
 import SearchBar from '../components/SearchBar';
-import NavigationBar from '../components/NavigationBar';
-
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 export default function SearchScreen() {
 
   const [fontsLoaded] = useFonts({
@@ -18,7 +17,7 @@ export default function SearchScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <View style={styles.contentContainerView}>
         <ScrollView 
@@ -221,9 +220,7 @@ export default function SearchScreen() {
         </ScrollView>
       </View>
 
-      <NavigationBar/>
-
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -241,7 +238,7 @@ const styles = StyleSheet.create({
   },
   contentContainerView: {
     width: windowWidth - 2,
-    height: windowHeight - 50,
+    height: windowHeight - 72,
   },
   contentContainer: {
     borderColor: '#0f0',
@@ -255,7 +252,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
 
     width: '100%',
-    height: 90,
+    height: 80,
 
     alignItems: 'center',
     justifyContent: 'flex-end',
