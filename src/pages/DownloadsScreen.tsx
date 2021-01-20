@@ -1,9 +1,8 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
-import { RectButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
 import MusicContainer from '../components/MusicContainer';
+import PlusButton from '../components/PlusButton';
 
 export default function DownloadsScreen() {
   return (
@@ -26,9 +25,7 @@ export default function DownloadsScreen() {
         </ScrollView>
       </View>
 
-      <RectButton style={styles.plusButton} onPress={() => {}} >
-        <Feather name="plus" size={30} color="#000"/>
-      </RectButton>
+      <PlusButton onPress={() => {}} />
 
     </View>
   );
@@ -50,20 +47,5 @@ const styles = StyleSheet.create({
   contentContainer: {
     borderColor: '#0f0',
     borderWidth: 0,
-  },
-
-  plusButton: {
-    backgroundColor: 'white',
-    height: 60,
-    width: 60,
-
-    borderRadius: 50,
-
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

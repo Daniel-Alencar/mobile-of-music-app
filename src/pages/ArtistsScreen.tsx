@@ -1,8 +1,7 @@
 import React from 'react';
 import { ScrollView, View, Dimensions, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
-import { RectButton } from 'react-native-gesture-handler';
+import PlusButton from '../components/PlusButton';
 
 export default function ArtistsScreen() {
   return (
@@ -122,9 +121,7 @@ export default function ArtistsScreen() {
         </ScrollView>
       </View>
 
-        <RectButton style={styles.plusButton} onPress={() => {}} >
-          <Feather name="plus" size={30} color="#000"/>
-        </RectButton>
+      <PlusButton />
 
     </View>
   );
