@@ -3,9 +3,10 @@ import { ScrollView, View, Dimensions, StyleSheet, Text, ImageBackground } from 
 
 import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import SearchBar from '../components/SearchBar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
 export default function SearchScreen() {
 
   const [fontsLoaded] = useFonts({

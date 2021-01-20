@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+
 import NavigationBar from '../components/NavigationBar';
 
 export default function SettingsScreen() {
@@ -16,7 +17,6 @@ export default function SettingsScreen() {
     </View>
   );
 }
-
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

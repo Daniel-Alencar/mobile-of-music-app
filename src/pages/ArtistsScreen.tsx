@@ -130,7 +130,6 @@ export default function ArtistsScreen() {
   );
 }
 
-
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 

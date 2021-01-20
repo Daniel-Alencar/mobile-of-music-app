@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { ScrollView, StyleSheet, View, Dimensions, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import NavigationBar from '../components/NavigationBar';
-import PlaylistsContainer from '../components/PlaylistsContainer';
-import ArtistsContainer from '../components/ArtistsContainer';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 
+import PlaylistsContainer from '../components/PlaylistsContainer';
+import ArtistsContainer from '../components/ArtistsContainer';
 
 export default function Home() {
   return (
