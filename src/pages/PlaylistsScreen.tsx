@@ -110,9 +110,6 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#fff',
-    borderWidth: 0,
-
     backgroundColor: '#000',
     height: '100%',
     width: windowWidth,
@@ -128,7 +125,6 @@ const styles = StyleSheet.create({
 
   playlistContainer: {
     height: 85,
-
     justifyContent: 'center',
   },
   playlistButton: {
@@ -138,10 +134,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   playlistImage: {
-    height: 70,
-    width: 70,
-
-    borderRadius: 0,
+    height: 75,
+    width: 75,
   },
   playlistText:{
     color: '#FFF',

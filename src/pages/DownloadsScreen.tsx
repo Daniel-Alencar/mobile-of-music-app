@@ -14,9 +14,10 @@ export default function DownloadsScreen() {
         </ScrollView>
       </View>
 
-        <RectButton style={styles.plusButton} onPress={() => {}} >
-          <Feather name="plus" size={30} color="#000"/>
-        </RectButton>
+      <RectButton style={styles.plusButton} onPress={() => {}} >
+        <Feather name="plus" size={30} color="#000"/>
+      </RectButton>
+      
     </View>
   );
 }
@@ -26,9 +27,6 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#fff',
-    borderWidth: 0,
-
     backgroundColor: '#000',
     height: '100%',
     width: windowWidth,

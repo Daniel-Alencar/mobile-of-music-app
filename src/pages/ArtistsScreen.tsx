@@ -135,9 +135,6 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#fff',
-    borderWidth: 0,
-
     backgroundColor: '#000',
     height: '100%',
     width: windowWidth,
