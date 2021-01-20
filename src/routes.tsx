@@ -1,26 +1,25 @@
 import React from 'react';
+import { Dimensions, Text } from 'react-native';
 
-import { Dimensions, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Feather } from '@expo/vector-icons';
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Home from './pages/Home';
 import SearchScreen from './pages/SearchScreen';
-
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 import DownloadsScreen from './pages/DownloadsScreen';
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const Tab = createMaterialTopTabNavigator();
 function TabsOfLibraryScreen() {
   
   const insets = useSafeAreaInsets();
-
   return(
     <Tab.Navigator 
       initialRouteName="Artistas"
