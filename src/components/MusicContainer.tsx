@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
 interface propsMusicContainer {
   musicName: string,
-  imageSource: string,
+  imageSource: ImageSourcePropType,
   centerTextMusic?: boolean,
 }
 
