@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
+
 import PlaylistContainer from './PlaylistContainer';
 
-export default function() {
+export default function PlaylistsContainer() {
   return (
     <View style={styles.playlistsContainer}>
       <Text style={styles.titles}>Tocadas recentemente</Text>

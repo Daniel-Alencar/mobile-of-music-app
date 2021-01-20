@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function() {
+export default function PlaylistContainer() {
   return (
     <View style={styles.playlistContainer}>
       <View style={styles.playlist}>

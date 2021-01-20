@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
+
 import ArtistContainer from './ArtistContainer';
 
-export default function() {
+export default function ArtistsContainer() {
   return (
     <View style={styles.artistsContainer}>
       <Text style={styles.titles}>Artistas favoritos</Text>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function() {
+export default function ArtistContainer() {
   return (
     <View style={styles.artistContainer}>
       <View style={styles.artist}>

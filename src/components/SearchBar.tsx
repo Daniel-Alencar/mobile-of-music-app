@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
 
+import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 
-export default function() {
+export default function SearchBar() {
   const [textOnSearchBar, setTextOnSearchBar] = useState("");
 
   function clearInput() {

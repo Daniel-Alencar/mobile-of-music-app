@@ -1,8 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, View, Image, StyleSheet, Dimensions } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
 
-export default function() {
+export default function NavigationBar() {
 
   const navigation = useNavigation()
 
