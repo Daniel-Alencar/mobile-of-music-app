@@ -3,6 +3,7 @@ import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
+import MusicContainer from '../components/MusicContainer';
 
 export default function DownloadsScreen() {
   return (
@@ -11,13 +12,24 @@ export default function DownloadsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
+          <MusicContainer 
+            musicName="Gravity" 
+            image={require('../images/Albuns/Continuum.jpg')}
+            centerTextMusic={true} 
+          />
+          <MusicContainer 
+            musicName="In Repair" 
+            image={require('../images/Albuns/Continuum.jpg')}
+            centerTextMusic={true}  
+          />
+
         </ScrollView>
       </View>
 
       <RectButton style={styles.plusButton} onPress={() => {}} >
         <Feather name="plus" size={30} color="#000"/>
       </RectButton>
-      
+
     </View>
   );
 }
