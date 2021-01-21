@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
-import MusicContainer from '../components/MusicContainer';
+import MusicContainer from '../components/Salvos/MusicContainer';
 import PlusButton from '../components/PlusButton';
 
 export default function DownloadsScreen() {
