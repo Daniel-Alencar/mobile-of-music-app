@@ -1,16 +1,26 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } from 'react-native';
 
-export default function ArtistContainer() {
+interface propsArtistContainer {
+  imageSource?: ImageSourcePropType,
+  artistName: string,
+}
+
+export default function ArtistContainer(props: propsArtistContainer) {
   return(
     <View style={styles.artistContainer}>
 
       <TouchableOpacity style={styles.artistButton}>
-        <Image style={styles.imageArtist} source={require('../../images/Artists/JohnMayer.png')} />
+
+        <Image 
+          style={styles.imageArtist} 
+          source={props.imageSource ? props.imageSource : require('../../images/Artists/userIcon.png')} 
+        />
 
         <Text style={styles.artistText}>
-          John Mayer
+          {props.artistName}
         </Text>
+
       </TouchableOpacity>
       
     </View>

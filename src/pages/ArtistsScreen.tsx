@@ -11,7 +11,13 @@ export default function ArtistsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
 
-          <ArtistContainer />
+          <ArtistContainer 
+            artistName="John Mayer" 
+            imageSource={require('../images/Artists/JohnMayer.png')}
+          />
+          <ArtistContainer 
+            artistName="Daniel Alencar" 
+          />
 
         </ScrollView>
       </View>
