@@ -21,6 +21,10 @@ export default function DownloadsScreen() {
             imageSource={require('../images/Albuns/Continuum.jpg')}
             centerTextMusic={true}  
           />
+          <MusicContainer 
+            musicName="Ao som do mar"
+            centerTextMusic={true}  
+          />
 
         </ScrollView>
       </View>

@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 
 interface propsMusicContainer {
   musicName: string,
-  imageSource: ImageSourcePropType,
+  imageSource?: ImageSourcePropType,
   centerTextMusic?: boolean,
 }
 
@@ -17,8 +17,11 @@ export default function MusicContainer(props: propsMusicContainer) {
         {props.centerTextMusic ? 
           <>
             <Image
-              source={props.imageSource}
+              source={
+                props.imageSource ? props.imageSource : require('../../images/Music/musicIcon.jpg')
+              }
               style={styles.imageMusic}
+              
             />
 
             <Text style={styles.musicText}>
@@ -29,7 +32,9 @@ export default function MusicContainer(props: propsMusicContainer) {
           <>
             <View style={{ flexDirection: 'row', alignItems: 'center', }}>
               <Image
-                source={props.imageSource}
+                source={
+                  props.imageSource ? props.imageSource : require('../../images/Music/musicIcon.jpg')
+                }
                 style={styles.imageMusic}
               />
               <Text style={styles.musicText}>
