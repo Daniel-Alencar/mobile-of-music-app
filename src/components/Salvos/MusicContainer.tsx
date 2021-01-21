@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
@@ -10,6 +10,9 @@ interface propsMusicContainer {
 }
 
 export default function MusicContainer(props: propsMusicContainer) {
+
+  const [isClicked, setIsClicked] = useState(false);
+
   return(
     <View style={styles.musicContainer}>
       <TouchableOpacity style={styles.musicButton}>
@@ -43,8 +46,8 @@ export default function MusicContainer(props: propsMusicContainer) {
             </View>
           </>
         }
-        <TouchableOpacity style={styles.favoriteButton}>
-          <Feather name="heart" size={20} color={"white"}/>
+        <TouchableOpacity style={styles.favoriteButton} onPress={() => setIsClicked(!isClicked)}>
+          <Feather name="heart" size={20} color={isClicked ? '#f00' : 'white'}/>
         </TouchableOpacity>
 
       </TouchableOpacity>

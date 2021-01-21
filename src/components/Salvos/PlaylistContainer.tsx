@@ -18,7 +18,10 @@ export default function PlaylistContainer(props: propsPlaylistContainer) {
             props.isLikedSongs ? 
               (require('../../images/Albuns/likedSongs.png'))
             :
-              (props.imageSource ? props.imageSource : require('../../images/Albuns/playlistBanner.png'))
+              (props.imageSource ? 
+                props.imageSource 
+              : 
+                require('../../images/Albuns/playlistBanner.png'))
           } 
         />
 
