@@ -13,12 +13,12 @@ export default function DownloadsScreen() {
 
           <MusicContainer 
             musicName="Gravity" 
-            imageSource={require('../images/Albuns/Continuum.jpg')}
+            imageSource={require('../images/Playlists/Continuum.jpg')}
             centerTextMusic={true} 
           />
           <MusicContainer 
             musicName="In Repair" 
-            imageSource={require('../images/Albuns/Continuum.jpg')}
+            imageSource={require('../images/Playlists/Continuum.jpg')}
             centerTextMusic={true}  
           />
           <MusicContainer 

@@ -46,7 +46,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -71,7 +71,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -96,7 +96,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -121,7 +121,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -146,7 +146,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -171,7 +171,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
@@ -196,7 +196,7 @@ export default function SearchScreen() {
               <ImageBackground 
                 imageStyle={{ borderRadius: 16 }}
                 style={styles.backgroundGenreContainer} 
-                source={require('../images/background/background-rock.jpg')}
+                source={require('../images/Background/background-rock.jpg')}
               >
 
                 <View 
