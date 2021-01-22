@@ -27,13 +27,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     height: '100%',
     width: windowWidth,
+
+    borderColor: '#f0f',
+    borderWidth: 0,
   },
   contentContainerView: {
     borderColor: '#00f',
     borderWidth: 0,
+
+    height: '100%',
   },
   contentContainer: {
-    borderColor: '#0f0',
+    borderColor: '#f00',
     borderWidth: 0,
   },
 });

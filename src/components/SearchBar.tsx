@@ -30,7 +30,7 @@ export default function SearchBar() {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 0,
+    borderWidth: 1,
     borderColor: '#fff',
 
     backgroundColor: '#000000aa',

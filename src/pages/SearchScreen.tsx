@@ -67,22 +67,22 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#4b4b4b',
-    borderWidth: 0,
-
     backgroundColor: '#000',
-    height: windowHeight,
+    height: '100%',
     width: windowWidth,
+
+    borderColor: '#f0f',
+    borderWidth: 0,
   },
   contentContainerView: {
-    width: windowWidth - 2,
-    height: windowHeight - 72,
+    borderColor: '#00f',
+    borderWidth: 0,
+
+    height: '100%',
   },
   contentContainer: {
-    borderColor: '#0f0',
+    borderColor: '#f00',
     borderWidth: 1,
-
-    paddingBottom: '2%',
   },
 
   searchTitleContainer: {
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
 
   genresContainer: {
     width: '100%',
-    minHeight: windowHeight - 180 - 80,
 
     borderColor: '#fff',
     borderWidth: 1,
