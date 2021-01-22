@@ -40,13 +40,10 @@ const styles = StyleSheet.create({
 
     width: 125,
     height: 175,
-    marginLeft: 15,
   },
   playlist: {
     width: '100%',
     height: 125,
-
-    backgroundColor: '#342d2d',
 
     borderColor: '#0ff',
     borderWidth: 0,
@@ -54,9 +51,15 @@ const styles = StyleSheet.create({
   playlistName: {
     color: '#fff',
     fontSize: 20,
+
+    borderColor: '#00f',
+    borderWidth: 1,
   },
   playlistCreator: {
     color: '#b7b7b7',
     fontSize: 12,
+
+    borderColor: '#f00',
+    borderWidth: 1,
   },
 });

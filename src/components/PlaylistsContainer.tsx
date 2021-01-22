@@ -3,12 +3,33 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import PlaylistContainer from './PlaylistContainer';
 
-export default function PlaylistsContainer() {
+interface propsPlaylistsContainer {
+  title: string,
+}
+
+const defaultMargin = 15;
+
+export default function PlaylistsContainer(props: propsPlaylistsContainer) {
   return (
     <View style={styles.playlistsContainer}>
-      <Text style={styles.titles}>Tocadas recentemente</Text>
+
+      <Text style={styles.titles}>{props.title}</Text>
+
       <View style={styles.playlistsView}>
-        <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
+        <ScrollView 
+          overScrollMode="never" 
+          horizontal 
+          style={styles.playlists}
+          contentContainerStyle={{
+            paddingRight: defaultMargin,
+            paddingLeft: defaultMargin,
+
+            flexDirection: 'row',
+            alignItems: 'center',
+
+            width: 'auto',
+          }}
+        >
           
           <PlaylistContainer 
             playlistName="Lo-Fi"
@@ -43,30 +64,37 @@ export default function PlaylistsContainer() {
 
 const styles = StyleSheet.create({
   playlistsContainer: {
-    marginTop: 20,
+    marginTop: 200,
 
     borderColor: '#f0f',
     borderWidth: 1,
 
-    height: 215,
+    height: 250,
     width: '100%',
+
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   titles: {
     color: '#fff',
-
-    marginLeft: '4%',
-
     fontSize: 22,
     fontWeight: "bold",
-  },
-  playlistsView: {
-    height: 180,
-    width: '100%',
-  },
-  playlists: {
+
     borderColor: '#f00',
     borderWidth: 0,
 
-    marginTop: 7,
+    marginLeft: defaultMargin,
+  },
+  playlistsView: {
+    height: 200,
+    width: '100%',
+
+    borderColor: '#0f0',
+    borderWidth: 1,
+  },
+  playlists: {
+    borderColor: '#f00',
+    borderWidth: 1,
+
   },
 });

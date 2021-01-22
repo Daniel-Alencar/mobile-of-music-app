@@ -6,6 +6,7 @@ import { Feather } from '@expo/vector-icons';
 
 import PlaylistsContainer from '../components/PlaylistsContainer';
 import ArtistsContainer from '../components/ArtistsContainer';
+import PlaylistContainer from '../components/PlaylistContainer';
 
 export default function Home() {
   return (
@@ -18,10 +19,8 @@ export default function Home() {
             <Feather name="settings" size={25} color="white"></Feather>
           </TouchableOpacity>
 
-          <PlaylistsContainer/>
-          <ArtistsContainer/>
-          <PlaylistsContainer/>
-          <PlaylistsContainer/>
+          <PlaylistsContainer title="Tocadas recentemente"/>
+          
 
         </ScrollView>
       </View>
