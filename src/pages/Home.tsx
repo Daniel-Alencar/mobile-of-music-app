@@ -37,17 +37,17 @@ const styles = StyleSheet.create({
     width: windowWidth,
 
     borderColor: '#f0f',
-    borderWidth: 3,
+    borderWidth: 0,
   },
   contentContainerView: {
     borderColor: '#00f',
-    borderWidth: 3,
+    borderWidth: 0,
 
     height: '100%',
   },
   contentContainer: {
     borderColor: '#f00',
-    borderWidth: 3,
+    borderWidth: 0,
   },
 
   settingsContainer: {
