@@ -7,7 +7,7 @@ interface propsPlaylistsContainer {
   title: string,
 }
 
-const defaultMargin = 15;
+const defaultMargin = 7.5;
 
 export default function PlaylistsContainer(props: propsPlaylistsContainer) {
   return (
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     borderColor: '#f00',
     borderWidth: 0,
 
-    marginLeft: defaultMargin,
+    marginLeft: defaultMargin + 7.5,
   },
   playlistsView: {
     height: 200,

@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
 
     width: 125,
     height: 175,
+
+    marginLeft: 7.5,
+    marginRight: 7.5,
   },
   artist: {
     width: '100%',
