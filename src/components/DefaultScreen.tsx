@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
+import {View, Dimensions, StyleSheet, ScrollView, StyleProp, ViewStyle } from 'react-native';
 
 interface propsDefaultScreen {
-    content: JSX.Element,
+  content: JSX.Element,
+  scrollViewContentContainerStyle?: StyleProp<ViewStyle>
 }
 
 export default function DefaultScreen(props: propsDefaultScreen) {
@@ -10,8 +11,12 @@ export default function DefaultScreen(props: propsDefaultScreen) {
     <View style={styles.container}>
 
       <View style={styles.contentContainerView}>
-        <ScrollView style={styles.contentContainer}>
-            {props.content}
+
+        <ScrollView 
+          style={styles.contentContainer}
+          contentContainerStyle={props.scrollViewContentContainerStyle}
+        >
+          {props.content}
         </ScrollView>
       </View>
 
