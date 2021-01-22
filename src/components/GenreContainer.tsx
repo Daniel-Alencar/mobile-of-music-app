@@ -1,64 +1,73 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Text, Dimensions } from 'react-native';
+import { 
+  StyleSheet, 
+  View, 
+  ImageBackground, 
+  Text, 
+  ImageSourcePropType,
+  TouchableOpacity
+} from 'react-native';
 
-export default function GenreContainer() {
+interface propsGenreContainer {
+  imageSource: ImageSourcePropType,
+  name: string,
+}
+
+export default function GenreContainer(props: propsGenreContainer) {
   return(
-    <View style={styles.genreContainer}>
+    <TouchableOpacity style={styles.genreButton}>
 
       <ImageBackground 
-        imageStyle={{ borderRadius: 16 }}
+        imageStyle={{ borderRadius: 16, width: '100%', height: '100%' }}
         style={styles.backgroundGenreContainer} 
-        source={require('../images/Background/background-rock.jpg')}
+        source={props.imageSource}
       >
 
         <View 
-          style={{ 
-            backgroundColor: '#00000085', 
-            width: '100%', 
-            height: '100%',         
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          style={styles.genreView}
         >
           <Text style={styles.genreName}>
-            Rock
+            {props.name}
           </Text>
         </View>
         
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 }
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
 const styles =  StyleSheet.create({
-  genresContainer: {
-    width: '100%',
-    minHeight: windowHeight - 180 - 54,
-
-    borderColor: '#fff',
-    borderWidth: 0,
-
-    alignItems: 'center',
-  },
-  genreContainer: {
+  genreButton: {
     width: '90%',
     height: 100,
 
     borderRadius: 16,
 
-    marginTop: 10,
-    marginBottom: 10,
+    borderWidth: 0,
+    borderColor: '#f0f',
   },
   backgroundGenreContainer: {
-    width: '100%',
+    borderWidth: 0,
+    borderColor: '#0f0',
+  },
+  genreView: { 
+    backgroundColor: '#00000085', 
+
+    width: '100%', 
     height: '100%',
+
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    borderWidth: 0,
+    borderColor: '#f00',
   },
   genreName: {
     color: '#d4d4d4',
     fontFamily: 'Nunito_600SemiBold',
     fontSize: 30,
+
+    borderWidth: 0,
+    borderColor: '#f00',
   },
 });

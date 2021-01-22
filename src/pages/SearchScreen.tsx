@@ -6,6 +6,7 @@ import { Nunito_600SemiBold } from '@expo-google-fonts/nunito';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import SearchBar from '../components/SearchBar';
+import GenreContainer from '../components/GenreContainer';
 
 export default function SearchScreen() {
 
@@ -40,182 +41,18 @@ export default function SearchScreen() {
           <SearchBar/>
 
           <View style={styles.genresContainer}>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
-            <View style={styles.genreContainer}>
-
-              <ImageBackground 
-                imageStyle={{ borderRadius: 16 }}
-                style={styles.backgroundGenreContainer} 
-                source={require('../images/Background/background-rock.jpg')}
-              >
-
-                <View 
-                  style={{ 
-                    backgroundColor: '#00000085', 
-                    width: '100%', 
-                    height: '100%',         
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text style={styles.genreName}>
-                    Rock
-                  </Text>
-                </View>
-                
-              </ImageBackground>
-            </View>
-
+            <GenreContainer 
+              imageSource={require('../images/Background/background-rock.jpg')}
+              name="Rock"
+            />
+            <GenreContainer 
+              imageSource={require('../images/Background/background-jazz.jpg')}
+              name="Jazz"
+            />
+            <GenreContainer 
+              imageSource={require('../images/Background/background-blues.jpg')}
+              name="Blues"
+            />
           </View>
 
         </ScrollView>
@@ -243,7 +80,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#0f0',
-    borderWidth: 0,
+    borderWidth: 1,
 
     paddingBottom: '2%',
   },
@@ -266,29 +103,11 @@ const styles = StyleSheet.create({
 
   genresContainer: {
     width: '100%',
-    minHeight: windowHeight - 180 - 54,
+    minHeight: windowHeight - 180 - 80,
 
     borderColor: '#fff',
-    borderWidth: 0,
+    borderWidth: 1,
 
     alignItems: 'center',
-  },
-  genreContainer: {
-    width: '90%',
-    height: 100,
-
-    borderRadius: 16,
-
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  backgroundGenreContainer: {
-    width: '100%',
-    height: '100%',
-  },
-  genreName: {
-    color: '#d4d4d4',
-    fontFamily: 'Nunito_600SemiBold',
-    fontSize: 30,
   },
 });
