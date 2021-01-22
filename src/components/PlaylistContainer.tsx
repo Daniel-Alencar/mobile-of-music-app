@@ -37,7 +37,7 @@ export default function PlaylistContainer(props: propsPlaylistContainer) {
 const styles = StyleSheet.create({
   playlistContainer: {
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     width: 125,
     height: 175,
@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
 
     borderColor: '#00f',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   playlistCreator: {
     color: '#b7b7b7',
     fontSize: 12,
 
     borderColor: '#f00',
-    borderWidth: 1,
+    borderWidth: 0,
   },
 });

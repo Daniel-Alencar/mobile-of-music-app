@@ -39,7 +39,7 @@ export default function ArtistContainer(props: propsArtistContainer) {
 const styles = StyleSheet.create({
   artistContainer: {
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     width: 125,
     height: 175,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     height: 125,
 
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 100,
   },
   artistName: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
 
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     textAlignVertical: 'center',
     textAlign: 'center',

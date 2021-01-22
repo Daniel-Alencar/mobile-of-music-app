@@ -19,6 +19,9 @@ export default function Home() {
           </TouchableOpacity>
 
           <ArtistsContainer title="Artistas recomendados"/>
+          <PlaylistsContainer title="Playlists recomendadas"/>
+          <ArtistsContainer title="Artistas recomendados"/>
+          <PlaylistsContainer title="Playlists recomendadas"/>
 
         </ScrollView>
       </View>
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
 
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
 
     alignItems: 'center',
     justifyContent: 'center',

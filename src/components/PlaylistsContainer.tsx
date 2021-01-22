@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   playlistsContainer: {
 
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: 270,
     width: '100%',
@@ -95,10 +95,10 @@ const styles = StyleSheet.create({
     width: '100%',
 
     borderColor: '#0f0',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   playlists: {
     borderColor: '#f00',
-    borderWidth: 1,
+    borderWidth: 0,
   },
 });

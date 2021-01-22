@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
 
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: 240,
     width: '100%',
@@ -88,10 +88,10 @@ const styles = StyleSheet.create({
     width: '100%',
 
     borderColor: '#0f0',
-    borderWidth: 1,
+    borderWidth: 0,
   },
   artists: {
     borderColor: '#f00',
-    borderWidth: 1,
+    borderWidth: 0,
   },
 });
