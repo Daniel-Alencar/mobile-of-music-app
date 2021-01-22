@@ -24,10 +24,16 @@ export default function PlaylistsContainer(props: propsPlaylistsContainer) {
             paddingRight: defaultMargin,
             paddingLeft: defaultMargin,
 
+            flexGrow: 1,
+            justifyContent: 'space-between',
+            
             flexDirection: 'row',
             alignItems: 'center',
 
             width: 'auto',
+
+            borderColor: '#0f0',
+            borderWidth: 1,
           }}
         >
           
@@ -95,6 +101,5 @@ const styles = StyleSheet.create({
   playlists: {
     borderColor: '#f00',
     borderWidth: 1,
-
   },
 });
