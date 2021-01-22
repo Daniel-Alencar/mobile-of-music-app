@@ -12,7 +12,7 @@ export default function SearchBar() {
   }
 
   return (
-    <View style={styles.container} >
+    <View style={styles.searchBarContainer} >
       <TextInput
         returnKeyType="search"
         style={styles.searchBar}
@@ -29,7 +29,7 @@ export default function SearchBar() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  searchBarContainer: {
     borderWidth: 0,
     borderColor: '#fff',
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchBar: {
-    backgroundColor: '#B7A9A7',
+    backgroundColor: '#7a7a7a',
     width: '75%',
     height: 50,
 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   xButton: {
-    backgroundColor: '#B7A9A7',
+    backgroundColor: '#7a7a7a',
     width: 40,
     height: 50,
 

@@ -37,7 +37,7 @@ export default function SearchScreen() {
               Explore
             </Text>
           </View>
-
+          
           <SearchBar/>
 
           <View style={styles.genresContainer}>
