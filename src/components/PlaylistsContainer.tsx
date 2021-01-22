@@ -10,9 +10,30 @@ export default function PlaylistsContainer() {
       <View style={styles.playlistsView}>
         <ScrollView overScrollMode="never" horizontal style={styles.playlists}>
           
-          <PlaylistContainer/>
-          <PlaylistContainer/>
-          <PlaylistContainer/>
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
+          <PlaylistContainer 
+            playlistName="Lo-Fi"
+            playlistCreator="Chilled cow"
+          />
 
         </ScrollView>
       </View>
@@ -25,7 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
 
     borderColor: '#f0f',
-    borderWidth: 0,
+    borderWidth: 1,
 
     height: 215,
     width: '100%',

@@ -35,23 +35,24 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#fff',
-    borderWidth: 0,
-
     backgroundColor: '#000',
-    height: windowHeight,
+    height: '100%',
     width: windowWidth,
+
+    borderColor: '#f0f',
+    borderWidth: 3,
   },
   contentContainerView: {
-    width: windowWidth - 2,
-    height: windowHeight - 72,
+    borderColor: '#00f',
+    borderWidth: 3,
+
+    height: '100%',
   },
   contentContainer: {
-    borderColor: '#0f0',
-    borderWidth: 0,
-
-    paddingBottom: '2%',
+    borderColor: '#f00',
+    borderWidth: 3,
   },
+
   settingsContainer: {
     position: 'absolute',
     right: 15,

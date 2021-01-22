@@ -1,26 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 
-export default function PlaylistContainer() {
+interface propsPlaylistContainer {
+  playlistName: string,
+  playlistCreator: string,
+  playlistImage?: ImageSourcePropType,
+}
+
+export default function PlaylistContainer(props: propsPlaylistContainer) {
+  const defaultPlaylistImage = require('../images/Playlists/playlistBanner.png');
+
   return (
-    <View style={styles.playlistContainer}>
-      <View style={styles.playlist}>
+    <TouchableOpacity style={styles.playlistContainer}>
+      <Image 
+        style={styles.playlist}
+        source={
+          props.playlistImage ?
+            props.playlistImage
+          :
+            defaultPlaylistImage
+        }
+      >
 
-      </View>
+      </Image>
       <Text style={styles.playlistName}>
-        Lo-Fi
+        {props.playlistName}
       </Text>
       <Text style={styles.playlistCreator}>
-        Chilled cow
+        {props.playlistCreator}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   playlistContainer: {
     borderColor: '#0ff',
-    borderWidth: 0,
+    borderWidth: 1,
 
     width: 125,
     height: 175,
