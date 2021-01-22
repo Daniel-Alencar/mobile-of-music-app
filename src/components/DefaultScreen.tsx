@@ -1,11 +1,8 @@
 import React from 'react';
-import {View, Dimensions, StyleSheet, ScrollView, StyleProp, ViewStyle } from 'react-native';
+import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
 interface propsDefaultScreen {
   content: JSX.Element,
-  scrollViewContentContainerStyle?: StyleProp<ViewStyle>,
-  scrollViewShowsVerticalScrollIndicator?: boolean,
-  scrollViewStickyHeaderIndices: number[],
 }
 
 export default function DefaultScreen(props: propsDefaultScreen) {
@@ -14,22 +11,7 @@ export default function DefaultScreen(props: propsDefaultScreen) {
 
       <View style={styles.contentContainerView}>
 
-        <ScrollView 
-          style={styles.contentContainer}
-          contentContainerStyle={props.scrollViewContentContainerStyle}
-          showsVerticalScrollIndicator={
-            props.scrollViewShowsVerticalScrollIndicator ? 
-              props.scrollViewShowsVerticalScrollIndicator
-            :
-              false
-          }
-          stickyHeaderIndices={
-            props.scrollViewStickyHeaderIndices ?
-              props.scrollViewStickyHeaderIndices
-            :
-              undefined
-          }
-        >
+        <ScrollView style={styles.contentContainer}>
           {props.content}
         </ScrollView>
       </View>
