@@ -37,7 +37,7 @@ export default function SearchScreen() {
             </Text>
           </View>
 
-            <SearchBar/>
+          <SearchBar/>
 
           <View style={styles.genresContainer}>
 
@@ -249,11 +249,11 @@ const styles = StyleSheet.create({
   },
 
   searchTitleContainer: {
-    borderWidth: 0,
+    borderWidth: 1,
     borderColor: '#fff',
 
     width: '100%',
-    height: 80,
+    height: 100,
 
     alignItems: 'center',
     justifyContent: 'flex-end',
