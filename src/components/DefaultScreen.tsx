@@ -3,7 +3,9 @@ import {View, Dimensions, StyleSheet, ScrollView, StyleProp, ViewStyle } from 'r
 
 interface propsDefaultScreen {
   content: JSX.Element,
-  scrollViewContentContainerStyle?: StyleProp<ViewStyle>
+  scrollViewContentContainerStyle?: StyleProp<ViewStyle>,
+  scrollViewShowsVerticalScrollIndicator?: boolean,
+  scrollViewStickyHeaderIndices: number[],
 }
 
 export default function DefaultScreen(props: propsDefaultScreen) {
@@ -15,6 +17,18 @@ export default function DefaultScreen(props: propsDefaultScreen) {
         <ScrollView 
           style={styles.contentContainer}
           contentContainerStyle={props.scrollViewContentContainerStyle}
+          showsVerticalScrollIndicator={
+            props.scrollViewShowsVerticalScrollIndicator ? 
+              props.scrollViewShowsVerticalScrollIndicator
+            :
+              false
+          }
+          stickyHeaderIndices={
+            props.scrollViewStickyHeaderIndices ?
+              props.scrollViewStickyHeaderIndices
+            :
+              undefined
+          }
         >
           {props.content}
         </ScrollView>
