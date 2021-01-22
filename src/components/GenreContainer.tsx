@@ -5,7 +5,8 @@ import {
   ImageBackground, 
   Text, 
   ImageSourcePropType,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 
 interface propsGenreContainer {
@@ -36,12 +37,17 @@ export default function GenreContainer(props: propsGenreContainer) {
   );
 }
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const styles =  StyleSheet.create({
   genreButton: {
     width: '90%',
     height: 100,
 
     borderRadius: 16,
+
+    margin: 10,
 
     borderWidth: 0,
     borderColor: '#f0f',

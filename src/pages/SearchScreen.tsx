@@ -26,7 +26,7 @@ export default function SearchScreen() {
           style={styles.contentContainer} 
           contentContainerStyle={{ 
             borderWidth: 0, 
-            borderColor: 'white',
+            borderColor: '#0f0',
           }}
           showsVerticalScrollIndicator={false}
           stickyHeaderIndices={[1]}
@@ -41,6 +41,19 @@ export default function SearchScreen() {
           <SearchBar/>
 
           <View style={styles.genresContainer}>
+            <GenreContainer 
+              imageSource={require('../images/Background/background-rock.jpg')}
+              name="Rock"
+            />
+            <GenreContainer 
+              imageSource={require('../images/Background/background-jazz.jpg')}
+              name="Jazz"
+            />
+            <GenreContainer 
+              imageSource={require('../images/Background/background-blues.jpg')}
+              name="Blues"
+            />
+
             <GenreContainer 
               imageSource={require('../images/Background/background-rock.jpg')}
               name="Rock"
@@ -82,11 +95,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     borderColor: '#f00',
-    borderWidth: 1,
+    borderWidth: 0,
   },
 
   searchTitleContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#fff',
 
     width: '100%',
@@ -105,8 +118,11 @@ const styles = StyleSheet.create({
     width: '100%',
 
     borderColor: '#fff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     alignItems: 'center',
+
+    paddingBottom: 10,
+    paddingTop: 10,
   },
 });
