@@ -1,36 +1,57 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  Image, 
+  ImageSourcePropType, 
+  TouchableOpacity 
+} from 'react-native';
 
-export default function ArtistContainer() {
+interface propsArtistContainer {
+  artistName: string,
+  imageSource?: ImageSourcePropType,
+}
+
+export default function ArtistContainer(props: propsArtistContainer) {
+
+  const defaultArtistImage = require('../images/Artists/userIcon.png');
+
   return (
-    <View style={styles.artistContainer}>
-      <View style={styles.artist}>
+    <TouchableOpacity style={styles.artistContainer}>
+      <Image 
+        style={styles.artist}
+        source={
+          props.imageSource ?
+            props.imageSource
+          :
+            defaultArtistImage
+        }
+        >
 
-      </View>
+      </Image>
       <Text style={styles.artistName}>
-        John Mayer
+        {props.artistName}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   artistContainer: {
+    margin: 50,
+
     borderColor: '#0ff',
-    borderWidth: 0,
+    borderWidth: 1,
 
     width: 125,
     height: 175,
-    marginLeft: 15,
   },
   artist: {
     width: '100%',
     height: 125,
 
-    backgroundColor: '#342d2d',
-
     borderColor: '#0ff',
-    borderWidth: 0,
+    borderWidth: 1,
     borderRadius: 100,
   },
   artistName: {
@@ -38,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
 
     borderColor: '#0ff',
-    borderWidth: 0,
+    borderWidth: 1,
 
     textAlignVertical: 'center',
     textAlign: 'center',

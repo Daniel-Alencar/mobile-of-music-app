@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 
 import PlaylistsContainer from '../components/PlaylistsContainer';
 import ArtistsContainer from '../components/ArtistsContainer';
-import PlaylistContainer from '../components/PlaylistContainer';
+import ArtistContainer from '../components/ArtistContainer';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
           </TouchableOpacity>
 
           <PlaylistsContainer title="Tocadas recentemente"/>
-          
+          <ArtistContainer artistName="Daniel" />
 
         </ScrollView>
       </View>
@@ -56,10 +56,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     top: 15,
-
     zIndex: 1,
 
     borderColor: '#f0f',
-    borderWidth: 0,
+    borderWidth: 1,
+
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

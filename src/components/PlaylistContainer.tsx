@@ -8,6 +8,7 @@ interface propsPlaylistContainer {
 }
 
 export default function PlaylistContainer(props: propsPlaylistContainer) {
+  
   const defaultPlaylistImage = require('../images/Playlists/playlistBanner.png');
 
   return (

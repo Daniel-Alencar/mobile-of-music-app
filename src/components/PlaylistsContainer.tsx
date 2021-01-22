@@ -70,12 +70,11 @@ export default function PlaylistsContainer(props: propsPlaylistsContainer) {
 
 const styles = StyleSheet.create({
   playlistsContainer: {
-    marginTop: 200,
 
     borderColor: '#f0f',
     borderWidth: 1,
 
-    height: 250,
+    height: 270,
     width: '100%',
 
     flexDirection: 'column',
