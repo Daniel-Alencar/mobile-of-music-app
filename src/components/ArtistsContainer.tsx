@@ -3,19 +3,59 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import ArtistContainer from './ArtistContainer';
 
-export default function ArtistsContainer() {
+interface propsArtistsContainer {
+  title: string,
+}
+
+const defaultMargin = 15;
+
+export default function ArtistsContainer(props: propsArtistsContainer) {
   return (
     <View style={styles.artistsContainer}>
-      <Text style={styles.titles}>Artistas favoritos</Text>
+
+      <Text style={styles.titles}>{props.title}</Text>
+
       <View style={styles.artistsView}>
-        <ScrollView overScrollMode="never" horizontal style={styles.artists}>
+        <ScrollView 
+          overScrollMode="never" 
+          horizontal 
+          style={styles.artists}
+          contentContainerStyle={{
+            paddingRight: defaultMargin,
+            paddingLeft: defaultMargin,
+
+            flexGrow: 1,
+            justifyContent: 'space-between',
+            
+            flexDirection: 'row',
+            alignItems: 'center',
+
+            width: 'auto',
+
+            borderColor: '#0f0',
+            borderWidth: 1,
+          }}
+        >
           
-          <ArtistContainer/>
-          <ArtistContainer/>
-          <ArtistContainer/>
+          <ArtistContainer 
+            artistName="Daniel" 
+          />
+          <ArtistContainer 
+            artistName="Daniel" 
+          />
+          <ArtistContainer 
+            artistName="Daniel" 
+          />
+          <ArtistContainer 
+            artistName="Daniel" 
+          />
+          <ArtistContainer 
+            artistName="Daniel Alencar Penha Carvalho" 
+          />
 
         </ScrollView>
       </View>
+
     </View>
   );
 }
@@ -25,28 +65,33 @@ const styles = StyleSheet.create({
     marginTop: 20,
 
     borderColor: '#f0f',
-    borderWidth: 0,
+    borderWidth: 1,
 
-    height: 215,
+    height: 240,
     width: '100%',
+
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
-  artistsView: {
-    height: 180,
-    width: '100%',
-  },
-  artists: {
+  titles: {
+    color: '#fff',
+    fontSize: 22,
+    fontWeight: "bold",
+
     borderColor: '#f00',
     borderWidth: 0,
 
-    marginTop: 7,
+    marginLeft: defaultMargin,
   },
+  artistsView: {
+    height: 190,
+    width: '100%',
 
-  titles: {
-    color: '#fff',
-
-    marginLeft: '4%',
-
-    fontSize: 22,
-    fontWeight: "bold",
+    borderColor: '#0f0',
+    borderWidth: 1,
+  },
+  artists: {
+    borderColor: '#f00',
+    borderWidth: 1,
   },
 });

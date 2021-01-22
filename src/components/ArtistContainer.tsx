@@ -38,8 +38,6 @@ export default function ArtistContainer(props: propsArtistContainer) {
 
 const styles = StyleSheet.create({
   artistContainer: {
-    margin: 50,
-
     borderColor: '#0ff',
     borderWidth: 1,
 
