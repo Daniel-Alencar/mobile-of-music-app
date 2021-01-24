@@ -12,7 +12,10 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
 
       <View style={styles.contentContainerView}>
-        <ScrollView style={styles.contentContainer}>
+        <ScrollView 
+          style={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
 
           <TouchableOpacity onPress={() => {}} style={styles.settingsContainer}>
             <Feather name="settings" size={25} color="white"></Feather>

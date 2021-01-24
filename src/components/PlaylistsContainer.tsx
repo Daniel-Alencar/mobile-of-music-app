@@ -20,11 +20,12 @@ export default function PlaylistsContainer(props: propsPlaylistsContainer) {
           overScrollMode="never" 
           horizontal 
           style={styles.playlists}
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             paddingRight: defaultMargin,
             paddingLeft: defaultMargin,
 
-            flexGrow: 1,
+            flexGrow: 0,
             justifyContent: 'space-between',
             
             flexDirection: 'row',
@@ -33,7 +34,7 @@ export default function PlaylistsContainer(props: propsPlaylistsContainer) {
             width: 'auto',
 
             borderColor: '#0f0',
-            borderWidth: 1,
+            borderWidth: 0,
           }}
         >
           
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     borderColor: '#f0f',
     borderWidth: 0,
 
-    height: 270,
+    height: 240,
     width: '100%',
 
     flexDirection: 'column',

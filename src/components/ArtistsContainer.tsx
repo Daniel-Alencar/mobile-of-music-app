@@ -20,11 +20,12 @@ export default function ArtistsContainer(props: propsArtistsContainer) {
           overScrollMode="never" 
           horizontal 
           style={styles.artists}
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             paddingRight: defaultMargin,
             paddingLeft: defaultMargin,
 
-            flexGrow: 1,
+            flexGrow: 0,
             justifyContent: 'space-between',
             
             flexDirection: 'row',
@@ -33,7 +34,7 @@ export default function ArtistsContainer(props: propsArtistsContainer) {
             width: 'auto',
 
             borderColor: '#0f0',
-            borderWidth: 1,
+            borderWidth: 0,
           }}
         >
           
@@ -50,7 +51,10 @@ export default function ArtistsContainer(props: propsArtistsContainer) {
             artistName="Daniel" 
           />
           <ArtistContainer 
-            artistName="Daniel Alencar Penha Carvalho" 
+            artistName="Daniel" 
+          />
+          <ArtistContainer 
+            artistName="Daniel" 
           />
 
         </ScrollView>

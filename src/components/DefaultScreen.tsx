@@ -11,7 +11,10 @@ export default function DefaultScreen(props: propsDefaultScreen) {
 
       <View style={styles.contentContainerView}>
 
-        <ScrollView style={styles.contentContainer}>
+        <ScrollView 
+          style={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
           {props.content}
         </ScrollView>
       </View>
