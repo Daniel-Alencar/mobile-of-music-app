@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 interface propsMusicContainer {
   musicName: string,
@@ -12,12 +13,17 @@ interface propsMusicContainer {
 export default function MusicContainer(props: propsMusicContainer) {
 
   const [isClicked, setIsClicked] = useState(false);
+  const navigation = useNavigation();
+
+  function handleNavigateToMusicScreen() {
+    navigation.navigate('MusicScreen');
+  }
 
   return(
     <View style={styles.musicContainer}>
       <TouchableOpacity 
         style={styles.musicButton}
-        onPress={() => {}}
+        onPress={() => handleNavigateToMusicScreen()}
       >
         
         {props.centerTextMusic ? 
