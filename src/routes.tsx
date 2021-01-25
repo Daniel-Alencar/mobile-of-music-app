@@ -13,7 +13,7 @@ import SearchScreen from './pages/SearchScreen';
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 import DownloadsScreen from './pages/DownloadsScreen';
-import MusicScreen from './pages/MusicScreen';
+import MusicScreen from './pages/Music';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

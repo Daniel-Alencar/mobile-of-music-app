@@ -142,10 +142,34 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
+
   handleMusicButtons: {
+    width: '100%',
+    height: 50,
 
+    borderColor: '#00f',
+    borderWidth: 1,
+
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    paddingLeft: 20,
+    paddingRight: 20,
   },
+  
   footer: {
+    width: '100%',
+    height: 50,
 
+    borderColor: '#00f',
+    borderWidth: 1,
+
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
