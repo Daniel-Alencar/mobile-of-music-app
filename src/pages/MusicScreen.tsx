@@ -2,6 +2,7 @@ import React from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import FavoriteButton from '../components/FavoriteButton';
 
 export default function MusicScreen() {
   return(
@@ -24,15 +25,18 @@ export default function MusicScreen() {
         </View>
         <View style={styles.handleContainer}>
           <View style={styles.informationMusic}>
-            <View>
-              <Text>
 
+            <View style={styles.musicAndArtistContainer}>
+              <Text style={styles.musicText}>
+                Gravity
               </Text>
-              <Text>
-
+              <Text style={styles.artistText}>
+                John Mayer
               </Text>
             </View>
-            {/* adad */}
+
+            <FavoriteButton />
+
           </View>
           <View style={styles.handleMusicBar}>
 
@@ -58,6 +62,8 @@ const styles = StyleSheet.create({
     borderColor: '#f00',
     borderWidth: 0,
 
+    backgroundColor: '#444',
+
     width: '100%',
     height: '100%',
   },
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
     borderColor: '#0f0',
     borderWidth: 0,
   },
+
   imageContainer: {
     borderColor: '#f00',
     borderWidth: 3,
@@ -79,7 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   imageMusic: {
     height: 320,
     width: 320,
@@ -99,9 +105,42 @@ const styles = StyleSheet.create({
 
     borderColor: '#00f',
     borderWidth: 1,
-  },
-  handleMusicBar: {
 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  musicAndArtistContainer: {
+    borderColor: '#00f',
+    borderWidth: 1,
+
+    justifyContent: 'center',
+  },
+  musicText: {
+    color: '#fff',
+    fontSize: 20,
+  },
+  artistText: {
+    color: '#c0c0c0',
+    fontSize: 15,
+  },
+
+  handleMusicBar: {
+    width: '100%',
+    height: 50,
+
+    borderColor: '#00f',
+    borderWidth: 1,
+
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   handleMusicButtons: {
 

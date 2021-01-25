@@ -15,7 +15,7 @@ export default function FavoriteButton() {
 
 const styles = StyleSheet.create({
   favoriteButton: {
-    borderWidth: 0,
+    borderWidth: 1,
     borderColor: "#ff0",
 
     width: 40,
