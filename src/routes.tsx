@@ -4,6 +4,7 @@ import { Dimensions, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -12,6 +13,7 @@ import SearchScreen from './pages/SearchScreen';
 import ArtistsScreen from './pages/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen';
 import DownloadsScreen from './pages/DownloadsScreen';
+import MusicScreen from './pages/MusicScreen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -152,11 +154,22 @@ function BottomsOfAllApp() {
   );
 }
 
+const Stack = createStackNavigator();
+function StackMusic() {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
+      <Stack.Screen name="MusicScreen" component={MusicScreen} />
+    </Stack.Navigator>
+  );
+}
+
+
 export default function Routes() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <BottomsOfAllApp/>
+        <StackMusic />
       </NavigationContainer>
     </SafeAreaProvider>
   );
