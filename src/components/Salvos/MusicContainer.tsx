@@ -15,7 +15,10 @@ export default function MusicContainer(props: propsMusicContainer) {
 
   return(
     <View style={styles.musicContainer}>
-      <TouchableOpacity style={styles.musicButton}>
+      <TouchableOpacity 
+        style={styles.musicButton}
+        onPress={() => {}}
+      >
         
         {props.centerTextMusic ? 
           <>

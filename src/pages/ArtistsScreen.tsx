@@ -20,8 +20,6 @@ export default function ArtistsScreen() {
           </>
         }
       />
-
-      <PlusButton />
     </>
   );
 }
