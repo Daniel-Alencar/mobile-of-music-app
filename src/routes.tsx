@@ -159,7 +159,11 @@ function StackMusic() {
   return(
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
-      <Stack.Screen name="MusicScreen" component={MusicScreen} />
+      <Stack.Screen 
+        name="MusicScreen" 
+        component={MusicScreen} 
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
