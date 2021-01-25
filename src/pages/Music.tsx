@@ -1,14 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
 
-const Background = styled.View`
-  flex: 1;
-  background-color: grey;
-  padding-top: 50px;
-`;
+interface propsBackground {
+  children: JSX.Element,
+}
+
+const Background = (props: propsBackground) => {
+  return(
+    <LinearGradient
+        colors={['#464779', '#1b1a1f']}
+        style={{
+          flex: 1,
+          paddingTop: 40,
+        }}
+    >
+      {props.children}
+    </LinearGradient>
+  );
+};
 
 const TopBar = styled.View`
   border-color: #f00;
@@ -49,6 +63,7 @@ TopBar.SubTitle = styled.Text`
 export default function Music() {
   return(
     <Background>
+
       <TopBar>
 
         <TopBar.Left>
@@ -69,6 +84,7 @@ export default function Music() {
         </TopBar.Right>
 
       </TopBar>
+
     </Background>
   );
 }
