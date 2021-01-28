@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Slider } from 'react-native';
 import styled from 'styled-components';
 
 import { LinearGradient } from 'expo-linear-gradient';
+import { Audio } from 'expo-av';
 
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
@@ -140,6 +141,25 @@ Controls.Slider.TotalTime = styled.Text`
 export default function Music() {
 
   const [currentTime, setCurrentTime] = useState(0);
+  const [sound, setSound] = React.useState();
+
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/gravity.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync(); }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync(); }
+      : undefined;
+  }, [sound]);
 
   return(
     <Background>
@@ -210,7 +230,7 @@ export default function Music() {
 
           </Controls.Slider>
 
-          <Controls.Play>
+          <Controls.Play onPress={() => playSound()}>
             <PlayIcon />
           </Controls.Play>
 
