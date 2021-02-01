@@ -10,10 +10,11 @@ import { useNavigation } from '@react-navigation/native';
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
-import RepeatIcon from '../components/MusicScreen/RepeatIcon';
 
 import FavoriteButton from '../components/FavoriteButton';
 import ShuffleButton from '../components/MusicScreen/ShuffleButton';
+import RepeatButton from '../components/MusicScreen/RepeatButton';
+
 
 interface propsBackground {
   children: JSX.Element,
@@ -143,12 +144,6 @@ Controls.SkipBack = styled.TouchableOpacity`
 
 `;
 Controls.SkipForward = styled.TouchableOpacity`
-
-`;
-Controls.Shuffle = styled.TouchableOpacity`
-
-`;
-Controls.Repeat = styled.TouchableOpacity`
 
 `;
 
@@ -305,9 +300,7 @@ export default function Music() {
                 <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               
-              <Controls.Repeat>
-                <RepeatIcon />
-              </Controls.Repeat>
+              <RepeatButton />
 
             </Controls>
 
