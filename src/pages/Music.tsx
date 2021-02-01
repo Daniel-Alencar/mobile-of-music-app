@@ -12,6 +12,7 @@ import PlayIcon from '../components/MusicScreen/PlayIcon';
 import ShuffleIcon from '../components/MusicScreen/ShuffleIcon';
 import RepeatIcon from '../components/MusicScreen/RepeatIcon';
 import { useNavigation } from '@react-navigation/native';
+import FavoriteButton from '../components/FavoriteButton';
 
 interface propsBackground {
   children: JSX.Element,
@@ -99,6 +100,12 @@ CoverArea.Image = styled.Image`
 const PlayerArea = styled.View`
   flex: 2;
   justify-content: flex-end;
+
+  background-color: #f00;
+`;
+
+PlayerArea.FavoriteButton = styled(FavoriteButton)`
+
 `;
 
 PlayerArea.Title = styled.Text`
@@ -234,6 +241,8 @@ export default function Music() {
               <PlayerArea.Author>
                 Hipsters ponto Tech
               </PlayerArea.Author>
+
+              <PlayerArea.FavoriteButton />
             </PlayerArea>
 
             <Controls>
