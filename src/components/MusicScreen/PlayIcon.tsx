@@ -1,19 +1,20 @@
 import React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Circle, Polygon } from 'react-native-svg';
 
 export default function PlayIcon() {
   return(
     <Svg 
-      width="55" 
-      height="55" 
-      viewBox="0 0 56 56" 
+      width="60" 
+      height="60" 
+      viewBox="0 0 24 24" 
       fill="none" 
+      stroke="white" 
+      stroke-width="1.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
     >
-      <Path 
-        d="M28 0C12.544 0 0 12.544 0 28C0 43.456 12.544 56 28 56C43.456 56 56 43.456 56 28C56 12.544 43.456 0 28 0ZM22.4 40.6V15.4L39.2 28L22.4 40.6Z" 
-        fill="white"
-      />
+      <Circle cx="12" cy="12" r="10"></Circle>
+      <Polygon points="10 8 16 12 10 16 10 8"></Polygon>
     </Svg>
-
   );
 }

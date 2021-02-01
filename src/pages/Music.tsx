@@ -9,12 +9,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
-import PlayIcon from '../components/MusicScreen/PlayIcon';
 
 import FavoriteButton from '../components/FavoriteButton';
 import ShuffleButton from '../components/MusicScreen/ShuffleButton';
 import RepeatButton from '../components/MusicScreen/RepeatButton';
-
+import PauseIcon from '../components/MusicScreen/PauseIcon';
+import PlayIcon from '../components/MusicScreen/PlayIcon';
 
 interface propsBackground {
   children: JSX.Element,
@@ -173,6 +173,7 @@ export default function Music() {
   const navigation = useNavigation();
   const [currentTime, setCurrentTime] = useState(0);
   const [sound, setSound] = React.useState<Audio.Sound>();
+  const [playing, setPlaying] = useState(true);
 
   async function playSound() {
     console.log('Loading Sound');
@@ -292,8 +293,13 @@ export default function Music() {
                 <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
-              <Controls.Play onPress={() => playSound()}>
-                <PlayIcon />
+              <Controls.Play onPress={() => setPlaying(!playing)}>
+                  {
+                    playing ?
+                      <PauseIcon /> 
+                    :
+                      <PlayIcon />
+                  }
               </Controls.Play>
               
               <Controls.SkipForward>
