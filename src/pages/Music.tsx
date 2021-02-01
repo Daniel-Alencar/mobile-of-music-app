@@ -5,14 +5,15 @@ import styled from 'styled-components';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
-import ShuffleIcon from '../components/MusicScreen/ShuffleIcon';
 import RepeatIcon from '../components/MusicScreen/RepeatIcon';
-import { useNavigation } from '@react-navigation/native';
+
 import FavoriteButton from '../components/FavoriteButton';
+import ShuffleButton from '../components/MusicScreen/ShuffleButton';
 
 interface propsBackground {
   children: JSX.Element,
@@ -290,9 +291,7 @@ export default function Music() {
 
 
 
-              <Controls.Shuffle>
-                <ShuffleIcon />
-              </Controls.Shuffle>
+              <ShuffleButton />
               
               <Controls.SkipBack>
                 <Feather name="skip-back" color="#fff" size={27}/>
