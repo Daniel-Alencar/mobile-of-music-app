@@ -4,8 +4,8 @@ import Svg, { Path } from 'react-native-svg';
 export default function ShuffleIcon() {
   return(
     <Svg 
-      height="30" 
-      width="30" 
+      height="27" 
+      width="27" 
       viewBox="0 0 20 20" 
       fill="none"
     >

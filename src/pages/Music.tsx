@@ -99,27 +99,29 @@ CoverArea.Image = styled.Image`
 
 const PlayerArea = styled.View`
   flex: 2;
-  flex-direction: row;
-  align-items: flex-end;
-
+  justify-content: flex-end;
 `;
 
-PlayerArea.Info = styled.View`
+PlayerArea.Content = styled.View`
+  flex-direction: row;
+`;
+
+PlayerArea.Content.Info = styled.View`
   flex: 1;
 `;
 
-PlayerArea.Info.Title = styled.Text`
+PlayerArea.Content.Info.Title = styled.Text`
   color: #fff;
-  font-size: 18px;
-`;
-
-PlayerArea.Info.Author = styled.Text`
-  color: #bbb;
   font-size: 16px;
 `;
 
+PlayerArea.Content.Info.Author = styled.Text`
+  color: #bbb;
+  font-size: 14px;
+`;
 
-PlayerArea.FavoriteButton = styled(FavoriteButton)`
+
+PlayerArea.Content.FavoriteButton = styled(FavoriteButton)`
 
 `;
 
@@ -242,17 +244,21 @@ export default function Music() {
             </CoverArea>
 
             <PlayerArea>
+              
+              <PlayerArea.Content>
 
-              <PlayerArea.Info>
-                <PlayerArea.Info.Title>
-                  Angular vs React - Hipsters #14
-                </PlayerArea.Info.Title>
-                <PlayerArea.Info.Author>
-                  Hipsters ponto Tech
-                </PlayerArea.Info.Author>
-              </PlayerArea.Info>
+                <PlayerArea.Content.Info>
+                  <PlayerArea.Content.Info.Title>
+                    Gravity
+                  </PlayerArea.Content.Info.Title>
+                  <PlayerArea.Content.Info.Author>
+                    John Mayer
+                  </PlayerArea.Content.Info.Author>
+                </PlayerArea.Content.Info>
 
-              <PlayerArea.FavoriteButton />
+                <PlayerArea.Content.FavoriteButton />
+
+              </PlayerArea.Content>
 
             </PlayerArea>
 
@@ -289,7 +295,7 @@ export default function Music() {
               </Controls.Shuffle>
               
               <Controls.SkipBack>
-                <Feather name="skip-back" color="#fff" size={33}/>
+                <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
               <Controls.Play onPress={() => playSound()}>
@@ -297,7 +303,7 @@ export default function Music() {
               </Controls.Play>
               
               <Controls.SkipForward>
-                <Feather name="skip-forward" color="#fff" size={33}/>
+                <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               
               <Controls.Repeat>
