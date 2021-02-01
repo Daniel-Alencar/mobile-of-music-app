@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Slider } from 'react-native';
 import styled from 'styled-components';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
+import { Feather } from '@expo/vector-icons';
 
 import ChevronIcon from '../components/MusicScreen/ChevronIcon';
 import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
+import ShuffleIcon from '../components/MusicScreen/ShuffleIcon';
+import RepeatIcon from '../components/MusicScreen/RepeatIcon';
 
 interface propsBackground {
   children: JSX.Element,
@@ -103,12 +106,24 @@ PlayerArea.Author = styled.Text`
 const Controls = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   flex-wrap: wrap;
 `;
 
 Controls.Play = styled.TouchableOpacity`
+
+`;
+Controls.SkipBack = styled.TouchableOpacity`
+
+`;
+Controls.SkipForward = styled.TouchableOpacity`
+
+`;
+Controls.Shuffle = styled.TouchableOpacity`
+
+`;
+Controls.Repeat = styled.TouchableOpacity`
 
 `;
 
@@ -141,7 +156,7 @@ Controls.Slider.TotalTime = styled.Text`
 export default function Music() {
 
   const [currentTime, setCurrentTime] = useState(0);
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = React.useState<Audio.Sound>();
 
   async function playSound() {
     console.log('Loading Sound');
@@ -162,81 +177,102 @@ export default function Music() {
   }, [sound]);
 
   return(
-    <Background>
+    <Background 
+      children={
+        <>
 
-      <TopBar>
+          <TopBar>
 
-        <TopBar.Left>
-          <ChevronIcon />
-        </TopBar.Left>
+            <TopBar.Left>
+              <ChevronIcon />
+            </TopBar.Left>
 
-        <TopBar.Middle>
-          <TopBar.Title>
-            Tocando podcast
-          </TopBar.Title>
-          <TopBar.SubTitle>
-            Hipsters Ponto Tech
-          </TopBar.SubTitle>
-        </TopBar.Middle>
+            <TopBar.Middle>
+              <TopBar.Title>
+                Tocando podcast
+              </TopBar.Title>
+              <TopBar.SubTitle>
+                Hipsters Ponto Tech
+              </TopBar.SubTitle>
+            </TopBar.Middle>
 
-        <TopBar.Right>
-          <MoreVertIcon />
-        </TopBar.Right>
+            <TopBar.Right>
+              <MoreVertIcon />
+            </TopBar.Right>
 
-      </TopBar>
+          </TopBar>
 
-      <ScreenArea>
+          <ScreenArea>
 
-        <CoverArea>
-          <CoverArea.Image 
-            resizeMode="contain"
-            source={{
-              uri: "https://upload.wikimedia.org/wikipedia/pt/9/9f/Continuum_por_John_Mayer.jpg"
-            }}
-          />
-        </CoverArea>
+            <CoverArea>
+              <CoverArea.Image 
+                resizeMode="contain"
+                source={{
+                  uri: "https://upload.wikimedia.org/wikipedia/pt/9/9f/Continuum_por_John_Mayer.jpg"
+                }}
+              />
+            </CoverArea>
 
-        <PlayerArea>
-          <PlayerArea.Title>
-            Angular vs React - Hipsters #14
-          </PlayerArea.Title>
-          <PlayerArea.Author>
-            Hipsters ponto Tech
-          </PlayerArea.Author>
-        </PlayerArea>
+            <PlayerArea>
+              <PlayerArea.Title>
+                Angular vs React - Hipsters #14
+              </PlayerArea.Title>
+              <PlayerArea.Author>
+                Hipsters ponto Tech
+              </PlayerArea.Author>
+            </PlayerArea>
 
-        <Controls>
+            <Controls>
 
-          <Controls.Slider>
+              <Controls.Slider>
 
-            <AudioSlider 
-              thumbTintColor="#fff"
-              maximumTrackTintColor="#777"
-              minimumTrackTintColor="#1dd65f"
+                <AudioSlider 
+                  thumbTintColor="#fff"
+                  maximumTrackTintColor="#777"
+                  minimumTrackTintColor="#1dd65f"
 
-              minimumValue={0}
-              maximumValue={100}
-              value={currentTime}
+                  minimumValue={0}
+                  maximumValue={100}
+                  value={currentTime}
 
-              onValueChange={(value) => setCurrentTime(value)}
-            />
+                  onValueChange={(value) => setCurrentTime(value)}
+                />
 
-            <Controls.Slider.CurrentTime>
-              {currentTime}
-            </Controls.Slider.CurrentTime>
-            <Controls.Slider.TotalTime>
-              100
-            </Controls.Slider.TotalTime>
+                <Controls.Slider.CurrentTime>
+                  {currentTime}
+                </Controls.Slider.CurrentTime>
+                <Controls.Slider.TotalTime>
+                  100
+                </Controls.Slider.TotalTime>
 
-          </Controls.Slider>
+              </Controls.Slider>
 
-          <Controls.Play onPress={() => playSound()}>
-            <PlayIcon />
-          </Controls.Play>
+              <Controls.Shuffle>
+                <ShuffleIcon />
+              </Controls.Shuffle>
+              
+              <Controls.SkipBack>
+                <Feather name="skip-back" color="#fff" size={33}/>
+              </Controls.SkipBack>
 
-        </Controls>
+              <Controls.Play onPress={() => playSound()}>
+                <PlayIcon />
+              </Controls.Play>
+              
+              <Controls.SkipForward>
+                <Feather name="skip-forward" color="#fff" size={33}/>
+              </Controls.SkipForward>
+              
+              <Controls.Repeat>
+                <RepeatIcon />
+              </Controls.Repeat>
 
-      </ScreenArea>
-    </Background>
+            </Controls>
+
+          </ScreenArea>
+
+        </>
+      }
+    />
   );
 }
