@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider } from 'react-native';
+import Slider from '@react-native-community/slider';
 import styled from 'styled-components';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -11,6 +11,7 @@ import MoreVertIcon from '../components/MusicScreen/MoreVertIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
 import ShuffleIcon from '../components/MusicScreen/ShuffleIcon';
 import RepeatIcon from '../components/MusicScreen/RepeatIcon';
+import { useNavigation } from '@react-navigation/native';
 
 interface propsBackground {
   children: JSX.Element,
@@ -54,6 +55,13 @@ TopBar.Right = styled.View`
   align-items: flex-end;
 
   padding-right: 16px;
+`;
+
+TopBar.Left.ToBackScreen = styled.TouchableOpacity`
+
+`;
+TopBar.Right.MoreOptions = styled.TouchableOpacity`
+
 `;
 
 TopBar.Title = styled.Text`
@@ -134,15 +142,10 @@ Controls.Slider = styled.View`
   justify-content: space-between;
 
   flex-wrap: wrap;
-
-  
 `;
 
 const AudioSlider = styled(Slider)`
   flex-basis: 100%;
-
-  padding: 0px;
-  margin: 0px;
 `;
 
 Controls.Slider.CurrentTime = styled.Text`
@@ -155,6 +158,7 @@ Controls.Slider.TotalTime = styled.Text`
 
 export default function Music() {
 
+  const navigation = useNavigation();
   const [currentTime, setCurrentTime] = useState(0);
   const [sound, setSound] = React.useState<Audio.Sound>();
 
@@ -176,6 +180,10 @@ export default function Music() {
       : undefined;
   }, [sound]);
 
+  function handleToPreviousScreen() {
+    navigation.goBack();
+  }
+
   return(
     <Background 
       children={
@@ -184,7 +192,11 @@ export default function Music() {
           <TopBar>
 
             <TopBar.Left>
-              <ChevronIcon />
+              <TopBar.Left.ToBackScreen onPress={
+                () => handleToPreviousScreen()
+              }>
+                <ChevronIcon />
+              </TopBar.Left.ToBackScreen>
             </TopBar.Left>
 
             <TopBar.Middle>
@@ -197,7 +209,9 @@ export default function Music() {
             </TopBar.Middle>
 
             <TopBar.Right>
-              <MoreVertIcon />
+              <TopBar.Right.MoreOptions>
+                <MoreVertIcon />
+              </TopBar.Right.MoreOptions>
             </TopBar.Right>
 
           </TopBar>
@@ -225,7 +239,6 @@ export default function Music() {
             <Controls>
 
               <Controls.Slider>
-
                 <AudioSlider 
                   thumbTintColor="#fff"
                   maximumTrackTintColor="#777"
@@ -235,6 +248,9 @@ export default function Music() {
                   maximumValue={100}
                   value={currentTime}
 
+                  style={{
+                    backgroundColor: '#0f0',
+                  }}
                   onValueChange={(value) => setCurrentTime(value)}
                 />
 
@@ -244,8 +260,10 @@ export default function Music() {
                 <Controls.Slider.TotalTime>
                   100
                 </Controls.Slider.TotalTime>
-
               </Controls.Slider>
+
+
+
 
               <Controls.Shuffle>
                 <ShuffleIcon />
