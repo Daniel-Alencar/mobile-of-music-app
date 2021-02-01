@@ -99,24 +99,31 @@ CoverArea.Image = styled.Image`
 
 const PlayerArea = styled.View`
   flex: 2;
-  justify-content: flex-end;
+  flex-direction: row;
+  align-items: flex-end;
 
-  background-color: #f00;
 `;
+
+PlayerArea.Info = styled.View`
+  flex: 1;
+`;
+
+PlayerArea.Info.Title = styled.Text`
+  color: #fff;
+  font-size: 18px;
+`;
+
+PlayerArea.Info.Author = styled.Text`
+  color: #bbb;
+  font-size: 16px;
+`;
+
 
 PlayerArea.FavoriteButton = styled(FavoriteButton)`
 
 `;
 
-PlayerArea.Title = styled.Text`
-  color: #fff;
-  font-size: 20px;
-`;
-
-PlayerArea.Author = styled.Text`
-  color: #bbb;
-  font-size: 16px;
-`;
+// =======================================================
 
 const Controls = styled.View`
   flex-direction: row;
@@ -235,14 +242,18 @@ export default function Music() {
             </CoverArea>
 
             <PlayerArea>
-              <PlayerArea.Title>
-                Angular vs React - Hipsters #14
-              </PlayerArea.Title>
-              <PlayerArea.Author>
-                Hipsters ponto Tech
-              </PlayerArea.Author>
+
+              <PlayerArea.Info>
+                <PlayerArea.Info.Title>
+                  Angular vs React - Hipsters #14
+                </PlayerArea.Info.Title>
+                <PlayerArea.Info.Author>
+                  Hipsters ponto Tech
+                </PlayerArea.Info.Author>
+              </PlayerArea.Info>
 
               <PlayerArea.FavoriteButton />
+
             </PlayerArea>
 
             <Controls>
@@ -258,7 +269,6 @@ export default function Music() {
                   value={currentTime}
 
                   style={{
-                    backgroundColor: '#0f0',
                   }}
                   onValueChange={(value) => setCurrentTime(value)}
                 />
