@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from '@react-native-community/slider';
 import styled from 'styled-components';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { Audio } from 'expo-av';
+
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -15,6 +15,11 @@ import ShuffleButton from '../components/MusicScreen/ShuffleButton';
 import RepeatButton from '../components/MusicScreen/RepeatButton';
 import PauseIcon from '../components/MusicScreen/PauseIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
+
+import { Audio } from 'expo-av';
+import MusicControl from 'react-native-music-control';
+import TrackPlayer from 'react-native-track-player';
+import { set } from 'react-native-reanimated';
 
 interface propsBackground {
   children: JSX.Element,
@@ -170,32 +175,48 @@ Controls.Slider.TotalTime = styled.Text`
 
 export default function Music() {
 
-  const navigation = useNavigation();
-  const [currentTime, setCurrentTime] = useState(0);
-  const [sound, setSound] = React.useState<Audio.Sound>();
+  const maxValueToSliderTimeLine = 100;
+  const minValueToSliderTimeLine = 0;
+
   const [playing, setPlaying] = useState(true);
 
-  async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync(
-      require('../../assets/gravity.mp3')
-    );
-    setSound(sound);
 
-    console.log('Playing Sound');
-    await sound.playAsync(); }
 
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync(); }
-      : undefined;
-  }, [sound]);
 
+
+
+  const navigation = useNavigation();
   function handleToPreviousScreen() {
     navigation.goBack();
   }
+
+
+
+
+
+  const [tempoAtualDaMusica, setTempoAtualDaMusica] = useState<Date>(new Date(2021, 2, 3, 0, 0, 0));
+  const tempoDaMusica = new Date(2021, 2, 3, 0, 0, 50);
+
+  const [sliderTimeLineValue, setSliderTimeLineValue] = useState(0);
+  const [currentSeconds, setCurrentSeconds] = useState(0);
+
+  function mudancaDeValue(currentValue: number) {
+    setSliderTimeLineValue(currentValue);
+
+    let seconds = getCurrentSeconds();
+    setCurrentSeconds(seconds);
+
+    let time = new Date(2021, 2, 3, 0, 0, currentSeconds);
+    setTempoAtualDaMusica(time);
+  }
+
+  function getCurrentSeconds() {
+    let current_Seconds = (sliderTimeLineValue * tempoDaMusica.getSeconds()) / maxValueToSliderTimeLine;
+    return current_Seconds;
+  }
+
+  useEffect(() => {
+  }, [currentSeconds])
 
   return(
     <Background 
@@ -267,25 +288,19 @@ export default function Music() {
                   maximumTrackTintColor="#777"
                   minimumTrackTintColor="#1dd65f"
 
-                  minimumValue={0}
-                  maximumValue={100}
-                  value={currentTime}
-
-                  style={{
-                  }}
-                  onValueChange={(value) => setCurrentTime(value)}
+                  minimumValue={minValueToSliderTimeLine}
+                  maximumValue={maxValueToSliderTimeLine}
+                  value={sliderTimeLineValue}
+                  onValueChange={(value) => mudancaDeValue(value)}
                 />
 
                 <Controls.Slider.CurrentTime>
-                  {currentTime}
+                  {tempoAtualDaMusica.toLocaleTimeString()}
                 </Controls.Slider.CurrentTime>
                 <Controls.Slider.TotalTime>
-                  100
+                  {tempoDaMusica.toLocaleTimeString()}
                 </Controls.Slider.TotalTime>
               </Controls.Slider>
-
-
-
 
               <ShuffleButton />
               
@@ -293,7 +308,7 @@ export default function Music() {
                 <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
-              <Controls.Play onPress={() => setPlaying(!playing)}>
+              <Controls.Play onPress={() => setPlaying(playing == false)}>
                   {
                     playing ?
                       <PauseIcon /> 
