@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Slider from '@react-native-community/slider';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,10 +15,7 @@ import RepeatButton from '../components/MusicScreen/RepeatButton';
 import PauseIcon from '../components/MusicScreen/PauseIcon';
 import PlayIcon from '../components/MusicScreen/PlayIcon';
 
-import { Audio } from 'expo-av';
-import MusicControl from 'react-native-music-control';
-import TrackPlayer from 'react-native-track-player';
-import { set } from 'react-native-reanimated';
+import SliderComponent from '../components/MusicScreen/SliderComponent';
 
 interface propsBackground {
   children: JSX.Element,
@@ -152,31 +148,7 @@ Controls.SkipForward = styled.TouchableOpacity`
 
 `;
 
-Controls.Slider = styled.View`
-
-  flex-basis: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-
-  flex-wrap: wrap;
-`;
-
-const AudioSlider = styled(Slider)`
-  flex-basis: 100%;
-`;
-
-Controls.Slider.CurrentTime = styled.Text`
-  color: #bbb; 
-`;
-
-Controls.Slider.TotalTime = styled.Text`
-  color: #bbb;
-`;
-
 export default function Music() {
-
-  const maxValueToSliderTimeLine = 100;
-  const minValueToSliderTimeLine = 0;
 
   const [playing, setPlaying] = useState(true);
 
@@ -189,34 +161,6 @@ export default function Music() {
   function handleToPreviousScreen() {
     navigation.goBack();
   }
-
-
-
-
-
-  const [tempoAtualDaMusica, setTempoAtualDaMusica] = useState<Date>(new Date(2021, 2, 3, 0, 0, 0));
-  const tempoDaMusica = new Date(2021, 2, 3, 0, 0, 50);
-
-  const [sliderTimeLineValue, setSliderTimeLineValue] = useState(0);
-  const [currentSeconds, setCurrentSeconds] = useState(0);
-
-  function mudancaDeValue(currentValue: number) {
-    setSliderTimeLineValue(currentValue);
-
-    let seconds = getCurrentSeconds();
-    setCurrentSeconds(seconds);
-
-    let time = new Date(2021, 2, 3, 0, 0, currentSeconds);
-    setTempoAtualDaMusica(time);
-  }
-
-  function getCurrentSeconds() {
-    let current_Seconds = (sliderTimeLineValue * tempoDaMusica.getSeconds()) / maxValueToSliderTimeLine;
-    return current_Seconds;
-  }
-
-  useEffect(() => {
-  }, [currentSeconds])
 
   return(
     <Background 
@@ -282,25 +226,7 @@ export default function Music() {
 
             <Controls>
 
-              <Controls.Slider>
-                <AudioSlider 
-                  thumbTintColor="#fff"
-                  maximumTrackTintColor="#777"
-                  minimumTrackTintColor="#1dd65f"
-
-                  minimumValue={minValueToSliderTimeLine}
-                  maximumValue={maxValueToSliderTimeLine}
-                  value={sliderTimeLineValue}
-                  onValueChange={(value) => mudancaDeValue(value)}
-                />
-
-                <Controls.Slider.CurrentTime>
-                  {tempoAtualDaMusica.toLocaleTimeString()}
-                </Controls.Slider.CurrentTime>
-                <Controls.Slider.TotalTime>
-                  {tempoDaMusica.toLocaleTimeString()}
-                </Controls.Slider.TotalTime>
-              </Controls.Slider>
+              <SliderComponent />
 
               <ShuffleButton />
               
