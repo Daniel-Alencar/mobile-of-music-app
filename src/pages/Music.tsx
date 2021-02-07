@@ -17,6 +17,8 @@ import PlayIcon from '../components/MusicScreen/PlayIcon';
 
 import SliderComponent from '../components/MusicScreen/SliderComponent';
 
+import api from '../services/api';
+
 interface propsBackground {
   children: JSX.Element,
 }
@@ -151,11 +153,6 @@ Controls.SkipForward = styled.TouchableOpacity`
 export default function Music() {
 
   const [playing, setPlaying] = useState(true);
-
-
-
-
-
 
   const navigation = useNavigation();
   function handleToPreviousScreen() {
