@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -21,6 +21,8 @@ import { ScreenArea } from './Music.styles';
 import { CoverArea } from './Music.styles';
 import { PlayerArea } from './Music.styles';
 import { Controls } from './Music.styles';
+
+import { Audio } from 'expo-av';
 
 interface propsBackground {
   children: JSX.Element,
@@ -48,6 +50,46 @@ export default function Music() {
   function handleToPreviousScreen() {
     navigation.goBack();
   }
+
+// ==================================================================
+
+  const [sound, setSound] = useState<Audio.Sound>();
+
+  async function playOrPauseMusic() {
+    await prepareSound();
+  }
+  
+  async function prepareSound() {
+    console.log('Carregando o áudio...');
+    const { sound } = await Audio.Sound.createAsync(
+      require('../assets/music/Gravity.mp3')
+    );
+    setSound(sound);
+
+    console.log('Tocando o áudio...');
+    await sound.playAsync();
+  }
+
+  async function playSound() {
+    
+  }
+
+  async function pauseSound() {
+    console.log('Tocando o áudio...');
+    await sound.pauseAsync();
+  }
+
+  useEffect(() => {
+    return sound
+      ? 
+        () => {
+          console.log('Unloading Sound');
+          const promessa = sound.unloadAsync();
+          console.log(promessa);
+        }
+      : 
+        undefined;
+  }, [sound]);
 
   return(
     <Background 
@@ -121,7 +163,7 @@ export default function Music() {
                 <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
-              <Controls.Play onPress={() => setPlaying(playing == false)}>
+              <Controls.Play onPress={playOrPauseMusic}>
                   {
                     playing ?
                       <PauseIcon /> 
