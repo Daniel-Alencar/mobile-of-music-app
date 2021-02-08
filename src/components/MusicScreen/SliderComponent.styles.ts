@@ -12,6 +12,7 @@ export const SliderComp = styled.View`
 
 export const AudioSlider = styled(Slider)`
   flex-basis: 100%;
+  padding-bottom: 5px;
 `;
 
 SliderComp.CurrentTime = styled.Text`

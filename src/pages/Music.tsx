@@ -71,6 +71,10 @@ export default function Music() {
         );
         setSound(sound);
 
+        console.log('Tocando o áudio...');
+        await sound.playAsync();
+        setPlaying(true);
+
       } else {
         console.log('Tocando o áudio...');
         await sound.playAsync();

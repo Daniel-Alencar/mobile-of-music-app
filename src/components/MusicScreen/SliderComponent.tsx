@@ -39,10 +39,10 @@ export default function SliderComponent() {
       />
 
       <SliderComp.CurrentTime>
-        {}
+        {"00:00"}
       </SliderComp.CurrentTime>
       <SliderComp.TotalTime>
-        {}
+        {"06:34"}
       </SliderComp.TotalTime>
     </SliderComp>
   );

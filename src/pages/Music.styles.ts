@@ -74,6 +74,7 @@ export const PlayerArea = styled.View`
 
 PlayerArea.Content = styled.View`
   flex-direction: row;
+  padding: 5px 0px;
 `;
 
 PlayerArea.Content.Info = styled.View`
