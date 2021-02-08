@@ -44,7 +44,7 @@ const Background = (props: propsBackground) => {
 
 export default function Music() {
 
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
   const navigation = useNavigation();
   function handleToPreviousScreen() {
@@ -60,14 +60,31 @@ export default function Music() {
   }
   
   async function prepareSound() {
-    console.log('Carregando o áudio...');
-    const { sound } = await Audio.Sound.createAsync(
-      require('../assets/music/Gravity.mp3')
-    );
-    setSound(sound);
+    const isNotPlaying = !playing;
 
-    console.log('Tocando o áudio...');
-    await sound.playAsync();
+    if(isNotPlaying) {
+      if(sound === undefined) {
+
+        console.log('Carregando o áudio...');
+        const { sound } = await Audio.Sound.createAsync(
+          require('../assets/music/Gravity.mp3')
+        );
+        setSound(sound);
+
+      } else {
+        console.log('Tocando o áudio...');
+        await sound.playAsync();
+        setPlaying(true);
+      }
+
+    } else {
+      
+      if(sound !== undefined) {
+        console.log('Pausando o áudio...');
+        await sound.pauseAsync();
+        setPlaying(false);
+      }
+    }
   }
 
   async function playSound() {
@@ -75,17 +92,16 @@ export default function Music() {
   }
 
   async function pauseSound() {
-    console.log('Tocando o áudio...');
-    await sound.pauseAsync();
+
   }
 
   useEffect(() => {
     return sound
       ? 
         () => {
-          console.log('Unloading Sound');
+          console.log('Descarregando o som...');
           const promessa = sound.unloadAsync();
-          console.log(promessa);
+          console.log("PROMESSA DE DESCARREGAMENTO DO SOM: " + promessa);
         }
       : 
         undefined;
