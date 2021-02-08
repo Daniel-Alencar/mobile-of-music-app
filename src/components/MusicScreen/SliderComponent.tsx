@@ -1,28 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
-import Slider from '@react-native-community/slider';
-
-const SliderComp = styled.View`
-
-  flex-basis: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-
-  flex-wrap: wrap;
-`;
-
-const AudioSlider = styled(Slider)`
-  flex-basis: 100%;
-`;
-
-SliderComp.CurrentTime = styled.Text`
-  color: #bbb; 
-`;
-
-SliderComp.TotalTime = styled.Text`
-  color: #bbb;
-`;
+import { SliderComp } from './SliderComponent.styles';
+import { AudioSlider } from './SliderComponent.styles';
 
 export default function SliderComponent() {
 
