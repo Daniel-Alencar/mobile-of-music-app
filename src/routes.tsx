@@ -154,6 +154,19 @@ function BottomsOfAllApp() {
   );
 }
 
+function MusicContainerScreen() {
+  return(
+    <MusicScreen
+      author="John Mayer"
+      duration={290}
+      favorite={true}
+      imageSource="https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg"
+      musicName="Gravity"
+      musicSource="./assets/music/Gravity.mp3"
+    />
+  )
+}
+
 const Stack = createStackNavigator();
 function StackMusic() {
   return(
@@ -161,7 +174,9 @@ function StackMusic() {
       <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
       <Stack.Screen 
         name="MusicScreen" 
-        component={MusicScreen} 
+        component={
+          MusicContainerScreen
+        }
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

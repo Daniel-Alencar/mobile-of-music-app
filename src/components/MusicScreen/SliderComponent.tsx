@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import { SliderComp } from './SliderComponent.styles';
 import { AudioSlider } from './SliderComponent.styles';
 
-export default function SliderComponent() {
+interface propsSliderComponent {
+  musicDuration: string,
+  currentMusicTime: string,
+}
+
+export default function SliderComponent(props: propsSliderComponent) {
 
   const maxValueToSliderTimeLine = 100;
   const minValueToSliderTimeLine = 0;
@@ -39,10 +44,10 @@ export default function SliderComponent() {
       />
 
       <SliderComp.CurrentTime>
-        {"00:00"}
+        {props.currentMusicTime}
       </SliderComp.CurrentTime>
       <SliderComp.TotalTime>
-        {"06:34"}
+        {props.musicDuration}
       </SliderComp.TotalTime>
     </SliderComp>
   );

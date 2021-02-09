@@ -28,6 +28,16 @@ interface propsBackground {
   children: JSX.Element,
 }
 
+interface propsMusic {
+  imageSource: string,
+  favorite: boolean,
+  musicName: string,
+  musicSource: string,
+  duration: number,
+
+  author: string,
+}
+
 const Background = (props: propsBackground) => {
   return(
     <LinearGradient
@@ -42,7 +52,7 @@ const Background = (props: propsBackground) => {
   );
 };
 
-export default function Music() {
+export default function Music(props: propsMusic) {
 
   const [playing, setPlaying] = useState(false);
 
@@ -54,6 +64,10 @@ export default function Music() {
 // ==================================================================
 
   const [sound, setSound] = useState<Audio.Sound>();
+
+  useEffect(() => {
+    prepareSound();
+  }, []);
 
   async function playOrPauseMusic() {
     await prepareSound();
@@ -128,10 +142,10 @@ export default function Music() {
 
             <TopBar.Middle>
               <TopBar.Title>
-                Tocando podcast
+                Tocando música
               </TopBar.Title>
               <TopBar.SubTitle>
-                Hipsters Ponto Tech
+                {props.author}
               </TopBar.SubTitle>
             </TopBar.Middle>
 
@@ -149,7 +163,7 @@ export default function Music() {
               <CoverArea.Image 
                 resizeMode="contain"
                 source={{
-                  uri: "https://upload.wikimedia.org/wikipedia/pt/9/9f/Continuum_por_John_Mayer.jpg"
+                  uri: props.imageSource
                 }}
               />
             </CoverArea>
@@ -160,14 +174,14 @@ export default function Music() {
 
                 <PlayerArea.Content.Info>
                   <PlayerArea.Content.Info.Title>
-                    Gravity
+                    {props.musicName}
                   </PlayerArea.Content.Info.Title>
                   <PlayerArea.Content.Info.Author>
-                    John Mayer
+                    {props.author}
                   </PlayerArea.Content.Info.Author>
                 </PlayerArea.Content.Info>
 
-                <PlayerArea.Content.FavoriteButton />
+                <PlayerArea.Content.FavoriteButton isFavorite={true}/>
 
               </PlayerArea.Content>
 
@@ -175,7 +189,10 @@ export default function Music() {
 
             <Controls>
 
-              <SliderComponent />
+              <SliderComponent 
+                musicDuration={"06:12"}
+                currentMusicTime={"00:00"}
+              />
 
               <ShuffleButton />
               

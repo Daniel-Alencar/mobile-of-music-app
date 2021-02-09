@@ -3,8 +3,12 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
-export default function FavoriteButton() {
-  const [isClicked, setIsClicked] = useState(false);
+interface propsFavoriteButton {
+  isFavorite: boolean,
+}
+
+export default function FavoriteButton(props: propsFavoriteButton) {
+  const [isClicked, setIsClicked] = useState(props.isFavorite);
 
   return(
     <TouchableOpacity style={styles.favoriteButton} onPress={() => setIsClicked(!isClicked)}>
