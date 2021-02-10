@@ -22,8 +22,7 @@ import { CoverArea } from './MusicScreen.styles';
 import { PlayerArea } from './MusicScreen.styles';
 import { Controls } from './MusicScreen.styles';
 
-import { Audio } from 'expo-av';
-import { Surface } from 'react-native';
+import { Audio, AVPlaybackStatus } from 'expo-av';
 
 interface propsBackground {
   children: JSX.Element,
@@ -63,18 +62,22 @@ export default function MusicScreen(props: propsMusic) {
 // ==================================================================
 
   const [playing, setPlaying] = useState(false);
-  const [sound, setSound] = useState<Audio.Sound>();
   const [musicDuration, setMusicDuration] = useState("");
+
+  const [sound, setSound] = useState<Audio.Sound>();
+  const [statusOfSound, setStatusOfSound] = useState<AVPlaybackStatus>();
+
+// ==================================================================
   
   async function prepareSound() {
     console.log('Carregando o áudio...');
-    const { sound } = await Audio.Sound.createAsync(
+    const { sound, status } = await Audio.Sound.createAsync(
       require('../../assets/music/Gravity.mp3')
     );
     setSound(sound);
+    setStatusOfSound(status);
 
-    const durationInMillis = await durationOfMusicInMillis();
-    const duration = convertSecondsToTimeInString(durationInMillis);
+    const duration = convertSecondsToTimeInString(status.durationMillis / 1000);
     setMusicDuration(duration);
   }
 
@@ -100,11 +103,6 @@ export default function MusicScreen(props: propsMusic) {
     setPlaying(false);
   }
 
-  async function durationOfMusicInMillis() {
-    const { durationMillis } = await sound?.getStatusAsync();
-    return durationMillis;
-  }
-
   function convertSecondsToTimeInString(secs: number) {
     let minutes = Math.floor(secs / 60);
     let seconds = Math.ceil(secs - (minutes * 60));
@@ -119,7 +117,6 @@ export default function MusicScreen(props: propsMusic) {
     }
     return `${stringMinutes}:${stringSeconds}`;
   }
-
 
   useEffect(() => {
     prepareSound();
