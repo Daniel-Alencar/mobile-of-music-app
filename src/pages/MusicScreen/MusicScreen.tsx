@@ -23,6 +23,7 @@ import { PlayerArea } from './MusicScreen.styles';
 import { Controls } from './MusicScreen.styles';
 
 import { Audio } from 'expo-av';
+import { Surface } from 'react-native';
 
 interface propsBackground {
   children: JSX.Element,
@@ -54,8 +55,6 @@ const Background = (props: propsBackground) => {
 
 export default function MusicScreen(props: propsMusic) {
 
-  const [playing, setPlaying] = useState(false);
-
   const navigation = useNavigation();
   function handleToPreviousScreen() {
     navigation.goBack();
@@ -63,55 +62,68 @@ export default function MusicScreen(props: propsMusic) {
 
 // ==================================================================
 
+  const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState<Audio.Sound>();
-
-  useEffect(() => {
-    prepareSound();
-  }, []);
-
-  async function playOrPauseMusic() {
-    await prepareSound();
-  }
+  const [musicDuration, setMusicDuration] = useState("");
   
   async function prepareSound() {
-    const isNotPlaying = !playing;
+    console.log('Carregando o áudio...');
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/music/Gravity.mp3')
+    );
+    setSound(sound);
 
-    if(isNotPlaying) {
-      if(sound === undefined) {
+    const durationInMillis = await durationOfMusicInMillis();
+    const duration = convertSecondsToTimeInString(durationInMillis);
+    setMusicDuration(duration);
+  }
 
-        console.log('Carregando o áudio...');
-        const { sound } = await Audio.Sound.createAsync(
-          require('../../assets/music/Gravity.mp3')
-        );
-        setSound(sound);
-
-        console.log('Tocando o áudio...');
-        await sound.playAsync();
-        setPlaying(true);
-
-      } else {
-        console.log('Tocando o áudio...');
-        await sound.playAsync();
-        setPlaying(true);
-      }
-
+  async function playOrPauseMusic() {
+    if(playing) {
+      await pauseSound();
     } else {
-      
-      if(sound !== undefined) {
-        console.log('Pausando o áudio...');
-        await sound.pauseAsync();
-        setPlaying(false);
-      }
+      await playSound();
     }
   }
 
   async function playSound() {
-    
+    console.log('Tocando o áudio...');
+    await sound?.playAsync();
+
+    setPlaying(true);
   }
 
   async function pauseSound() {
+    console.log('Pausando o áudio...');
+    await sound?.pauseAsync();
 
+    setPlaying(false);
   }
+
+  async function durationOfMusicInMillis() {
+    const { durationMillis } = await sound?.getStatusAsync();
+    return durationMillis;
+  }
+
+  function convertSecondsToTimeInString(secs: number) {
+    let minutes = Math.floor(secs / 60);
+    let seconds = Math.ceil(secs - (minutes * 60));
+    let stringMinutes = `${minutes}`;
+    let stringSeconds = `${seconds}`;
+
+    if(minutes < 10) {
+      stringMinutes = `0${minutes}`;
+    }
+    if(seconds < 10) {
+      stringSeconds = `0${seconds}`;
+    }
+    return `${stringMinutes}:${stringSeconds}`;
+  }
+
+
+  useEffect(() => {
+    prepareSound();
+  }, []);
 
   useEffect(() => {
     return sound
@@ -190,11 +202,11 @@ export default function MusicScreen(props: propsMusic) {
             <Controls>
 
               <SliderComponent 
-                musicDuration={"06:12"}
+                musicDuration={musicDuration}
                 currentMusicTime={"00:00"}
               />
 
-              <ShuffleButton />
+              <ShuffleButton isClicked={false}/>
               
               <Controls.SkipBack>
                 <Feather name="skip-back" color="#fff" size={27}/>
@@ -213,7 +225,7 @@ export default function MusicScreen(props: propsMusic) {
                 <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               
-              <RepeatButton />
+              <RepeatButton isClicked={false}/>
 
             </Controls>
 
