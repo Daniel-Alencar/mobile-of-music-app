@@ -8,12 +8,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Home from './pages/Home';
-import SearchScreen from './pages/SearchScreen';
-import ArtistsScreen from './pages/ArtistsScreen';
-import PlaylistsScreen from './pages/PlaylistsScreen';
-import DownloadsScreen from './pages/DownloadsScreen';
-import MusicScreen from './pages/Music';
+import Home from './pages/HomeScreen/HomeScreen';
+import SearchScreen from './pages/SearchScreen/SearchScreen';
+import ArtistsScreen from './pages/ArtistScreen/ArtistsScreen';
+import PlaylistsScreen from './pages/PlaylistsScreen/PlaylistsScreen';
+import DownloadsScreen from './pages/DownloadsScreen/DownloadsScreen';
+import MusicScreen from './pages/MusicScreen/MusicScreen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
