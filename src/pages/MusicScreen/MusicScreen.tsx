@@ -61,24 +61,55 @@ export default function MusicScreen(props: propsMusic) {
 
 // ==================================================================
 
-  const [playing, setPlaying] = useState(false);
-  const [musicDuration, setMusicDuration] = useState("");
-
+  const [playing, setPlaying] = useState(true);
   const [sound, setSound] = useState<Audio.Sound>();
-  const [statusOfSound, setStatusOfSound] = useState<AVPlaybackStatus>();
+  const [musicDuration, setMusicDuration] = useState("");
+  const [musicDurationInSeconds, setMusicDurationInSeconds] = useState(0);
+  const [currentTime, setCurrentTime] = useState("00:00");
+  const [currentTimeInSeconds, setCurrentTimeInSeconds] = useState(0);
 
 // ==================================================================
   
-  async function prepareSound() {
+  async function prepareSound()  {
+    try {
+      await Audio.setAudioModeAsync({
+        playsInSilentModeIOS: true,
+        allowsRecordingIOS: false,
+        staysActiveInBackground: true,
+        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+
+        interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+        playThroughEarpieceAndroid: true,
+        shouldDuckAndroid: false,
+      });
+    } catch(error) {
+      console.log('Erro => ' + error);
+    }
+
+
     console.log('Carregando o áudio...');
     const { sound, status } = await Audio.Sound.createAsync(
-      require('../../assets/music/Gravity.mp3')
+      require('../../assets/music/Gravity.mp3'),
+      { 
+        shouldPlay: true,
+        pitchCorrectionQuality: Audio.PitchCorrectionQuality.High,
+        positionMillis: 0,
+        progressUpdateIntervalMillis: 1000,
+      },
+      onPlayBackStatusUpdate,
+      false
     );
     setSound(sound);
-    setStatusOfSound(status);
 
     const duration = convertSecondsToTimeInString(status.durationMillis / 1000);
+    setMusicDurationInSeconds(status.durationMillis / 1000);
     setMusicDuration(duration);
+  }
+
+  function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
+    const time = convertSecondsToTimeInString(PlaybackStatus.positionMillis / 1000);
+    setCurrentTime(time);
+    setCurrentTimeInSeconds(PlaybackStatus.positionMillis / 1000);
   }
 
   async function playOrPauseMusic() {
@@ -200,7 +231,9 @@ export default function MusicScreen(props: propsMusic) {
 
               <SliderComponent 
                 musicDuration={musicDuration}
-                currentMusicTime={"00:00"}
+                currentMusicTime={currentTime}
+                currentMusicTimeInSeconds={currentTimeInSeconds}
+                musicDurationInSeconds={musicDurationInSeconds}
               />
 
               <ShuffleButton isClicked={false}/>
