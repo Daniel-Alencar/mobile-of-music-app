@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { SliderComp } from './SliderComponent.styles';
 import { AudioSlider } from './SliderComponent.styles';
@@ -8,19 +8,14 @@ interface propsSliderComponent {
   musicDurationInSeconds: number,
   currentMusicTime: string,
   currentMusicTimeInSeconds: number,
+
+  value: number,
 }
 
 export default function SliderComponent(props: propsSliderComponent) {
 
   const maxValueToSliderTimeLine = 100;
   const minValueToSliderTimeLine = 0;
-
-  const [sliderTimeLineValue, setSliderTimeLineValue] = useState(0);
-
-  function convertCurrentTimeOfMusicToValueFromSlider() {
-    const value = (maxValueToSliderTimeLine * props.currentMusicTimeInSeconds) / props.musicDurationInSeconds;
-    setSliderTimeLineValue(value);
-  }
   
   return (
     <SliderComp>
@@ -31,8 +26,7 @@ export default function SliderComponent(props: propsSliderComponent) {
 
         minimumValue={minValueToSliderTimeLine}
         maximumValue={maxValueToSliderTimeLine}
-        value={sliderTimeLineValue}
-        onValueChange={() => {}}
+        value={props.value}
       />
 
       <SliderComp.CurrentTime>

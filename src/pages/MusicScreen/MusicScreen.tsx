@@ -70,6 +70,15 @@ export default function MusicScreen(props: propsMusic) {
 
 // ==================================================================
   
+  const [sliderTimeLineValue, setSliderTimeLineValue] = useState(0);
+  const [maxValueToSliderTimeLine, setMaxValueToSliderTimeLine] = useState(100);
+
+  function convertCurrentTimeOfMusicToValueFromSlider() {
+    const value = (maxValueToSliderTimeLine * currentTimeInSeconds) / musicDurationInSeconds;
+    setSliderTimeLineValue(value);
+  }
+
+// ==================================================================
   async function prepareSound()  {
     try {
       await Audio.setAudioModeAsync({
@@ -107,9 +116,20 @@ export default function MusicScreen(props: propsMusic) {
   }
 
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
-    const time = convertSecondsToTimeInString(PlaybackStatus.positionMillis / 1000);
-    setCurrentTime(time);
-    setCurrentTimeInSeconds(PlaybackStatus.positionMillis / 1000);
+    let segundos = PlaybackStatus.positionMillis / 1000;
+    const timeInString = convertSecondsToTimeInString(segundos);
+
+    setCurrentTime(timeInString);
+    setCurrentTimeInSeconds(segundos);
+
+    let value = (maxValueToSliderTimeLine * segundos) / (PlaybackStatus.durationMillis / 1000);
+    console.log(`${value} == ${maxValueToSliderTimeLine} * ${segundos} / ${PlaybackStatus.durationMillis} / 1000`);
+
+    if(PlaybackStatus.durationMillis !== undefined) {
+      if(segundos !== NaN) {
+        setSliderTimeLineValue(value);
+      }
+    }
   }
 
   async function playOrPauseMusic() {
@@ -234,6 +254,7 @@ export default function MusicScreen(props: propsMusic) {
                 currentMusicTime={currentTime}
                 currentMusicTimeInSeconds={currentTimeInSeconds}
                 musicDurationInSeconds={musicDurationInSeconds}
+                value={sliderTimeLineValue}
               />
 
               <ShuffleButton isClicked={false}/>
