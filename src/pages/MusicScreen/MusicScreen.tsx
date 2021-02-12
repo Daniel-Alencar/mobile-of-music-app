@@ -64,6 +64,8 @@ export default function MusicScreen(props: propsMusic) {
   const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState<Audio.Sound>();
 
+  const [musicDurationInSeconds, setMusicDurationInSeconds] = useState(0);
+
   const [musicDuration, setMusicDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
 
@@ -75,6 +77,10 @@ export default function MusicScreen(props: propsMusic) {
 
   function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number, duracaoDaMusicaEmSeconds: number) {
     return Math.floor((maxValueToSliderTimeLine * currentSecondsOfMusic) / duracaoDaMusicaEmSeconds);
+  }
+
+  function convertValueFromSliderToCurrentSecondsOfMusic(value: number) {
+    return Math.floor(value * musicDurationInSeconds / maxValueToSliderTimeLine)
   }
 
 // ==================================================================
@@ -143,8 +149,8 @@ export default function MusicScreen(props: propsMusic) {
         PlaybackStatus.durationMillis
     );
     if(duracaoDaMusicaEmSeconds !== 0) {
+      setMusicDurationInSeconds(duracaoDaMusicaEmSeconds);
       let valueToSlider = convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic, duracaoDaMusicaEmSeconds);
-      console.log(valueToSlider);
       setSliderTimeLineValue(valueToSlider);
     }
   }
@@ -269,6 +275,10 @@ export default function MusicScreen(props: propsMusic) {
                 value={sliderTimeLineValue}
                 minimumValue={minValueToSliderTimeLine}
                 maximumValue={maxValueToSliderTimeLine}
+
+                onValueChange={(value: number) => {
+                  sound?.setPositionAsync(convertValueFromSliderToCurrentSecondsOfMusic(value) * 1000);
+                }}
               />
 
               <ShuffleButton isClicked={false}/>
