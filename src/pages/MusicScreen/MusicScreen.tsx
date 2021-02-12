@@ -85,6 +85,8 @@ export default function MusicScreen(props: propsMusic) {
 
 // ==================================================================
 
+  const [prioridade, setPrioridade] = useState(false);
+
   function convertMillisInSeconds(millis: number) {
     return Math.floor(millis / 1000);
   }
@@ -276,9 +278,14 @@ export default function MusicScreen(props: propsMusic) {
                 minimumValue={minValueToSliderTimeLine}
                 maximumValue={maxValueToSliderTimeLine}
 
-                onValueChange={(value: number) => {
+                onSlidingComplete={(value: number) => {
                   sound?.setPositionAsync(convertValueFromSliderToCurrentSecondsOfMusic(value) * 1000);
+                  setPrioridade(!prioridade);
                 }}
+                onSlidingStart={() => {
+                  setPrioridade(!prioridade);
+                }}
+                prioridade={prioridade}
               />
 
               <ShuffleButton isClicked={false}/>

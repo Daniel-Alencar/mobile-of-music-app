@@ -1,5 +1,5 @@
 import { Audio } from 'expo-av';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { SliderComp } from './SliderComponent.styles';
 import { AudioSlider } from './SliderComponent.styles';
@@ -12,10 +12,16 @@ interface propsSliderComponent {
   maximumValue: number,
   minimumValue: number,
 
-  onValueChange: any,
+  onSlidingComplete: any,
+  onSlidingStart: any,
+
+  prioridade: boolean,
 }
 
-export default function SliderComponent(props: propsSliderComponent) {  
+export default function SliderComponent(props: propsSliderComponent) {
+
+
+
   return (
     <SliderComp>
       <AudioSlider 
@@ -25,9 +31,10 @@ export default function SliderComponent(props: propsSliderComponent) {
 
         minimumValue={props.minimumValue}
         maximumValue={props.maximumValue}
-        value={props.value}
-        onValueChange={() => {}}
-        onSlidingComplete={props.onValueChange}
+        value={props.prioridade ? undefined : props.value}
+
+        onSlidingComplete={props.onSlidingComplete}
+        onSlidingStart={props.onSlidingStart}
       />
 
       <SliderComp.CurrentTime>
