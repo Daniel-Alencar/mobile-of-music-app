@@ -5,18 +5,14 @@ import { AudioSlider } from './SliderComponent.styles';
 
 interface propsSliderComponent {
   musicDuration: string,
-  musicDurationInSeconds: number,
   currentMusicTime: string,
-  currentMusicTimeInSeconds: number,
 
   value: number,
+  maximumValue: number,
+  minimumValue: number
 }
 
-export default function SliderComponent(props: propsSliderComponent) {
-
-  const maxValueToSliderTimeLine = 100;
-  const minValueToSliderTimeLine = 0;
-  
+export default function SliderComponent(props: propsSliderComponent) {  
   return (
     <SliderComp>
       <AudioSlider 
@@ -24,8 +20,8 @@ export default function SliderComponent(props: propsSliderComponent) {
         maximumTrackTintColor="#777"
         minimumTrackTintColor="#f00"
 
-        minimumValue={minValueToSliderTimeLine}
-        maximumValue={maxValueToSliderTimeLine}
+        minimumValue={props.minimumValue}
+        maximumValue={props.maximumValue}
         value={props.value}
       />
 

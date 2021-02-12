@@ -25,7 +25,7 @@ import { Controls } from './MusicScreen.styles';
 import { Audio, AVPlaybackStatus } from 'expo-av';
 
 interface propsBackground {
-  children: JSX.Element,
+  children: JSX.Element
 }
 
 interface propsMusic {
@@ -61,74 +61,91 @@ export default function MusicScreen(props: propsMusic) {
 
 // ==================================================================
 
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState<Audio.Sound>();
-  const [musicDuration, setMusicDuration] = useState("");
-  const [musicDurationInSeconds, setMusicDurationInSeconds] = useState(0);
-  const [currentTime, setCurrentTime] = useState("00:00");
-  const [currentTimeInSeconds, setCurrentTimeInSeconds] = useState(0);
+
+  const [musicDuration, setMusicDuration] = useState("0:00");
+  const [currentTime, setCurrentTime] = useState("0:00");
 
 // ==================================================================
   
   const [sliderTimeLineValue, setSliderTimeLineValue] = useState(0);
-  const [maxValueToSliderTimeLine, setMaxValueToSliderTimeLine] = useState(100);
+  const maxValueToSliderTimeLine = 1000;
+  const minValueToSliderTimeLine = 0;
 
-  function convertCurrentTimeOfMusicToValueFromSlider() {
-    const value = (maxValueToSliderTimeLine * currentTimeInSeconds) / musicDurationInSeconds;
-    setSliderTimeLineValue(value);
+  function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number, duracaoDaMusicaEmSeconds: number) {
+    return Math.floor((maxValueToSliderTimeLine * currentSecondsOfMusic) / duracaoDaMusicaEmSeconds);
   }
 
 // ==================================================================
+
+  function convertMillisInSeconds(millis: number) {
+    return Math.floor(millis / 1000);
+  }
+
   async function prepareSound()  {
     try {
       await Audio.setAudioModeAsync({
-        playsInSilentModeIOS: true,
-        allowsRecordingIOS: false,
         staysActiveInBackground: true,
-        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
 
+        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-        playThroughEarpieceAndroid: true,
-        shouldDuckAndroid: false,
       });
     } catch(error) {
-      console.log('Erro => ' + error);
+      console.log('\nErro na definição das configurações do Audio\n=> ' + error);
     }
 
 
     console.log('Carregando o áudio...');
-    const { sound, status } = await Audio.Sound.createAsync(
+    const { sound } = await Audio.Sound.createAsync(
       require('../../assets/music/Gravity.mp3'),
       { 
         shouldPlay: true,
-        pitchCorrectionQuality: Audio.PitchCorrectionQuality.High,
-        positionMillis: 0,
         progressUpdateIntervalMillis: 1000,
       },
       onPlayBackStatusUpdate,
-      false
+      true
     );
     setSound(sound);
+    setPlaying(true);
+    console.log('Tocando o áudio...');
 
-    const duration = convertSecondsToTimeInString(status.durationMillis / 1000);
-    setMusicDurationInSeconds(status.durationMillis / 1000);
-    setMusicDuration(duration);
+    sound.getStatusAsync()
+      .then((status) => {
+        let durationInSeconds = convertMillisInSeconds(
+          status.durationMillis === undefined ?
+            60000
+          :
+            status.durationMillis
+        );
+        
+        setMusicDuration(convertSecondsToTimeInString(durationInSeconds));
+      })
+      .catch((error) => {
+        console.log('\nErro na definição das configurações do Audio\n=> ' + error);
+      });
   }
 
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
-    let segundos = PlaybackStatus.positionMillis / 1000;
-    const timeInString = convertSecondsToTimeInString(segundos);
+    let currentSecondsOfMusic = convertMillisInSeconds(
+      PlaybackStatus.positionMillis === undefined ?
+        0
+      :
+        PlaybackStatus.positionMillis
+    );
+    let currentSecondsOfMusicInString = convertSecondsToTimeInString(currentSecondsOfMusic);
+    setCurrentTime(currentSecondsOfMusicInString);
 
-    setCurrentTime(timeInString);
-    setCurrentTimeInSeconds(segundos);
-
-    let value = (maxValueToSliderTimeLine * segundos) / (PlaybackStatus.durationMillis / 1000);
-    console.log(`${value} == ${maxValueToSliderTimeLine} * ${segundos} / ${PlaybackStatus.durationMillis} / 1000`);
-
-    if(PlaybackStatus.durationMillis !== undefined) {
-      if(segundos !== NaN) {
-        setSliderTimeLineValue(value);
-      }
+    let duracaoDaMusicaEmSeconds = convertMillisInSeconds(
+      PlaybackStatus.durationMillis === undefined ?
+        0
+      :
+        PlaybackStatus.durationMillis
+    );
+    if(duracaoDaMusicaEmSeconds !== 0) {
+      let valueToSlider = convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic, duracaoDaMusicaEmSeconds);
+      console.log(valueToSlider);
+      setSliderTimeLineValue(valueToSlider);
     }
   }
 
@@ -160,9 +177,6 @@ export default function MusicScreen(props: propsMusic) {
     let stringMinutes = `${minutes}`;
     let stringSeconds = `${seconds}`;
 
-    if(minutes < 10) {
-      stringMinutes = `0${minutes}`;
-    }
     if(seconds < 10) {
       stringSeconds = `0${seconds}`;
     }
@@ -178,8 +192,7 @@ export default function MusicScreen(props: propsMusic) {
       ? 
         () => {
           console.log('Descarregando o som...');
-          const promessa = sound.unloadAsync();
-          console.log("PROMESSA DE DESCARREGAMENTO DO SOM: " + promessa);
+          sound.unloadAsync();
         }
       : 
         undefined;
@@ -252,9 +265,10 @@ export default function MusicScreen(props: propsMusic) {
               <SliderComponent 
                 musicDuration={musicDuration}
                 currentMusicTime={currentTime}
-                currentMusicTimeInSeconds={currentTimeInSeconds}
-                musicDurationInSeconds={musicDurationInSeconds}
+
                 value={sliderTimeLineValue}
+                minimumValue={minValueToSliderTimeLine}
+                maximumValue={maxValueToSliderTimeLine}
               />
 
               <ShuffleButton isClicked={false}/>

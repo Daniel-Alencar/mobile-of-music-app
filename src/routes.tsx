@@ -99,7 +99,7 @@ function BottomsOfAllApp() {
             let iconName = 'circle';
 
             switch (route.name) {
-              case 'home':
+              case 'Home':
                 iconName = 'headphones';
                 break;
               case 'SearchScreen':
