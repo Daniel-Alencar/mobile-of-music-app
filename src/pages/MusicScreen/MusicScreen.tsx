@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FlatList, StyleSheet, Text } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -16,11 +17,13 @@ import PlayIcon from './icons/PlayIcon/PlayIcon';
 
 import SliderComponent from './Slider/SliderComponent';
 
-import { TopBar } from './MusicScreen.styles';
-import { ScreenArea } from './MusicScreen.styles';
-import { CoverArea } from './MusicScreen.styles';
-import { PlayerArea } from './MusicScreen.styles';
-import { Controls } from './MusicScreen.styles';
+import {
+  TopBar, 
+  ScreenArea, 
+  CoverArea, 
+  PlayerArea, 
+  Controls 
+} from './MusicScreen.styles';
 
 import { Audio, AVPlaybackStatus } from 'expo-av';
 
@@ -240,12 +243,26 @@ export default function MusicScreen(props: propsMusic) {
           <ScreenArea>
 
             <CoverArea>
-              <CoverArea.Image 
-                resizeMode="contain"
-                source={{
-                  uri: props.imageSource
-                }}
+              <FlatList 
+              style={styles.flatListContainer}
+                data={[
+                  {
+                    imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
+                    key: 1
+                  },
+                  {
+                    imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
+                    key: 2
+                  },
+                ]}
+
+                renderItem={({item}) => 
+
+                  <Text>{item.imageSource}</Text>
+
+                }
               />
+              
             </CoverArea>
 
             <PlayerArea>
@@ -317,3 +334,9 @@ export default function MusicScreen(props: propsMusic) {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  flatListContainer: {
+
+  },
+});
