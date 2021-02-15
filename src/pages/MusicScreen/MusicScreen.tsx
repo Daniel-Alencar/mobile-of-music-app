@@ -137,8 +137,7 @@ export default function MusicScreen(props: propsMusic) {
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
     let currentSecondsOfMusic = convertMillisInSeconds(
       PlaybackStatus.positionMillis === undefined ?
-        0
-      :
+        0 :
         PlaybackStatus.positionMillis
     );
     let currentSecondsOfMusicInString = convertSecondsToTimeInString(currentSecondsOfMusic);
