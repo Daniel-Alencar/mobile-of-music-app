@@ -157,12 +157,8 @@ function BottomsOfAllApp() {
 function MusicContainerScreen() {
   return(
     <MusicScreen
-      author="John Mayer"
-      duration={290}
-      favorite={true}
-      imageSource="https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg"
+      artist="John Mayer"
       musicName="Gravity"
-      musicSource="./assets/music/Gravity.mp3"
     />
   )
 }

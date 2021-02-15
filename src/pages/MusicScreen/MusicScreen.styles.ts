@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyleSheet } from 'react-native';
 
 import FavoriteButton from '../../components/FavoriteButton';
 
@@ -49,27 +50,32 @@ TopBar.SubTitle = styled.Text`
 
 export const ScreenArea = styled.View`
   flex: 1;
-  padding-left: 32px;
-  padding-right: 32px;
+
   padding-bottom: 32px;
+  padding-top: 32px;
+
+  border-color: #f00;
+  border-width: 0;
 `;
 
 // ==========================================================================
 
 export const CoverArea = styled.View`
   flex: 4;
-  padding-top: 20px;
-`;
 
-CoverArea.Image = styled.Image`
-  
-  flex: 1;
-  width: 100%;
+  border-color: #ff0;
+  border-width: 0;
 `;
 
 export const PlayerArea = styled.View`
   flex: 2;
   justify-content: flex-end;
+
+  border-color: #ff0;
+  border-width: 0;
+
+  padding-left: 32px;
+  padding-right: 32px;
 `;
 
 PlayerArea.Content = styled.View`
@@ -104,6 +110,12 @@ export const Controls = styled.View`
   justify-content: space-between;
 
   flex-wrap: wrap;
+
+  border-color: #ff0;
+  border-width: 0;
+
+  padding-left: 32px;
+  padding-right: 32px;
 `;
 
 Controls.Play = styled.TouchableOpacity`
@@ -115,3 +127,23 @@ Controls.SkipBack = styled.TouchableOpacity`
 Controls.SkipForward = styled.TouchableOpacity`
 
 `;
+
+// =======================================================
+
+export const styles = StyleSheet.create({
+  flatListContainer: {
+    borderColor: "#0f0",
+    borderWidth: 0
+  },
+  contentFlatListContainer: {
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+  itemFlatListContainer: {
+    width: 290,
+    height: 290,
+
+    marginLeft: 16,
+    marginRight: 16,
+  }
+});

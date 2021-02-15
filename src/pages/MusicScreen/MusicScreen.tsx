@@ -1,59 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet, Text } from 'react-native';
-
-import { LinearGradient } from 'expo-linear-gradient';
+import { FlatList, Image } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
-import ChevronIcon from './icons/ChevronIcon/ChevronIcon';
-import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
-
-
-import ShuffleButton from './ShuffleButton/ShuffleButton';
-import RepeatButton from './RepeatButton/RepeatButton';
-import PauseIcon from './icons/PauseIcon/PauseIcon';
-import PlayIcon from './icons/PlayIcon/PlayIcon';
-
-import SliderComponent from './Slider/SliderComponent';
+import { Audio, AVPlaybackStatus } from 'expo-av';
 
 import {
   TopBar, 
   ScreenArea, 
   CoverArea, 
   PlayerArea, 
-  Controls 
+  Controls,
+  styles
 } from './MusicScreen.styles';
 
-import { Audio, AVPlaybackStatus } from 'expo-av';
+import Background from './Background/Background';
+import ShuffleButton from './ShuffleButton/ShuffleButton';
+import RepeatButton from './RepeatButton/RepeatButton';
+import SliderComponent from './Slider/SliderComponent';
 
-interface propsBackground {
-  children: JSX.Element
-}
+import ChevronIcon from './icons/ChevronIcon/ChevronIcon';
+import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
+import PauseIcon from './icons/PauseIcon/PauseIcon';
+import PlayIcon from './icons/PlayIcon/PlayIcon';
+
+
 
 interface propsMusic {
-  imageSource: string,
-  favorite: boolean,
   musicName: string,
-  musicSource: string,
-  duration: number,
-
-  author: string,
+  artist: string
 }
-
-const Background = (props: propsBackground) => {
-  return(
-    <LinearGradient
-        colors={['#464779', '#1b1a1f']}
-        style={{
-          flex: 1,
-          paddingTop: 40,
-        }}
-    >
-      {props.children}
-    </LinearGradient>
-  );
-};
 
 export default function MusicScreen(props: propsMusic) {
 
@@ -124,10 +100,15 @@ export default function MusicScreen(props: propsMusic) {
     sound.getStatusAsync()
       .then((status) => {
         let durationInSeconds = convertMillisInSeconds(
-          status.durationMillis === undefined ?
-            60000
+          status.isLoaded ?
+            (
+              status.durationMillis === undefined ?
+                60000
+              :
+                status.durationMillis
+            )
           :
-            status.durationMillis
+            60000
         );
         
         setMusicDuration(convertSecondsToTimeInString(durationInSeconds));
@@ -139,18 +120,29 @@ export default function MusicScreen(props: propsMusic) {
 
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
     let currentSecondsOfMusic = convertMillisInSeconds(
-      PlaybackStatus.positionMillis === undefined ?
-        0 :
-        PlaybackStatus.positionMillis
+      PlaybackStatus.isLoaded ? 
+        (
+          PlaybackStatus.positionMillis === undefined ?
+            0 
+          :
+            PlaybackStatus.positionMillis
+        )
+      :
+        0
     );
     let currentSecondsOfMusicInString = convertSecondsToTimeInString(currentSecondsOfMusic);
     setCurrentTime(currentSecondsOfMusicInString);
 
     let duracaoDaMusicaEmSeconds = convertMillisInSeconds(
-      PlaybackStatus.durationMillis === undefined ?
-        0
+      PlaybackStatus.isLoaded ? 
+        (
+          PlaybackStatus.durationMillis === undefined ?
+            0 
+          :
+            PlaybackStatus.durationMillis
+        )
       :
-        PlaybackStatus.durationMillis
+        0
     );
     if(duracaoDaMusicaEmSeconds !== 0) {
       setMusicDurationInSeconds(duracaoDaMusicaEmSeconds);
@@ -228,7 +220,7 @@ export default function MusicScreen(props: propsMusic) {
                 Tocando música
               </TopBar.Title>
               <TopBar.SubTitle>
-                {props.author}
+                {props.artist}
               </TopBar.SubTitle>
             </TopBar.Middle>
 
@@ -244,6 +236,12 @@ export default function MusicScreen(props: propsMusic) {
 
             <CoverArea>
               <FlatList 
+              pagingEnabled
+              overScrollMode="never" 
+              showsHorizontalScrollIndicator={false}
+              centerContent
+              contentContainerStyle={styles.contentFlatListContainer}
+              horizontal
               style={styles.flatListContainer}
                 data={[
                   {
@@ -251,15 +249,15 @@ export default function MusicScreen(props: propsMusic) {
                     key: 1
                   },
                   {
-                    imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
+                    imageSource: 'https://i.scdn.co/image/ab67706c0000bebb163aeea48afe86ed0c55bfcd',
                     key: 2
                   },
                 ]}
-
                 renderItem={({item}) => 
-
-                  <Text>{item.imageSource}</Text>
-
+                  <Image 
+                    style={styles.itemFlatListContainer}
+                    source={{ uri: item.imageSource }}
+                  />
                 }
               />
               
@@ -274,7 +272,7 @@ export default function MusicScreen(props: propsMusic) {
                     {props.musicName}
                   </PlayerArea.Content.Info.Title>
                   <PlayerArea.Content.Info.Author>
-                    {props.author}
+                    {props.artist}
                   </PlayerArea.Content.Info.Author>
                 </PlayerArea.Content.Info>
 
@@ -335,8 +333,3 @@ export default function MusicScreen(props: propsMusic) {
   );
 }
 
-const styles = StyleSheet.create({
-  flatListContainer: {
-
-  },
-});
