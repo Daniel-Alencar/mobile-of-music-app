@@ -9,7 +9,7 @@ const songs = [
   },
   {
     imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
-    musicSource: require('../../assets/music/In Repair.mp3'),
+    musicSource: require('../../assets/music/InRepair.mp3'),
     key: '2',
     name: 'In Repair',
     artist: 'John Mayer',
