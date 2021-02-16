@@ -5,10 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Feather } from '@expo/vector-icons';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Home from './pages/HomeScreen/HomeScreen';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Feather } from '@expo/vector-icons';
+
+import HomeScreen from './pages/HomeScreen/HomeScreen';
 import SearchScreen from './pages/SearchScreen/SearchScreen';
 import ArtistsScreen from './pages/ArtistScreen/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen/PlaylistsScreen';
@@ -16,7 +17,6 @@ import DownloadsScreen from './pages/DownloadsScreen/DownloadsScreen';
 import MusicScreen from './pages/MusicScreen/MusicScreen';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const Tab = createMaterialTopTabNavigator();
 function TabsOfLibraryScreen() {
@@ -99,7 +99,7 @@ function BottomsOfAllApp() {
             let iconName = 'circle';
 
             switch (route.name) {
-              case 'Home':
+              case 'HomeScreen':
                 iconName = 'headphones';
                 break;
               case 'SearchScreen':
@@ -115,7 +115,7 @@ function BottomsOfAllApp() {
             let string;
 
             switch (route.name) {
-              case 'Home':
+              case 'HomeScreen':
                 string = 'Tela inicial';
                 break;
               case 'SearchScreen':
@@ -137,8 +137,8 @@ function BottomsOfAllApp() {
       }}
     >
       <Bottom.Screen 
-        name="Home" 
-        component={Home}
+        name="HomeScreen" 
+        component={HomeScreen}
       />
 
       <Bottom.Screen 
@@ -154,27 +154,12 @@ function BottomsOfAllApp() {
   );
 }
 
-function MusicContainerScreen() {
-  return(
-    <MusicScreen
-      artist="John Mayer"
-      musicName="Gravity"
-    />
-  )
-}
-
 const Stack = createStackNavigator();
 function StackMusic() {
   return(
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
-      <Stack.Screen 
-        name="MusicScreen" 
-        component={
-          MusicContainerScreen
-        }
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="MusicScreen" component={MusicScreen} />
     </Stack.Navigator>
   );
 }

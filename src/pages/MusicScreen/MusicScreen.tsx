@@ -26,14 +26,9 @@ import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
 import PauseIcon from './icons/PauseIcon/PauseIcon';
 import PlayIcon from './icons/PlayIcon/PlayIcon';
 
+export default function MusicScreen() {
 
-
-interface propsMusic {
-  musicName: string,
-  artist: string
-}
-
-export default function MusicScreen(props: propsMusic) {
+  const [idOfMusic, setIdOfMusic] = useState(0);
 
   const navigation = useNavigation();
   function handleToPreviousScreen() {
@@ -87,7 +82,7 @@ export default function MusicScreen(props: propsMusic) {
 
     console.log('Carregando o áudio...');
     const { sound } = await Audio.Sound.createAsync(
-      songs[0].musicSource,
+      songs[idOfMusic].musicSource,
       { 
         shouldPlay: true,
         progressUpdateIntervalMillis: 1000,
@@ -203,6 +198,10 @@ export default function MusicScreen(props: propsMusic) {
   }, []);
 
   useEffect(() => {
+    prepareSound();
+  }, [idOfMusic]);
+
+  useEffect(() => {
     return sound
       ? 
         () => {
@@ -233,7 +232,7 @@ export default function MusicScreen(props: propsMusic) {
                 Tocando música
               </TopBar.Title>
               <TopBar.SubTitle>
-                {props.artist}
+                {songs[idOfMusic].artist}
               </TopBar.SubTitle>
             </TopBar.Middle>
 
@@ -256,10 +255,12 @@ export default function MusicScreen(props: propsMusic) {
               contentContainerStyle={styles.contentFlatListContainer}
               horizontal
               style={styles.flatListContainer}
+              scrollEventThrottle={16}
 
               data={songs}
               renderItem={({item}) => renderImageFromFlatList({item})}
               keyExtractor={(item) => item.key}
+              onScroll={() => {setIdOfMusic(1)}}
               />
               
             </CoverArea>
@@ -270,10 +271,10 @@ export default function MusicScreen(props: propsMusic) {
 
                 <PlayerArea.Content.Info>
                   <PlayerArea.Content.Info.Title>
-                    {props.musicName}
+                    {songs[idOfMusic].name}
                   </PlayerArea.Content.Info.Title>
                   <PlayerArea.Content.Info.Author>
-                    {props.artist}
+                    {songs[idOfMusic].artist}
                   </PlayerArea.Content.Info.Author>
                 </PlayerArea.Content.Info>
 
