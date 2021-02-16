@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import FavoriteButton from '../../components/FavoriteButton';
 
@@ -130,20 +130,22 @@ Controls.SkipForward = styled.TouchableOpacity`
 
 // =======================================================
 
+const { width } = Dimensions.get('window');
+
 export const styles = StyleSheet.create({
   flatListContainer: {
     borderColor: "#0f0",
-    borderWidth: 0
+    borderWidth: 0,
   },
   contentFlatListContainer: {
-    paddingLeft: 16,
-    paddingRight: 16,
+  },
+  imageContainer: {
+    width: width,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   itemFlatListContainer: {
     width: 290,
     height: 290,
-
-    marginLeft: 16,
-    marginRight: 16,
   }
 });

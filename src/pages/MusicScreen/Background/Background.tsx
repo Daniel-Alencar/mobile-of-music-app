@@ -13,7 +13,8 @@ const Background = (props: propsBackground) => {
       <LinearGradient
           colors={['#464779', '#1b1a1f']}
           style={{
-            flex: 1
+            flex: 1,
+            paddingTop: 16
           }}
       >
         {props.children}

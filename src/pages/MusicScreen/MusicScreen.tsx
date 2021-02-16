@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Image } from 'react-native';
+import { FlatList, Image, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Audio, AVPlaybackStatus } from 'expo-av';
+
+import songs from './songs';
 
 import {
   TopBar, 
@@ -85,7 +87,7 @@ export default function MusicScreen(props: propsMusic) {
 
     console.log('Carregando o áudio...');
     const { sound } = await Audio.Sound.createAsync(
-      require('../../assets/music/Gravity.mp3'),
+      songs[0].musicSource,
       { 
         shouldPlay: true,
         progressUpdateIntervalMillis: 1000,
@@ -185,6 +187,17 @@ export default function MusicScreen(props: propsMusic) {
     return `${stringMinutes}:${stringSeconds}`;
   }
 
+  function renderImageFromFlatList({item}: any) {
+    return (
+      <View style={styles.imageContainer}>
+        <Image 
+          style={styles.itemFlatListContainer}
+          source={{ uri: item.imageSource }}
+        />
+      </View>
+    );
+  }
+
   useEffect(() => {
     prepareSound();
   }, []);
@@ -243,22 +256,10 @@ export default function MusicScreen(props: propsMusic) {
               contentContainerStyle={styles.contentFlatListContainer}
               horizontal
               style={styles.flatListContainer}
-                data={[
-                  {
-                    imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
-                    key: 1
-                  },
-                  {
-                    imageSource: 'https://i.scdn.co/image/ab67706c0000bebb163aeea48afe86ed0c55bfcd',
-                    key: 2
-                  },
-                ]}
-                renderItem={({item}) => 
-                  <Image 
-                    style={styles.itemFlatListContainer}
-                    source={{ uri: item.imageSource }}
-                  />
-                }
+
+              data={songs}
+              renderItem={({item}) => renderImageFromFlatList({item})}
+              keyExtractor={(item) => item.key}
               />
               
             </CoverArea>
