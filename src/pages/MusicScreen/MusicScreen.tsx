@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Dimensions, FlatList, NativeSyntheticEvent, NativeScrollEvent, Image, View } from 'react-native';
+import { 
+  Dimensions,
+  FlatList, 
+  NativeSyntheticEvent, 
+  NativeScrollEvent, 
+  Image, 
+  View 
+} from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -26,9 +33,26 @@ import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
 import PauseIcon from './icons/PauseIcon/PauseIcon';
 import PlayIcon from './icons/PlayIcon/PlayIcon';
 
-export default function MusicScreen() {
+const windowWidth = Dimensions.get('window').width;
 
+export default function MusicScreen() {
+  
   const [idOfMusic, setIdOfMusic] = useState(0);
+
+  function musicExchange(event: NativeSyntheticEvent<NativeScrollEvent>) {
+    const scrollX = event.nativeEvent.contentOffset.x;
+    if(scrollX % windowWidth === 0) {
+      setIdOfMusic(scrollX / windowWidth);
+    }
+  }
+
+  function playNextMusic() {
+  }
+
+  function playPreviousMusic() {
+  }
+
+// ==================================================================
 
   const navigation = useNavigation();
   function handleToPreviousScreen() {
@@ -51,23 +75,39 @@ export default function MusicScreen() {
   const maxValueToSliderTimeLine = 1000;
   const minValueToSliderTimeLine = 0;
 
-  function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number, duracaoDaMusicaEmSeconds: number) {
-    return Math.floor((maxValueToSliderTimeLine * currentSecondsOfMusic) / duracaoDaMusicaEmSeconds);
+// ==================================================================
+
+  function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number) {
+    return Math.floor((maxValueToSliderTimeLine * currentSecondsOfMusic) / musicDurationInSeconds);
   }
 
   function convertValueFromSliderToCurrentSecondsOfMusic(value: number) {
     return Math.floor(value * musicDurationInSeconds / maxValueToSliderTimeLine)
   }
 
-// ==================================================================
-
-  const [prioridade, setPrioridade] = useState(false);
-
   function convertMillisInSeconds(millis: number) {
     return Math.floor(millis / 1000);
   }
 
-  async function prepareSound()  {
+  function convertSecondsToTimeInString(secs: number) {
+    let minutes = Math.floor(secs / 60);
+    let seconds = Math.ceil(secs - (minutes * 60));
+    let stringMinutes = `${minutes}`;
+    let stringSeconds = `${seconds}`;
+
+    if(seconds < 10) {
+      stringSeconds = `0${seconds}`;
+    }
+    return `${stringMinutes}:${stringSeconds}`;
+  }
+
+// ==================================================================
+
+  const [prioridade, setPrioridade] = useState(false);
+
+// ==================================================================
+
+  async function setSettingsInAudio() {
     try {
       await Audio.setAudioModeAsync({
         staysActiveInBackground: true,
@@ -78,8 +118,9 @@ export default function MusicScreen() {
     } catch(error) {
       console.log('\nErro na definição das configurações do Audio\n=> ' + error);
     }
+  }
 
-
+  async function prepareNewSound()  {
     console.log('Carregando o áudio...');
     try {
       const { sound } = await Audio.Sound.createAsync(
@@ -91,64 +132,57 @@ export default function MusicScreen() {
         onPlayBackStatusUpdate,
         true
       );
-    
-    setSound(sound);
-    setPlaying(true);
-    console.log('Tocando o áudio...');
 
-    sound.getStatusAsync()
-      .then((status) => {
-        let durationInSeconds = convertMillisInSeconds(
-          status.isLoaded ?
-            (
-              status.durationMillis === undefined ?
-                60000
-              :
-                status.durationMillis
-            )
+      console.log('Tocando o áudio...');
+      setSound(sound);
+      setPlaying(true);
+      
+      const status = await sound.getStatusAsync();
+      const durationInSeconds = convertMillisInSeconds(
+        status.isLoaded ?
+          status.durationMillis === undefined ?
+            0
           :
-            60000
-        );
-        
-        setMusicDuration(convertSecondsToTimeInString(durationInSeconds));
-      })
-      .catch((error) => {
-        console.log('\nErro na definição das configurações do Audio\n=> ' + error);
-      });
+            status.durationMillis
+        :
+          0
+      );
+      console.log(durationInSeconds);
+      setMusicDurationInSeconds(durationInSeconds);
+      console.log(musicDurationInSeconds);
+      setMusicDuration(convertSecondsToTimeInString(durationInSeconds));
+
     } catch(error) {
-      console.log('ERRO na troca de áudio\n' + error + '\n\n');
+      console.log('ERRO no carregamento do áudio\n' + error + '\n\n');
     }
   }
 
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
     let currentSecondsOfMusic = convertMillisInSeconds(
       PlaybackStatus.isLoaded ? 
-        (
-          PlaybackStatus.positionMillis === undefined ?
-            0 
-          :
-            PlaybackStatus.positionMillis
-        )
+        PlaybackStatus.positionMillis === undefined ?
+          0 
+        :
+          PlaybackStatus.positionMillis
       :
         0
     );
     let currentSecondsOfMusicInString = convertSecondsToTimeInString(currentSecondsOfMusic);
     setCurrentTime(currentSecondsOfMusicInString);
-
-    let duracaoDaMusicaEmSeconds = convertMillisInSeconds(
-      PlaybackStatus.isLoaded ? 
-        (
+    
+    if(musicDurationInSeconds === 0) {
+      let allSecondsOfMusic = convertMillisInSeconds(
+        PlaybackStatus.isLoaded ?
           PlaybackStatus.durationMillis === undefined ?
-            0 
+            0
           :
             PlaybackStatus.durationMillis
-        )
-      :
-        0
-    );
-    if(duracaoDaMusicaEmSeconds !== 0) {
-      setMusicDurationInSeconds(duracaoDaMusicaEmSeconds);
-      let valueToSlider = convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic, duracaoDaMusicaEmSeconds);
+        :
+          0
+      );
+      setMusicDurationInSeconds(allSecondsOfMusic);
+    } else {
+      let valueToSlider = convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic);
       setSliderTimeLineValue(valueToSlider);
     }
   }
@@ -175,18 +209,6 @@ export default function MusicScreen() {
     setPlaying(false);
   }
 
-  function convertSecondsToTimeInString(secs: number) {
-    let minutes = Math.floor(secs / 60);
-    let seconds = Math.ceil(secs - (minutes * 60));
-    let stringMinutes = `${minutes}`;
-    let stringSeconds = `${seconds}`;
-
-    if(seconds < 10) {
-      stringSeconds = `0${seconds}`;
-    }
-    return `${stringMinutes}:${stringSeconds}`;
-  }
-
   function renderImageFromFlatList({item}: any) {
     return (
       <View style={styles.imageContainer}>
@@ -198,28 +220,17 @@ export default function MusicScreen() {
     );
   }
 
-  function musicExchange(event: NativeSyntheticEvent<NativeScrollEvent>) {
-    const scrollX = event.nativeEvent.contentOffset.x;
-    const windowWidth = Dimensions.get('window').width;
-    if(scrollX % windowWidth === 0) {
-      setIdOfMusic(scrollX / windowWidth);
-    }
-  }
-
-  const [ScrollXOfFlatList, setScrollXOfFlatList] = useState(0);
-
-  function playNextMusic() {
-  }
-
-  function playPreviousMusic() {
-  }
+// ==================================================================
 
   useEffect(() => {
-    prepareSound();
+    setSettingsInAudio()
+      .then(() => {
+        prepareNewSound();
+      });
   }, []);
 
   useEffect(() => {
-    prepareSound();
+    prepareNewSound();
   }, [idOfMusic]);
 
   useEffect(() => {
@@ -233,6 +244,8 @@ export default function MusicScreen() {
         undefined;
   }, [sound]);
 
+// ==================================================================
+
   return(
     <Background 
       children={
@@ -241,9 +254,7 @@ export default function MusicScreen() {
           <TopBar>
 
             <TopBar.Left>
-              <TopBar.Left.ToBackScreen onPress={
-                () => handleToPreviousScreen()
-              }>
+              <TopBar.Left.ToBackScreen onPress={handleToPreviousScreen}>
                 <ChevronIcon />
               </TopBar.Left.ToBackScreen>
             </TopBar.Left>
@@ -269,20 +280,19 @@ export default function MusicScreen() {
 
             <CoverArea>
               <FlatList 
-              pagingEnabled
-              overScrollMode="never" 
-              showsHorizontalScrollIndicator={false}
-              centerContent
-              contentContainerStyle={styles.contentFlatListContainer}
-              horizontal
-              style={styles.flatListContainer}
-              scrollEventThrottle={16}
+                pagingEnabled
+                overScrollMode="never" 
+                showsHorizontalScrollIndicator={false}
+                horizontal
 
-              data={songs}
-              renderItem={({item}) => renderImageFromFlatList({item})}
-              keyExtractor={(item) => item.key}
-              onScroll={musicExchange}
-              contentOffset={{ x: 360, y: 0 }}
+
+                style={styles.flatListContainer}
+
+                data={songs}
+                renderItem={({item}) => renderImageFromFlatList({item})}
+                keyExtractor={(item) => item.key}
+                onScroll={musicExchange}
+                
               />
               
             </CoverArea>
@@ -300,7 +310,7 @@ export default function MusicScreen() {
                   </PlayerArea.Content.Info.Author>
                 </PlayerArea.Content.Info>
 
-                <PlayerArea.Content.FavoriteButton isFavorite={true}/>
+                <PlayerArea.Content.FavoriteButton isFavorite={songs[idOfMusic].favorite}/>
 
               </PlayerArea.Content>
 

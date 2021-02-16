@@ -137,8 +137,6 @@ export const styles = StyleSheet.create({
     borderColor: "#0f0",
     borderWidth: 0,
   },
-  contentFlatListContainer: {
-  },
   imageContainer: {
     width: width,
     alignItems: 'center',

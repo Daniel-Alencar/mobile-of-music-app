@@ -19,9 +19,6 @@ export default function FavoriteButton(props: propsFavoriteButton) {
 
 const styles = StyleSheet.create({
   favoriteButton: {
-    borderWidth: 0,
-    borderColor: "#ff0",
-
     justifyContent: 'center',
     alignItems: 'center',
   },
