@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Image, View } from 'react-native';
+import { Dimensions, FlatList, NativeSyntheticEvent, NativeScrollEvent, Image, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -81,15 +81,17 @@ export default function MusicScreen() {
 
 
     console.log('Carregando o áudio...');
-    const { sound } = await Audio.Sound.createAsync(
-      songs[idOfMusic].musicSource,
-      { 
-        shouldPlay: true,
-        progressUpdateIntervalMillis: 1000,
-      },
-      onPlayBackStatusUpdate,
-      true
-    );
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        songs[idOfMusic].musicSource,
+        { 
+          shouldPlay: true,
+          progressUpdateIntervalMillis: 1000,
+        },
+        onPlayBackStatusUpdate,
+        true
+      );
+    
     setSound(sound);
     setPlaying(true);
     console.log('Tocando o áudio...');
@@ -113,6 +115,9 @@ export default function MusicScreen() {
       .catch((error) => {
         console.log('\nErro na definição das configurações do Audio\n=> ' + error);
       });
+    } catch(error) {
+      console.log('ERRO na troca de áudio\n' + error + '\n\n');
+    }
   }
 
   function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
@@ -193,6 +198,22 @@ export default function MusicScreen() {
     );
   }
 
+  function musicExchange(event: NativeSyntheticEvent<NativeScrollEvent>) {
+    const scrollX = event.nativeEvent.contentOffset.x;
+    const windowWidth = Dimensions.get('window').width;
+    if(scrollX % windowWidth === 0) {
+      setIdOfMusic(scrollX / windowWidth);
+    }
+  }
+
+  const [ScrollXOfFlatList, setScrollXOfFlatList] = useState(0);
+
+  function playNextMusic() {
+  }
+
+  function playPreviousMusic() {
+  }
+
   useEffect(() => {
     prepareSound();
   }, []);
@@ -260,7 +281,8 @@ export default function MusicScreen() {
               data={songs}
               renderItem={({item}) => renderImageFromFlatList({item})}
               keyExtractor={(item) => item.key}
-              onScroll={() => {setIdOfMusic(1)}}
+              onScroll={musicExchange}
+              contentOffset={{ x: 360, y: 0 }}
               />
               
             </CoverArea>
@@ -302,11 +324,12 @@ export default function MusicScreen() {
                   setPrioridade(!prioridade);
                 }}
                 prioridade={prioridade}
+                
               />
 
               <ShuffleButton isClicked={false}/>
               
-              <Controls.SkipBack>
+              <Controls.SkipBack onPress={playPreviousMusic}>
                 <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
@@ -319,7 +342,7 @@ export default function MusicScreen() {
                   }
               </Controls.Play>
               
-              <Controls.SkipForward>
+              <Controls.SkipForward onPress={playNextMusic}>
                 <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               

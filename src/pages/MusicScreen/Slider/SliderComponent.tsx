@@ -35,6 +35,7 @@ export default function SliderComponent(props: propsSliderComponent) {
 
         onSlidingComplete={props.onSlidingComplete}
         onSlidingStart={props.onSlidingStart}
+        
       />
 
       <SliderComp.CurrentTime>
