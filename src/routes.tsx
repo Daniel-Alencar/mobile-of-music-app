@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Text } from 'react-native';
+import { Dimensions, Text, StyleSheet, View } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -15,6 +15,7 @@ import ArtistsScreen from './pages/ArtistScreen/ArtistsScreen';
 import PlaylistsScreen from './pages/PlaylistsScreen/PlaylistsScreen';
 import DownloadsScreen from './pages/DownloadsScreen/DownloadsScreen';
 import MusicScreen from './pages/MusicScreen/MusicScreen';
+import MusicBar from './components/MusicBar';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -74,93 +75,105 @@ function TabsOfLibraryScreen() {
 const Bottom = createBottomTabNavigator();
 function BottomsOfAllApp() {
   return(
-    <Bottom.Navigator 
-      tabBarOptions={{
-        activeBackgroundColor: '#4e4b4b',
-        inactiveBackgroundColor: '#4e4b4b',
-        activeTintColor: '#fff',
-        inactiveTintColor: '#000',
+    <>
+      <Bottom.Navigator
+        tabBarOptions={{
+          activeBackgroundColor: '#4e4b4b',
+          inactiveBackgroundColor: '#4e4b4b',
+          activeTintColor: '#fff',
+          inactiveTintColor: '#000',
 
-        adaptive: true,
+          adaptive: true,
 
-        style: {
-          backgroundColor: '#4e4b4b',
-          paddingLeft: 30,
-          paddingRight: 30,
-        },
-
-        labelStyle: {
-          color: '#fff',
-        },
-      }}
-      screenOptions={
-        ({route}) => ({ 
-          tabBarIcon: ({color, size}) => {
-            let iconName = 'circle';
-
-            switch (route.name) {
-              case 'HomeScreen':
-                iconName = 'headphones';
-                break;
-              case 'SearchScreen':
-                iconName = 'search';
-                break;
-              case 'LibraryScreen':
-                iconName = 'user';
-                break;
-            }
-            return <Feather name={iconName} color={color} size={30}/>
+          style: {
+            backgroundColor: '#4e4b4b',
+            paddingLeft: 30,
+            paddingRight: 30,
           },
-          tabBarLabel: ({focused, color, position}) => {
-            let string;
 
-            switch (route.name) {
-              case 'HomeScreen':
-                string = 'Tela inicial';
-                break;
-              case 'SearchScreen':
-                string = 'Pesquisa';
-                break;
-              case 'LibraryScreen':
-                string = 'Seus salvos';
-                break;
-              default:
-                string = 'circle';
-                break;
-            }
-            return <Text style={{ fontSize: 10, color: color }}>{string}</Text>;
+          labelStyle: {
+            color: '#fff',
           },
-        })
+        }}
+        screenOptions={
+          ({route}) => ({ 
+            tabBarIcon: ({color, size}) => {
+              let iconName = 'circle';
+
+              switch (route.name) {
+                case 'HomeScreen':
+                  iconName = 'headphones';
+                  break;
+                case 'SearchScreen':
+                  iconName = 'search';
+                  break;
+                case 'LibraryScreen':
+                  iconName = 'user';
+                  break;
+              }
+              return <Feather name={iconName} color={color} size={30}/>
+            },
+            tabBarLabel: ({focused, color, position}) => {
+              let string;
+
+              switch (route.name) {
+                case 'HomeScreen':
+                  string = 'Tela inicial';
+                  break;
+                case 'SearchScreen':
+                  string = 'Pesquisa';
+                  break;
+                case 'LibraryScreen':
+                  string = 'Seus salvos';
+                  break;
+                default:
+                  string = 'circle';
+                  break;
+              }
+              return <Text style={{ fontSize: 10, color: color }}>{string}</Text>;
+            },
+          })
+        }
+        sceneContainerStyle={{
+          height: '100%',
+        }}
+      >
+        <Bottom.Screen 
+          name="HomeScreen" 
+          component={HomeScreen}
+        />
+
+        <Bottom.Screen 
+          name="SearchScreen" 
+          component={SearchScreen} 
+        />
+
+        <Bottom.Screen 
+          name="LibraryScreen" 
+          component={TabsOfLibraryScreen} 
+        />
+      </Bottom.Navigator>
+
+      {true ?
+        <View style={styles.musicBarContainer}>
+          <MusicBar isPlaying={false}/>
+        </View>
+      : 
+        undefined
       }
-      sceneContainerStyle={{
-        height: '100%',
-      }}
-    >
-      <Bottom.Screen 
-        name="HomeScreen" 
-        component={HomeScreen}
-      />
-
-      <Bottom.Screen 
-        name="SearchScreen" 
-        component={SearchScreen} 
-      />
-
-      <Bottom.Screen 
-        name="LibraryScreen" 
-        component={TabsOfLibraryScreen} 
-      />
-    </Bottom.Navigator>
+    </>
   );
 }
 
 const Stack = createStackNavigator();
 function StackMusic() {
   return(
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
-      <Stack.Screen name="MusicScreen" component={MusicScreen} />
-    </Stack.Navigator>
+    <>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
+        <Stack.Screen name="MusicScreen" component={MusicScreen} />
+      </Stack.Navigator>
+    </>
   );
 }
 
@@ -174,3 +187,13 @@ export default function Routes() {
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  musicBarContainer: {
+    borderColor: '#f00',
+    borderWidth: 0,
+
+    position: 'absolute',
+    bottom: 49,
+  }
+});

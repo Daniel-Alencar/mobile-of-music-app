@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import MusicContainer from './MusicContainer/MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
@@ -24,11 +25,11 @@ export default function DownloadsScreen() {
               musicName="Ao som do mar"
               centerTextMusic={true}  
             />
-            <MusicBar />
+            
           </>
         }
       />
-      
+
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function FavoriteButton(props: propsFavoriteButton) {
 
   return(
     <TouchableOpacity style={styles.favoriteButton} onPress={() => setIsClicked(!isClicked)}>
-      <Feather name="heart" size={25} color={isClicked ? '#f00' : 'white'}/>
+      <Feather name="heart" size={22} color={isClicked ? '#f00' : 'white'}/>
     </TouchableOpacity>
   );
 }

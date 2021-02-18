@@ -3,6 +3,7 @@ import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
 
 interface propsDefaultScreen {
   content: JSX.Element,
+  contentOutsideFromScrollView?: JSX.Element,
 }
 
 export default function DefaultScreen(props: propsDefaultScreen) {
@@ -17,8 +18,10 @@ export default function DefaultScreen(props: propsDefaultScreen) {
         >
           {props.content}
         </ScrollView>
-      </View>
 
+        {props.contentOutsideFromScrollView}
+      </View>
+      
     </View>
   );
 }

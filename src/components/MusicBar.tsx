@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 
 import {Feather} from '@expo/vector-icons';
 
@@ -11,38 +11,44 @@ interface propsMusicBar {
 
 export default function MusicBar(props: propsMusicBar) {
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(props.isPlaying);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.leftContainer}>
-        <Image 
-          source={require('../assets/images/Music/musicDefault.jpg')}
-          style={styles.musicImage}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.musicName}>
-            Gravity
-          </Text>
-          <Text style={styles.artistName}>
-            John Mayer
-          </Text>
+    <>
+      <View style={{ width: '10%', height: 0.8, backgroundColor: '#fff' }}/>
+      <View style={styles.container}>
+        
+
+        <View style={styles.leftContainer}>
+          <Image 
+            source={require('../assets/images/Music/musicDefault.jpg')}
+            style={styles.musicImage}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.musicName}>
+              Gravity
+            </Text>
+            <Text style={styles.artistName}>
+              John Mayer
+            </Text>
+          </View>
+        </View>
+        <View style={styles.rightContainer}>
+          <FavoriteButton 
+            isFavorite={false}
+          />
+          <TouchableOpacity style={styles.playAndPauseButton} onPress={() => setIsPlaying(!isPlaying)}>
+            <Feather name={isPlaying ? 'pause' : 'play'} color={defaultColorText} size={25}/>
+          </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.rightContainer}>
-        <FavoriteButton 
-          isFavorite={true}
-        />
-        <TouchableOpacity style={styles.playAndPauseButton} onPress={() => setIsPlaying(!isPlaying)}>
-          <Feather name={isPlaying ? 'pause' : 'play'} color={defaultColorText} size={25}/>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </>
   );
 }
 
 const defaultDimension = 65;
 const defaultColorText = '#fff';
+const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
   container: {
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: '#4e4b4b',
 
-    width: '100%',
+    width: windowWidth,
     height: defaultDimension,
   },
   leftContainer: {
@@ -84,7 +90,6 @@ const styles = StyleSheet.create({
     borderColor: 'red',
 
     flexDirection: 'row',
-
   },
   musicImage: {
     width: defaultDimension,
