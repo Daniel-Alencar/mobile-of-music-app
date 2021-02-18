@@ -1,9 +1,18 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+import {Feather} from '@expo/vector-icons';
 
 import FavoriteButton from './FavoriteButton';
 
-export default function MusicBar() {
+interface propsMusicBar {
+  isPlaying: boolean,
+}
+
+export default function MusicBar(props: propsMusicBar) {
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -24,9 +33,9 @@ export default function MusicBar() {
         <FavoriteButton 
           isFavorite={true}
         />
-        <FavoriteButton 
-          isFavorite={true}
-        />
+        <TouchableOpacity style={styles.playAndPauseButton} onPress={() => setIsPlaying(!isPlaying)}>
+          <Feather name={isPlaying ? 'pause' : 'play'} color={defaultColorText} size={25}/>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -40,16 +49,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
 
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: 'red',
 
     backgroundColor: '#4e4b4b',
 
     width: '100%',
-    height: defaultDimension
+    height: defaultDimension,
   },
   leftContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: 'red',
 
     flex: 1,
@@ -57,7 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: 'red',
 
     justifyContent: 'center',
@@ -65,13 +74,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   musicName: {
-    color: defaultColorText
+    color: defaultColorText,
   },
   artistName: {
-    color: '#bbb'
+    color: '#bbb',
   },
   rightContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: 'red',
 
     flexDirection: 'row',
@@ -80,5 +89,14 @@ const styles = StyleSheet.create({
   musicImage: {
     width: defaultDimension,
     height: defaultDimension,
+  },
+
+  playAndPauseButton: {
+    height: '100%',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    width: 50,
   }
 });
