@@ -2,6 +2,7 @@ import React from 'react';
 
 import MusicContainer from './MusicContainer/MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
+import MusicBar from '../../components/MusicBar';
 
 export default function DownloadsScreen() {
   return (
@@ -23,9 +24,11 @@ export default function DownloadsScreen() {
               musicName="Ao som do mar"
               centerTextMusic={true}  
             />
+            <MusicBar />
           </>
         }
       />
+      
     </>
   );
 }
