@@ -33,16 +33,27 @@ import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
 import PauseIcon from './icons/PauseIcon/PauseIcon';
 import PlayIcon from './icons/PlayIcon/PlayIcon';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as InfoMusicActions from '../../store/actions/infoMusic';
+
 const windowWidth = Dimensions.get('window').width;
 
-export default function MusicScreen() {
+function MusicScreen(state: any) {
   
   const [idOfMusic, setIdOfMusic] = useState(0);
 
   function musicExchange(event: NativeSyntheticEvent<NativeScrollEvent>) {
     const scrollX = event.nativeEvent.contentOffset.x;
     if(scrollX % windowWidth === 0) {
-      setIdOfMusic(scrollX / windowWidth);
+      console.log("Alterando a música");
+      const index = scrollX / windowWidth;
+
+      console.log("NOME DA MÚSICA: " + songs[index].name);
+      console.log("NOME DO ARTISTA: " + songs[index].artist);
+      state.toggleMusicAndArtist(songs[index].name, songs[index].artist);
+
+      setIdOfMusic(index);
     }
   }
 
@@ -147,9 +158,7 @@ export default function MusicScreen() {
         :
           0
       );
-      console.log(durationInSeconds);
       setMusicDurationInSeconds(durationInSeconds);
-      console.log(musicDurationInSeconds);
       setMusicDuration(convertSecondsToTimeInString(durationInSeconds));
 
     } catch(error) {
@@ -368,3 +377,14 @@ export default function MusicScreen() {
   );
 }
 
+function mapStateToProps(state: any) {
+  return {
+
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators(InfoMusicActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MusicScreen);

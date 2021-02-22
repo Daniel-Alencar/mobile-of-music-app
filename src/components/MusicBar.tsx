@@ -5,13 +5,11 @@ import {Feather} from '@expo/vector-icons';
 
 import FavoriteButton from './FavoriteButton';
 
-interface propsMusicBar {
-  isPlaying: boolean,
-}
+import { connect } from 'react-redux';
 
-export default function MusicBar(props: propsMusicBar) {
+function MusicBar(state: any) {
 
-  const [isPlaying, setIsPlaying] = useState(props.isPlaying);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <>
@@ -26,10 +24,10 @@ export default function MusicBar(props: propsMusicBar) {
           />
           <View style={styles.textContainer}>
             <Text style={styles.musicName}>
-              Gravity
+              {state.musicName}
             </Text>
             <Text style={styles.artistName}>
-              John Mayer
+              {state.artist}
             </Text>
           </View>
         </View>
@@ -105,3 +103,12 @@ const styles = StyleSheet.create({
     width: 50,
   }
 });
+
+function mapStateToProps(state : any) {
+  return {
+    musicName: state.infoMusic.musicName,
+    artist: state.infoMusic.artist,
+  }
+}
+
+export default connect(mapStateToProps)(MusicBar)

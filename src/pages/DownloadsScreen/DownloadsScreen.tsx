@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 
 import MusicContainer from './MusicContainer/MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
-import MusicBar from '../../components/MusicBar';
 
 export default function DownloadsScreen() {
   return (
@@ -12,18 +10,22 @@ export default function DownloadsScreen() {
         content={
           <>
             <MusicContainer 
-            musicName="Gravity" 
-            imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
-            centerTextMusic={true} 
+              musicName="Gravity" 
+              imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
+              centerTextMusic={true} 
+              artistName="John Mayer"
             />
             <MusicContainer 
               musicName="In Repair" 
               imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
               centerTextMusic={true}  
+              artistName="John Mayer"
             />
             <MusicContainer 
-              musicName="Ao som do mar"
+              musicName="Its been a long, long time"
+              imageSource={require('../../assets/images/Playlist/playlistDefault.png')}
               centerTextMusic={true}  
+              artistName="Harry James"
             />
             
           </>

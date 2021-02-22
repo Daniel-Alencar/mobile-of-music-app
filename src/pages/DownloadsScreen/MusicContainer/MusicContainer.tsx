@@ -4,19 +4,25 @@ import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import * as InfoMusicActions from '../../../store/actions/infoMusic';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 interface propsMusicContainer {
   musicName: string,
   imageSource?: ImageSourcePropType,
   centerTextMusic?: boolean,
+  artistName: string,
 }
 
-export default function MusicContainer(props: propsMusicContainer) {
+function MusicContainer(props: propsMusicContainer) {
 
   const [isClicked, setIsClicked] = useState(false);
   const navigation = useNavigation();
 
   function handleNavigateToMusicScreen() {
     navigation.navigate('MusicScreen');
+    props.setInitialMusic(props.musicName, props.artistName);
   }
 
   return(
@@ -63,6 +69,18 @@ export default function MusicContainer(props: propsMusicContainer) {
     </View>
   );
 }
+
+function mapStateToProps(state: any) {
+  return {
+
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators(InfoMusicActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MusicContainer);
 
 const styles = StyleSheet.create({
   musicContainer: {

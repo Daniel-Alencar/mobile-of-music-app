@@ -17,6 +17,9 @@ import DownloadsScreen from './pages/DownloadsScreen/DownloadsScreen';
 import MusicScreen from './pages/MusicScreen/MusicScreen';
 import MusicBar from './components/MusicBar';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 const windowWidth = Dimensions.get('window').width;
 
 const Tab = createMaterialTopTabNavigator();
@@ -154,13 +157,13 @@ function BottomsOfAllApp() {
         />
       </Bottom.Navigator>
 
-      {true ?
+      {/* {true ?
         <View style={styles.musicBarContainer}>
-          <MusicBar isPlaying={false}/>
+          <MusicBar />
         </View>
       : 
         undefined
-      }
+      } */}
     </>
   );
 }
@@ -169,10 +172,20 @@ const Stack = createStackNavigator();
 function StackMusic() {
   return(
     <>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
-        <Stack.Screen name="MusicScreen" component={MusicScreen} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
+          <Stack.Screen name="MusicScreen" component={MusicScreen} />
+        </Stack.Navigator>
+        
+        {true ?
+          <View style={styles.musicBarContainer}>
+            <MusicBar />
+          </View>
+        : 
+          undefined
+        }
+      </Provider>
     </>
   );
 }
