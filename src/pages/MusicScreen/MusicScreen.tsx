@@ -35,7 +35,7 @@ import PlayIcon from './icons/PlayIcon/PlayIcon';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as InfoMusicActions from '../../store/actions/infoMusic';
+import * as infoMusicActions from '../../store/actions/infoMusic';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -51,7 +51,7 @@ function MusicScreen(state: any) {
 
       console.log("NOME DA MÚSICA: " + songs[index].name);
       console.log("NOME DO ARTISTA: " + songs[index].artist);
-      state.toggleMusicAndArtist(songs[index].name, songs[index].artist);
+      state.toggleMusicAndArtist(index);
 
       setIdOfMusic(index);
     }
@@ -193,6 +193,7 @@ function MusicScreen(state: any) {
     } else {
       let valueToSlider = convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic);
       setSliderTimeLineValue(valueToSlider);
+      console.log("Aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
     }
   }
 
@@ -377,14 +378,8 @@ function MusicScreen(state: any) {
   );
 }
 
-function mapStateToProps(state: any) {
-  return {
-
-  };
-}
-
 function mapDispatchToProps(dispatch: any) {
-  return bindActionCreators(InfoMusicActions, dispatch)
+  return bindActionCreators(infoMusicActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MusicScreen);
+export default connect(null, mapDispatchToProps)(MusicScreen);

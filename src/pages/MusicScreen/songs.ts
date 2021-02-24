@@ -21,7 +21,7 @@ const songs = [
     key: '3',
     name: 'Its been a long, long time',
     artist: 'Harry James',
-    favorite: false,
+    favorite: true,
   }
 ];
 

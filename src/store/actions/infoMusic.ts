@@ -1,16 +1,14 @@
 
-export function toggleMusicAndArtist(musicName: string, artist: string) {
+export function toggleMusicAndArtist(key: number) {
   return {
     type: 'TOOGLE_MUSIC_AND_ARTIST',
-    musicName: musicName,
-    artist: artist, 
+    key: key
   };
 }
 
-export function setInitialMusic(musicName: string, artist: string) {
+export function setInitialMusic(key: number) {
   return {
     type: 'SET_INITIAL_MUSIC',
-    musicName: musicName,
-    artist: artist, 
+    key: key 
   };
 }

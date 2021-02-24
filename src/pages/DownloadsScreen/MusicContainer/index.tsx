@@ -27,6 +27,7 @@ function MusicContainer(props: propsMusicContainer) {
 
   function handleNavigateToMusicScreen() {
     navigation.navigate('MusicScreen');
+    
   }
 
   return(

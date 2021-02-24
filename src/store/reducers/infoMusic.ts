@@ -1,6 +1,5 @@
 const INICIAL_STATE = {
-  musicName: '',
-	artist: '',
+  key: 0
 }
 
 function infoMusic(state = INICIAL_STATE, action: any) {
@@ -8,14 +7,12 @@ function infoMusic(state = INICIAL_STATE, action: any) {
 
   if(action.type === 'TOOGLE_MUSIC_AND_ARTIST') {
     return {
-      musicName: action.musicName,
-      artist: action.artist,
+      key: action.key
     }
   }
   if(action.type === 'SET_INITIAL_MUSIC') {
     return {
-      musicName: action.musicName,
-      artist: action.artist,
+      key: action.key
     }
   }
   return state;
