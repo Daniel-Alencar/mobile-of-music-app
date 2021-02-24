@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MusicContainer from './MusicContainer/MusicContainer';
+import MusicContainer from './MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
 
 export default function DownloadsScreen() {
@@ -12,22 +12,24 @@ export default function DownloadsScreen() {
             <MusicContainer 
               musicName="Gravity" 
               imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
-              centerTextMusic={true} 
               artistName="John Mayer"
+              isFavorite
+              centerTextMusic
             />
             <MusicContainer 
               musicName="In Repair" 
               imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
-              centerTextMusic={true}  
               artistName="John Mayer"
+              isFavorite
+              centerTextMusic
             />
             <MusicContainer 
               musicName="Its been a long, long time"
               imageSource={require('../../assets/images/Playlist/playlistDefault.png')}
-              centerTextMusic={true}  
               artistName="Harry James"
+              isFavorite
+              centerTextMusic
             />
-            
           </>
         }
       />

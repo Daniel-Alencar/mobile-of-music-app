@@ -1,5 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Text, ImageSourcePropType } from 'react-native';
+import { 
+  View, 
+  TouchableOpacity, 
+  Image, 
+  Text, 
+  ImageSourcePropType 
+} from 'react-native';
+
+import styles from './style';
 
 interface propsArtistContainer {
   imageSource?: ImageSourcePropType,
@@ -26,28 +34,3 @@ export default function ArtistContainer(props: propsArtistContainer) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  artistContainer: {
-    height: 85,
-    justifyContent: 'center',
-  },
-  artistButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-
-    paddingLeft: 20,
-  },
-  imageArtist: {
-    height: 65,
-    width: 65,
-
-    borderRadius: 50,
-  },
-  artistText:{
-    color: '#FFF',
-    
-    fontSize: 18,
-    margin: 10,
-  },
-});
