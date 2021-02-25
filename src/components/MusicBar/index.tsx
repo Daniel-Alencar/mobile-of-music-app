@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import styles from './style';
 
-import songs from '../../pages/MusicScreen/songs';
+import songs from '../../pages/MusicScreen/songsOfPlaylist';
 
 const windowWidth = Dimensions.get('window').width;
 

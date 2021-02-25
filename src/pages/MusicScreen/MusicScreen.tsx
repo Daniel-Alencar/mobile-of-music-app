@@ -12,7 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Audio, AVPlaybackStatus } from 'expo-av';
 
-import songs from './songs';
+import songs from './songsOfPlaylist';
 
 import {
   TopBar, 

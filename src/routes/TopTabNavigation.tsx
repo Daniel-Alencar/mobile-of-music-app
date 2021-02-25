@@ -8,7 +8,7 @@ import PlaylistsScreen from "../pages/PlaylistsScreen/PlaylistsScreen";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { windowWidth } from '../settings';
+import { windowWidth } from '../settingsDefault';
 
 const Tab = createMaterialTopTabNavigator();
 export default function TabsOfLibraryScreen() {
