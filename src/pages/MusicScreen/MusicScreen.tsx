@@ -35,7 +35,7 @@ import PlayIcon from './icons/PlayIcon/PlayIcon';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as infoMusicActions from '../../store/actions/infoMusic';
+import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
 
 const windowWidth = Dimensions.get('window').width;
 
