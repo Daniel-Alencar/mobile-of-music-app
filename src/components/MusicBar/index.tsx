@@ -1,48 +1,57 @@
-import React, { useState } from 'react';
-import { Image, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import React from 'react';
+import { Image, Text, View, TouchableOpacity } from 'react-native';
 
-import {Feather} from '@expo/vector-icons';
-
-import FavoriteButton from '../FavoriteButton';
-
-import { connect } from 'react-redux';
+import { Feather } from '@expo/vector-icons';
 
 import styles from './style';
 
+import FavoriteButton from '../FavoriteButton';
+
+import { useSelector } from 'react-redux';
+
 import songs from '../../pages/MusicScreen/songsOfPlaylist';
 
-const windowWidth = Dimensions.get('window').width;
+import { maxSliderValue, windowWidth } from '../../settingsDefault';
 
-function MusicBar(state: any) {
+function MusicBar() {
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  const propsFromRedux = useSelector((state: any) => {
+    return {
+      keyOfMusic: state.infoMusic.key,
+      value: state.sliderValue.value
+    }
+  });
+
+  function convertValueFromSliderToWidth(valueFromSlider: number) {
+    return valueFromSlider * windowWidth / maxSliderValue;
+  }
 
   return (
     <>
-      <View style={{ width: state.value, height: 0.8, backgroundColor: '#fff' }}/>
+      <View style={{ width: convertValueFromSliderToWidth(propsFromRedux.value), height: 0.8, backgroundColor: '#fff' }}/>
       <View style={styles.container}>
         
 
         <View style={styles.leftContainer}>
           <Image 
-            source={{ uri:songs[state.keyOfMusic].imageSource }}
+            source={{ uri:songs[propsFromRedux.keyOfMusic].imageSource }}
             style={styles.musicImage}
           />
           <View style={styles.textContainer}>
             <Text style={styles.musicName}>
-              {songs[state.keyOfMusic].name}
+              {songs[propsFromRedux.keyOfMusic].name}
             </Text>
             <Text style={styles.artistName}>
-              {songs[state.keyOfMusic].artist}
+              {songs[propsFromRedux.keyOfMusic].artist}
             </Text>
           </View>
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={songs[state.keyOfMusic].favorite}
+            isFavorite={songs[propsFromRedux.keyOfMusic].favorite}
           />
-          <TouchableOpacity style={styles.playAndPauseButton} onPress={() => setIsPlaying(!isPlaying)}>
-            <Feather name={isPlaying ? 'pause' : 'play'} color='#fff' size={25}/>
+          <TouchableOpacity style={styles.playAndPauseButton} onPress={() => {}}>
+            <Feather name={'play'} color='#fff' size={25}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -50,11 +59,4 @@ function MusicBar(state: any) {
   );
 }
 
-function mapStateToProps(state : any) {
-  return {
-    keyOfMusic: state.infoMusic.key,
-    value: state.sliderValue.value
-  }
-}
-
-export default connect(mapStateToProps)(MusicBar)
+export default MusicBar;

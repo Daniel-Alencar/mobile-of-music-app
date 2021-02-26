@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -8,6 +8,8 @@ import SearchScreen from "../pages/SearchScreen/SearchScreen";
 import TabsOfLibraryScreen from "./TopTabNavigation";
 
 import { Feather } from '@expo/vector-icons';
+
+import MusicBar from '../components/MusicBar';
 
 const Bottom = createBottomTabNavigator();
 export default function BottomsOfAllApp() {
@@ -90,6 +92,21 @@ export default function BottomsOfAllApp() {
           component={TabsOfLibraryScreen} 
         />
       </Bottom.Navigator>
+
+      {
+      true 
+      ? <View style={styles.musicBarContainer}>
+          <MusicBar/>
+        </View>
+      : undefined
+      }
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  musicBarContainer: {
+    position: 'absolute',
+    bottom: 49,
+  }
+});

@@ -3,7 +3,6 @@ const INICIAL_STATE = {
 }
 
 function infoMusic(state = INICIAL_STATE, action: any) {
-  console.log(action);
 
   switch(action.type) {
     case 'SET_INITIAL_MUSIC':
