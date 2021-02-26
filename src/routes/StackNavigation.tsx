@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MusicScreen from '../pages/MusicScreen/MusicScreen';
+import MusicScreen from '../pages/MusicScreen';
 import BottomsOfAllApp from './BottomTabNavigation';
 
 const Stack = createStackNavigator();

@@ -3,33 +3,24 @@ import React from 'react';
 import MusicContainer from './MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
 
+import songs from '../songsOfPlaylist';
+
 export default function DownloadsScreen() {
   return (
     <>
       <DefaultScreen 
         content={
           <>
-            <MusicContainer 
-              musicName="Gravity" 
-              imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
-              artistName="John Mayer"
-              isFavorite
-              centerTextMusic
-            />
-            <MusicContainer 
-              musicName="In Repair" 
-              imageSource={require('../../assets/images/Playlist/Continuum.jpg')}
-              artistName="John Mayer"
-              isFavorite
-              centerTextMusic
-            />
-            <MusicContainer 
-              musicName="Its been a long, long time"
-              imageSource={require('../../assets/images/Playlist/playlistDefault.png')}
-              artistName="Harry James"
-              isFavorite
-              centerTextMusic
-            />
+            {songs.map((song) => {
+              return (
+                <MusicContainer key={song.key}
+                  musicName={song.name}
+                  artistName={song.artist}
+                  isFavorite={song.favorite}
+                  centerTextMusic
+                />
+              );
+            })}
           </>
         }
       />

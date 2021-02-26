@@ -9,7 +9,7 @@ import FavoriteButton from '../FavoriteButton';
 
 import { useSelector } from 'react-redux';
 
-import songs from '../../pages/MusicScreen/songsOfPlaylist';
+import songs from '../../pages/songsOfPlaylist';
 
 import { maxSliderValue, windowWidth } from '../../settingsDefault';
 

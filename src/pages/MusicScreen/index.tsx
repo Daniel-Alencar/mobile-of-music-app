@@ -11,7 +11,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Audio, AVPlaybackStatus } from 'expo-av';
 
-import songs from './songsOfPlaylist';
+import songs from '../songsOfPlaylist';
 
 import {
   TopBar, 
@@ -20,12 +20,12 @@ import {
   PlayerArea, 
   Controls,
   styles
-} from './MusicScreen.styles';
+} from './style';
 
-import Background from './Background/Background';
-import ShuffleButton from './ShuffleButton/ShuffleButton';
-import RepeatButton from './RepeatButton/RepeatButton';
-import Slider from './Slider/Slider';
+import Background from './Background';
+import ShuffleButton from './ShuffleButton';
+import RepeatButton from './RepeatButton';
+import Slider from './Slider';
 
 import ChevronIcon from './icons/ChevronIcon/ChevronIcon';
 import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
@@ -215,6 +215,7 @@ function convertValueFromSliderToCurrentSecondsOfMusic(value: number) {
 
 
 function setValueToSlider(valueFromSlider: number) {
+  setSliderTimeLineValue(valueFromSlider);
   let seconds = convertValueFromSliderToCurrentSecondsOfMusic(valueFromSlider);
 
   console.log('===============================================================================');
@@ -329,6 +330,12 @@ function setValueToSlider(valueFromSlider: number) {
 
                 onSlidingComplete={() => {}}
                 onSlidingStart={() => {}}
+
+                onValueChange={(value: number) => {
+                  let seconds = convertValueFromSliderToCurrentSecondsOfMusic(value);
+                  let timeInString = convertSecondsToTimeInString(seconds);
+                  setCurrentTime(timeInString);
+                }}
               />
 
               <ShuffleButton isClicked={false}/>

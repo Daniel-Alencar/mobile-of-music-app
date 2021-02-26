@@ -1,8 +1,8 @@
 import React from 'react';
 import { maxSliderValue, minSliderValue } from '../../../settingsDefault';
 
-import { SliderComp } from './Slider.styles';
-import { AudioSlider } from './Slider.styles';
+import { SliderComp } from './style';
+import { AudioSlider } from './style';
 
 export default function Slider(props: any) {
   return (
@@ -18,6 +18,7 @@ export default function Slider(props: any) {
 
         onSlidingComplete={props.onSlidingComplete}
         onSlidingStart={props.onSlidingStart}
+        onValueChange={props.onValueChange}
       />
 
       <SliderComp.CurrentTime>
