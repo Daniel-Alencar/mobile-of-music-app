@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
@@ -9,11 +9,16 @@ interface propsFavoriteButton {
 }
 
 export default function FavoriteButton(props: propsFavoriteButton) {
-  const [isClicked, setIsClicked] = useState(props.isFavorite);
 
+  const [isFavorite, setIsFavorite] = useState(props.isFavorite);
+
+  useEffect(() => {
+    setIsFavorite(props.isFavorite);
+  }, [props.isFavorite]);
+  
   return(
-    <TouchableOpacity style={styles.favoriteButton} onPress={() => setIsClicked(!isClicked)}>
-      <Feather name="heart" size={props.width ? props.width : 22} color={isClicked ? '#f00' : 'white'}/>
+    <TouchableOpacity style={styles.favoriteButton} onPress={() => setIsFavorite(!isFavorite)}>
+      <Feather name="heart" size={props.width ? props.width : 22} color={isFavorite ? '#f00' : '#fff'}/>
     </TouchableOpacity>
   );
 }

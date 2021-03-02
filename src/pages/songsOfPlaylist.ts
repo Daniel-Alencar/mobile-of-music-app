@@ -5,7 +5,7 @@ let songs = [
     key: '1',
     name: 'Gravity',
     artist: 'John Mayer',
-    favorite: false,
+    favorite: true,
   },
   {
     imageSource: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Continuum_by_John_Mayer_%282006%29.jpg',
@@ -13,7 +13,7 @@ let songs = [
     key: '2',
     name: 'In Repair',
     artist: 'John Mayer',
-    favorite: true,
+    favorite: false,
   },
   {
     imageSource: 'https://direct.rhapsody.com/imageserver/images/alb.232331272/500x500.jpg',
@@ -21,7 +21,7 @@ let songs = [
     key: '3',
     name: 'Its been a long, long time',
     artist: 'Harry James',
-    favorite: true,
+    favorite: false,
   }
 ];
 

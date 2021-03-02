@@ -92,7 +92,7 @@ function MusicScreen() {
   }
 
   async function prepareNewSound()  {
-    console.log('Carregando o áudio...');
+    console.log('Carregando o áudio');
     try {
       const { sound } = await Audio.Sound.createAsync(
         songs[idOfMusic].musicSource,
@@ -104,7 +104,7 @@ function MusicScreen() {
         true
       );
 
-      console.log('Tocando o áudio...');
+      console.log('Tocando o áudio');
       setSound(sound);
       setPlaying(true);
       
@@ -167,14 +167,14 @@ function MusicScreen() {
   }
 
   async function playSound() {
-    console.log('Tocando o áudio...');
+    console.log('Tocando o áudio');
     await sound?.playAsync();
 
     setPlaying(true);
   }
 
   async function pauseSound() {
-    console.log('Pausando o áudio...');
+    console.log('Pausando o áudio');
     await sound?.pauseAsync();
 
     setPlaying(false);
@@ -195,6 +195,8 @@ function MusicScreen() {
 
   function musicExchange(event: NativeSyntheticEvent<NativeScrollEvent>) {
     const scrollX = event.nativeEvent.contentOffset.x;
+    console.log("=======> " + scrollX);
+    console.log("=======> " + windowWidth);
     if(scrollX % windowWidth === 0) {
       console.log("Alterando a música");
       const index = scrollX / windowWidth;
@@ -204,27 +206,38 @@ function MusicScreen() {
     }
   }
 
+  function paraAProximaMusica() {
+    if(songs.length !== idOfMusic + 1) {
+      setIdOfMusic(idOfMusic + 1);
+    }
+  }
 
-function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number) {
-  return Math.floor((maxSliderValue * currentSecondsOfMusic) / musicDurationInSeconds);
-}
+  function paraAMusicaAnterior() {
+    if(0 !== idOfMusic) {
+      setIdOfMusic(idOfMusic - 1);
+    }
+  }
 
-function convertValueFromSliderToCurrentSecondsOfMusic(value: number) {
-  return Math.floor(value * musicDurationInSeconds / maxSliderValue)
-}
+  function convertCurrentSecondsOfMusicToValueFromSlider(currentSecondsOfMusic: number) {
+    return Math.floor((maxSliderValue * currentSecondsOfMusic) / musicDurationInSeconds);
+  }
+
+  function convertValueFromSliderToCurrentSecondsOfMusic(value: number) {
+    return Math.floor(value * musicDurationInSeconds / maxSliderValue)
+  }
 
 
-function setValueToSlider(valueFromSlider: number) {
-  setSliderTimeLineValue(valueFromSlider);
-  let seconds = convertValueFromSliderToCurrentSecondsOfMusic(valueFromSlider);
+  function setValueToSlider(valueFromSlider: number) {
+    setSliderTimeLineValue(valueFromSlider);
+    let seconds = convertValueFromSliderToCurrentSecondsOfMusic(valueFromSlider);
 
-  console.log('===============================================================================');
-  console.log('Tempo atual: ' + convertSecondsToTimeInString(seconds));
-  console.log('Value do slider: ' + sliderTimeLineValue);
-  console.log('===============================================================================');
+    console.log('===============================================================================');
+    console.log('Tempo atual: ' + convertSecondsToTimeInString(seconds));
+    console.log('Value do slider: ' + sliderTimeLineValue);
+    console.log('===============================================================================');
 
-  sound?.setPositionAsync(seconds * 1000);
-}
+    sound?.setPositionAsync(seconds * 1000);
+  }
 
 
 // ==================================================================
@@ -267,7 +280,9 @@ function setValueToSlider(valueFromSlider: number) {
 
             <TopBar.Middle>
               <TopBar.Title>
-                Tocando música
+                {
+                  "TOCANDO MÚSICA"
+                }
               </TopBar.Title>
               <TopBar.SubTitle>
                 {songs[idOfMusic].artist}
@@ -328,7 +343,7 @@ function setValueToSlider(valueFromSlider: number) {
 
                 value={sliderTimeLineValue}
 
-                onSlidingComplete={() => {}}
+                onSlidingComplete={(value: number) => setValueToSlider(value)}
                 onSlidingStart={() => {}}
 
                 onValueChange={(value: number) => {
@@ -340,7 +355,7 @@ function setValueToSlider(valueFromSlider: number) {
 
               <ShuffleButton isClicked={false}/>
               
-              <Controls.SkipBack>
+              <Controls.SkipBack onPress={paraAMusicaAnterior}>
                 <Feather name="skip-back" color="#fff" size={27}/>
               </Controls.SkipBack>
 
@@ -353,7 +368,7 @@ function setValueToSlider(valueFromSlider: number) {
                   }
               </Controls.Play>
               
-              <Controls.SkipForward>
+              <Controls.SkipForward onPress={paraAProximaMusica}>
                 <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               
