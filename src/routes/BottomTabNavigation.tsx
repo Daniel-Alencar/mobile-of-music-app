@@ -3,9 +3,9 @@ import { View, StyleSheet, Text } from 'react-native';
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import HomeScreen from "../pages/HomeScreen/HomeScreen";
 import SearchScreen from "../pages/SearchScreen/SearchScreen";
 import TabsOfLibraryScreen from "./TopTabNavigation";
+import HomeStack from './HomeStack';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -78,8 +78,8 @@ export default function BottomsOfAllApp() {
         }}
       >
         <Bottom.Screen 
-          name="HomeScreen" 
-          component={HomeScreen}
+          name="HomeStack" 
+          component={HomeStack}
         />
 
         <Bottom.Screen 

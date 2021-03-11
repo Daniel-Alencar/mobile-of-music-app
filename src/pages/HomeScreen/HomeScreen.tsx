@@ -3,11 +3,18 @@ import { ScrollView, StyleSheet, View, Dimensions, TouchableOpacity } from 'reac
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import PlaylistsContainer from './PlaylistsContainer/PlaylistsContainer';
 import ArtistsContainer from './ArtistsContainer/ArtistsContainer';
 
 export default function HomeScreen() {
+
+  const navigation = useNavigation();
+  const handleToSettingsScreen = () => {
+    navigation.navigate('SettingsScreen');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -17,7 +24,7 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
 
-          <TouchableOpacity onPress={() => {}} style={styles.settingsContainer}>
+          <TouchableOpacity onPress={handleToSettingsScreen} style={styles.settingsContainer}>
             <Feather name="settings" size={25} color="white"></Feather>
           </TouchableOpacity>
 

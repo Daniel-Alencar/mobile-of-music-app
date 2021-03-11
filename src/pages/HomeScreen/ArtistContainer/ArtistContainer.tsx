@@ -7,6 +7,8 @@ import {
   TouchableOpacity 
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
 interface propsArtistContainer {
   artistName: string,
   imageSource?: ImageSourcePropType,
@@ -16,8 +18,16 @@ export default function ArtistContainer(props: propsArtistContainer) {
 
   const defaultArtistImage = require('../../../assets/images/Artist/userDefault.png');
 
+  const navigation = useNavigation();
+  const handleToArtistDetailsScreen = () => {
+    navigation.navigate('ArtistDetailsScreen');
+  }
+
   return (
-    <TouchableOpacity style={styles.artistContainer}>
+    <TouchableOpacity 
+      style={styles.artistContainer}
+      onPress={handleToArtistDetailsScreen}
+    >
       <Image 
         style={styles.artist}
         source={

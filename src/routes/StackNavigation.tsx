@@ -16,6 +16,7 @@ export default function StackMusic() {
         <Stack.Screen name="BottomsOfAllApp" component={BottomsOfAllApp} />
         <Stack.Screen name="MusicScreen" component={MusicScreen} />
       </Stack.Navigator>
+
       {
         false 
         ? <View style={styles.musicBarContainer}>

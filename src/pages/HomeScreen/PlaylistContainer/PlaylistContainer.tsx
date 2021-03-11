@@ -1,5 +1,13 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
+import { 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity, 
+  Image, 
+  ImageSourcePropType 
+} from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 interface propsPlaylistContainer {
   playlistName: string,
@@ -8,11 +16,19 @@ interface propsPlaylistContainer {
 }
 
 export default function PlaylistContainer(props: propsPlaylistContainer) {
+
+  const navigation = useNavigation();
+  const handleToPlaylistScreen = () => {
+    navigation.navigate('PlaylistScreen');
+  }
   
   const defaultPlaylistImage = require('../../../assets/images/Playlist/playlistDefault.png');
 
   return (
-    <TouchableOpacity style={styles.playlistContainer}>
+    <TouchableOpacity 
+      style={styles.playlistContainer}
+      onPress={handleToPlaylistScreen}
+    >
       <Image 
         style={styles.playlist}
         source={
