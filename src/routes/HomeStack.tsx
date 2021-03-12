@@ -24,7 +24,11 @@ export default function HomeStack() {
           component={HomeScreen} 
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="PlaylistScreen" component={PlaylistScreen} />
+        <Stack.Screen 
+          name="PlaylistScreen" 
+          component={PlaylistScreen} 
+          options={{ headerShown: true, header: () => <Header colors={['#464779',"#464779"]}/> }}
+        />
         <Stack.Screen name="ArtistDetailsScreen" component={ArtistDetailsScreen} />
         <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
       </Stack.Navigator>

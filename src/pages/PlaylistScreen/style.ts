@@ -8,25 +8,45 @@ const styles = StyleSheet.create({
   },
   shortInformationsContainer: {
     borderColor: '#0ff',
-    borderWidth: 1,
+    borderWidth: 0,
 
     height: 300,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  playlistImage: {
+    height: 170,
+    width: 170,
+  },
+  playlistName: {
+    color: '#fff',
+    fontSize: 22,
+
+    padding: 6,
+  },
+  followButton: {
+    borderColor: '#42E12C',
+    borderWidth: 1,
+    borderRadius: 50,
+
+    height: 25,
+    paddingLeft: 15,
+    paddingRight: 15,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   shuffleButtonContainer: {
     borderColor: '#f0f',
-    borderWidth: 1,
+    borderWidth: 0,
     backgroundColor: '#000',
 
     height: 27.5,
+    marginBottom: 30,
 
     alignItems: 'center',
-  },
-  shuffleButtonContainerFalse: {
-    borderColor: '#f00',
-    borderWidth: 1,
-
-    height: 55,
   },
 
   shuffleButton: {
@@ -44,7 +64,24 @@ const styles = StyleSheet.create({
   shuffleButtonText: {
     color: '#fff',
     fontSize: 18,
-  }
+  },
+
+  downloadContainer: {
+    borderColor: '#f00',
+    borderWidth: 0,
+
+    height: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  downloadText: {
+    color: '#fff',
+    padding: 20,
+  },
+  switchButton: {
+    margin: 20,
+  },
 });
 
 export default styles;

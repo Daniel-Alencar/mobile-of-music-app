@@ -13,8 +13,8 @@ const Background = (props: propsBackground) => {
   return(
     <SafeAreaView style={styles.safeAreaView}>
       <LinearGradient
-          colors={['#464779', '#1b1a1f']}
-          style={styles.linearGradiant}
+        colors={['#464779', '#1b1a1f']}
+        style={styles.linearGradiant}
       >
         {props.children}
       </LinearGradient>
