@@ -27,10 +27,18 @@ export default function HomeStack() {
         <Stack.Screen 
           name="PlaylistScreen" 
           component={PlaylistScreen} 
-          options={{ headerShown: true, header: () => <Header/> }}
+          options={{ headerShown: true, header: () => <Header title="Playlist"/> }}
         />
-        <Stack.Screen name="ArtistDetailsScreen" component={ArtistDetailsScreen} />
-        <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+        <Stack.Screen 
+          name="ArtistDetailsScreen" 
+          component={ArtistDetailsScreen}
+          options={{ headerShown: true, header: () => <Header title="Artista"/> }} 
+        />
+        <Stack.Screen 
+          name="SettingsScreen" 
+          component={SettingsScreen}
+          options={{ headerShown: true, header: () => <Header title="Configurações"/> }}  
+        />
       </Stack.Navigator>
     </>
   );

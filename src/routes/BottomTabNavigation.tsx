@@ -56,7 +56,7 @@ export default function BottomsOfAllApp() {
               let string;
 
               switch (route.name) {
-                case 'HomeScreen':
+                case 'HomeStack':
                   string = 'Tela inicial';
                   break;
                 case 'SearchScreen':

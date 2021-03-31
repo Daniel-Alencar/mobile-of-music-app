@@ -29,7 +29,7 @@ export default function PlaylistScreen() {
         overScrollMode="never" 
       >
       
-        <LinearGradient colors={['#464779',"#000"]}>
+        <LinearGradient colors={['#000','#464779',"#000"]}>
 
           <View style={{ height: 0, width: '100%' }}></View>
 

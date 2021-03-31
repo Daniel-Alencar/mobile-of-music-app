@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: '100%',
 
-    backgroundColor: '#464779',
+    backgroundColor: '#000',
     
     flexDirection: 'row',
     alignItems: 'center',

@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
   },
-
   shuffleButton: {
     borderRadius: 30,
     backgroundColor: '#42E12C',
