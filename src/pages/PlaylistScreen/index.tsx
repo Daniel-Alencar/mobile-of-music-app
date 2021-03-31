@@ -12,7 +12,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import playlist from '../../assets/playlists/playlist';
 
 import MusicContainer from '../DownloadsScreen/MusicContainer';
-import Header from '../../components/Header';
 
 import styles from './style';
 
@@ -26,11 +25,15 @@ export default function PlaylistScreen() {
 
       <ScrollView
         stickyHeaderIndices={[1]}
+        showsVerticalScrollIndicator={false}
+        overScrollMode="never" 
       >
-        <LinearGradient
-          colors={['#464779', '#000']}
-        >
-        <View style={styles.shortInformationsContainer}>
+      
+        <LinearGradient colors={['#464779',"#000"]}>
+
+          <View style={{ height: 0, width: '100%' }}></View>
+
+          <View style={styles.shortInformationsContainer}>
 
             <Image 
               source={require('../../assets/images/Playlist/playlistDefault.png')}
@@ -53,8 +56,9 @@ export default function PlaylistScreen() {
             </TouchableOpacity>
 
         </View>
-        </LinearGradient>
 
+        </LinearGradient>
+        
         <View style={styles.shuffleButtonContainer}>
           <TouchableOpacity style={styles.shuffleButton}>
             <Text style={styles.shuffleButtonText}>
@@ -95,6 +99,7 @@ export default function PlaylistScreen() {
             );
           })
         }
+
       </ScrollView>
     </View>
   );

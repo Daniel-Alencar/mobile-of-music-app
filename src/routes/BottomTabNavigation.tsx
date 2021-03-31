@@ -36,11 +36,11 @@ export default function BottomsOfAllApp() {
         }}
         screenOptions={
           ({route}) => ({ 
-            tabBarIcon: ({color, size}) => {
+            tabBarIcon: ({color}) => {
               let iconName = 'circle';
 
               switch (route.name) {
-                case 'HomeScreen':
+                case 'HomeStack':
                   iconName = 'headphones';
                   break;
                 case 'SearchScreen':

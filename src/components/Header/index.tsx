@@ -6,7 +6,6 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from './style';
-import { LinearGradient } from 'expo-linear-gradient';
 
 interface propsHeader {
   title?: string,
@@ -21,14 +20,7 @@ export default function Header(props: propsHeader) {
   }
 
   return(
-    <SafeAreaView >
-      <LinearGradient 
-        colors={
-          props.colors
-          ? props.colors
-          : ['#000', '#000']
-        }
-      >
+    <SafeAreaView style={{  }}>
       <View style={styles.container}>
         <TouchableOpacity 
           style={styles.goBackButton}
@@ -45,7 +37,6 @@ export default function Header(props: propsHeader) {
           <Feather name="more-vertical" color="#fff" size={20}/>
         </TouchableOpacity>
       </View>
-      </LinearGradient>
     </SafeAreaView>
   );
 }

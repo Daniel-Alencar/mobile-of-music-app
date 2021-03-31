@@ -2,9 +2,13 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   generalContainer: {
-    backgroundColor: '#000',
+    backgroundColor: '#000000ff',
+
     height: '100%',
     width: '100%',
+
+    borderWidth: 0,
+    borderColor: "#f00",
   },
   shortInformationsContainer: {
     borderColor: '#0ff',
