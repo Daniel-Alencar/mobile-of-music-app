@@ -1,5 +1,14 @@
 import React from 'react';
-import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+import { 
+  ScrollView, 
+  View, 
+  Dimensions, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity 
+} from 'react-native';
+
+import {Feather} from '@expo/vector-icons';
 
 export default function SettingsScreen() {
   return (
@@ -7,7 +16,46 @@ export default function SettingsScreen() {
 
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
+          <TouchableOpacity 
+            style={{ 
+              height: 70, 
+              width: '100%', 
+              borderColor: '#f00', 
+              borderWidth: 0,
 
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          > 
+            <View style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+
+              <View style={{
+                borderRadius: 50,
+                backgroundColor: '#f00',
+                height: 55,
+                width: 55,
+
+                margin: 10,
+              }}>
+              </View>
+              <Text style={{
+                fontSize: 20,
+                color: '#fff',
+              }}>
+                Daniel Alencar
+              </Text>
+
+            </View>
+            
+            <View style={{ margin: 10 }}>
+              <Feather name="chevron-right" color='#fff' size={20}/>
+            </View>
+
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </View>
