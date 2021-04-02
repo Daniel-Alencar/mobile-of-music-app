@@ -2,13 +2,17 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   generalContainer: {
-    backgroundColor: '#000000ff',
+    backgroundColor: '#000',
 
     height: '100%',
     width: '100%',
 
     borderWidth: 0,
     borderColor: "#f00",
+  },
+  linearGradient: {
+    zIndex: -1,
+    position: 'relative',
   },
   shortInformationsContainer: {
     borderColor: '#0ff',
@@ -18,6 +22,9 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
     justifyContent: 'center',
+
+    position: 'relative',
+    zIndex: 1,
   },
   playlistImage: {
     height: 170,
@@ -48,11 +55,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
 
     height: 27.5,
-    marginBottom: 30,
+    marginBottom: 0,
 
     alignItems: 'center',
+
+    position: 'relative',
+    zIndex: 10,
+
+    elevation: 50,
   },
   shuffleButton: {
+    borderColor: '#f0f',
+    borderWidth: 0,
     borderRadius: 30,
     backgroundColor: '#42E12C',
 
@@ -63,6 +77,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
     position: 'relative',
+
+    zIndex: 10,
   },
   shuffleButtonText: {
     color: '#fff',
@@ -72,6 +88,10 @@ const styles = StyleSheet.create({
   downloadContainer: {
     borderColor: '#f00',
     borderWidth: 0,
+
+    backgroundColor: '#000',
+
+    zIndex: 10,
 
     height: 40,
     flexDirection: 'row',

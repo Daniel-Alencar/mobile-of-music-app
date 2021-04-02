@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   View, 
   ScrollView, 
@@ -8,6 +8,16 @@ import {
   Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import Animated, { 
+  useSharedValue, 
+  useAnimatedStyle, 
+  withTiming,
+  Easing,
+  interpolate,
+  Extrapolate,
+  withSequence
+} from 'react-native-reanimated';
 
 import playlist from '../../assets/playlists/playlist';
 
@@ -20,28 +30,62 @@ export default function PlaylistScreen() {
   const [switchValue, setSwitchValue] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
 
+  const [scrollY, setScrollY] = useState(0);
+
+  const imageStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(
+        scrollY,
+        [0, 200],
+        [1, 0],
+        Extrapolate.CLAMP
+      ),
+      height: interpolate(
+        scrollY,
+        [0, 200],
+        [170, 140],
+        Extrapolate.CLAMP
+      ),
+      width: interpolate(
+        scrollY,
+        [0, 200],
+        [170, 140],
+        Extrapolate.CLAMP
+      ),
+    }
+  });
+
+  function animationForImagePlaylist(event: any) {
+    const scrollY = event.nativeEvent.contentOffset.y
+    console.log(event.nativeEvent.contentOffset.y);
+
+    setScrollY(scrollY);
+  }
+
   return(
     <View style={styles.generalContainer}>
 
       <ScrollView
-        stickyHeaderIndices={[1]}
+        stickyHeaderIndices={[1,0]}
         showsVerticalScrollIndicator={false}
         overScrollMode="never" 
+        onScroll={animationForImagePlaylist}
+        
       >
       
-        <LinearGradient colors={['#000','#464779',"#000"]}>
-
-          <View style={{ height: 0, width: '100%' }}></View>
+        <LinearGradient style={styles.linearGradient} colors={['#464779',"#000"]}>
 
           <View style={styles.shortInformationsContainer}>
 
-            <Image 
+            <Animated.Image 
               source={require('../../assets/images/Playlist/playlistDefault.png')}
-              style={styles.playlistImage}
+              style={[styles.playlistImage, imageStyle, {  }]}
             />
+
             <Text style={styles.playlistName}>
               Playlist
             </Text>
+
             <TouchableOpacity
               style={styles.followButton}
               onPress={() => setIsFollowing(!isFollowing)}
@@ -55,7 +99,7 @@ export default function PlaylistScreen() {
               </Text>
             </TouchableOpacity>
 
-        </View>
+          </View>
 
         </LinearGradient>
         
@@ -66,6 +110,8 @@ export default function PlaylistScreen() {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <View style={{ height: 30, width: '100%', backgroundColor: '#000', zIndex: 10 }}></View>
 
         <View style={styles.downloadContainer}>
           <Text style={styles.downloadText}>

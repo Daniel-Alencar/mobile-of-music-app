@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
 
     borderWidth: 0,
     borderColor: "#f00",
+
+    backgroundColor: '#000',
+
+    zIndex: 10,
   },
   musicButton: {
     flexDirection: 'row',
