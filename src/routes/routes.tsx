@@ -3,13 +3,16 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import StackMusic from './StackNavigation';
+import App from './app.routes';
+import Auth from './auth.routes';
 
 export default function Routes() {
+  const verificar = true;
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StackMusic />
+        {verificar ? <Auth /> : <App />}
       </NavigationContainer>
     </SafeAreaProvider>
   );

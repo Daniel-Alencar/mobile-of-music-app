@@ -3,16 +3,16 @@ import { View, StyleSheet, Text } from 'react-native';
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import SearchScreen from "../pages/SearchScreen/SearchScreen";
-import TabsOfLibraryScreen from "./TopTabNavigation";
-import HomeStack from './HomeStack';
+import AppSearchScreen from "../pages/SearchScreen";
+import AppLibraryScreen from "./AppLibraryScreen";
+import AppHomeScreen from './AppHomeScreen';
 
 import { Feather } from '@expo/vector-icons';
 
 import MusicBar from '../components/MusicBar';
 
 const Bottom = createBottomTabNavigator();
-export default function BottomsOfAllApp() {
+export default function AppMainScreen() {
   return(
     <>
       <Bottom.Navigator
@@ -40,13 +40,13 @@ export default function BottomsOfAllApp() {
               let iconName = 'circle';
 
               switch (route.name) {
-                case 'HomeStack':
+                case 'AppHomeScreen':
                   iconName = 'headphones';
                   break;
-                case 'SearchScreen':
+                case 'AppSearchScreen':
                   iconName = 'search';
                   break;
-                case 'LibraryScreen':
+                case 'AppLibraryScreen':
                   iconName = 'user';
                   break;
               }
@@ -56,13 +56,13 @@ export default function BottomsOfAllApp() {
               let string;
 
               switch (route.name) {
-                case 'HomeStack':
+                case 'AppHomeScreen':
                   string = 'Tela inicial';
                   break;
-                case 'SearchScreen':
+                case 'AppSearchScreen':
                   string = 'Pesquisa';
                   break;
-                case 'LibraryScreen':
+                case 'AppLibraryScreen':
                   string = 'Seus salvos';
                   break;
                 default:
@@ -78,27 +78,27 @@ export default function BottomsOfAllApp() {
         }}
       >
         <Bottom.Screen 
-          name="HomeStack" 
-          component={HomeStack}
+          name="AppHomeScreen" 
+          component={AppHomeScreen}
         />
 
         <Bottom.Screen 
-          name="SearchScreen" 
-          component={SearchScreen} 
+          name="AppSearchScreen" 
+          component={AppSearchScreen} 
         />
 
         <Bottom.Screen 
-          name="LibraryScreen" 
-          component={TabsOfLibraryScreen} 
+          name="AppLibraryScreen" 
+          component={AppLibraryScreen} 
         />
       </Bottom.Navigator>
 
       {
       true 
-      ? <View style={styles.musicBarContainer}>
-          <MusicBar/>
-        </View>
-      : undefined
+        ? <View style={styles.musicBarContainer}>
+            <MusicBar/>
+          </View>
+        : undefined
       }
     </>
   );

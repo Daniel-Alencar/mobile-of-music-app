@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { PanGestureHandler } from 'react-native-gesture-handler';
+
 import Animated, { 
   useSharedValue, 
   useAnimatedStyle, 
@@ -16,7 +18,8 @@ import Animated, {
   Easing,
   interpolate,
   Extrapolate,
-  withSequence
+  withSequence,
+  useAnimatedGestureHandler
 } from 'react-native-reanimated';
 
 import playlist from '../../assets/playlists/playlist';

@@ -2,15 +2,15 @@ import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from '../pages/HomeScreen/HomeScreen';
+import HomeScreen from '../pages/HomeScreen';
 import PlaylistScreen from '../pages/PlaylistScreen';
 import ArtistDetailsScreen from '../pages/ArtistDetailsScreen';
-import SettingsScreen from '../pages/SettingsScreen/SettingsScreen';
+import SettingsScreen from '../pages/SettingsScreen';
 
 import Header from '../components/Header';
 
 const Stack = createStackNavigator();
-export default function HomeStack() {
+export default function AppHomeScreen() {
   return(
     <>
       <Stack.Navigator 

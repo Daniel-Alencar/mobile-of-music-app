@@ -258,7 +258,7 @@ function MusicScreen() {
       ? 
         () => {
           console.log('Descarregando o som');
-          sound.unloadAsync();
+          // sound.unloadAsync();
         }
       : 
         undefined;

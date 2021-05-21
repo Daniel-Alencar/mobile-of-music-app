@@ -11,7 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { windowWidth } from '../settingsDefault';
 
 const Tab = createMaterialTopTabNavigator();
-export default function TabsOfLibraryScreen() {
+export default function AppLibraryScreen() {
   
   const insets = useSafeAreaInsets();
   return(
