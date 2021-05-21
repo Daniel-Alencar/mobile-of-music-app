@@ -10,7 +10,16 @@ import {
 
 import {Feather} from '@expo/vector-icons';
 
+import { useAuth } from '../../context/auth';
+
 export default function SettingsScreen() {
+
+  const { signOut } = useAuth();
+
+  function handleSignOut() {
+    signOut();
+  }
+
   return (
     <View style={styles.container}>
 
@@ -55,6 +64,19 @@ export default function SettingsScreen() {
               <Feather name="chevron-right" color='#fff' size={20}/>
             </View>
 
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={{ 
+              height: 50, 
+              width: '100%', 
+              marginTop: 10, 
+              justifyContent: 'center', 
+              alignItems: 'center',
+              backgroundColor: '#f00'
+            }}
+            onPress={handleSignOut}
+          >
+            <Text>Sign out</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

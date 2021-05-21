@@ -1,5 +1,12 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { 
+  ScrollView, 
+  StyleSheet, 
+  View, 
+  Dimensions, 
+  TouchableOpacity, 
+  StatusBar 
+} from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';

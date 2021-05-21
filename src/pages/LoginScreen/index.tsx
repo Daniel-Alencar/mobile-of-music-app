@@ -4,10 +4,10 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import { signIn } from '../../services/auth';
 import styles from './style';
 
-import AuthContext from '../../context/auth';
+import { useAuth } from '../../context/auth';
 
 export default function LoginScreen() {
-  const { signed } = useContext(AuthContext);
+  const { signed } = useAuth();
 
   async function handleSignIn() {
     const response = await signIn();
