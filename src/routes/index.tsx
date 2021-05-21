@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,9 +11,10 @@ import { useAuth } from '../context/auth';
 
 export default function Routes() {
   const { signed, loading } = useAuth();
-  console.log(signed);
+  console.log('Tem alguém logado? ' + signed);
+  console.log('Está carregando? ' + loading);
 
-  if(!loading) {
+  if(loading) {
     return(
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size={50} color="#666"/>
@@ -24,7 +25,7 @@ export default function Routes() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        {signed ? <AuthRoutes /> : <AppRoutes />}
+        {signed ? <AppRoutes /> : <AuthRoutes />}
       </NavigationContainer>
     </SafeAreaProvider>
   );

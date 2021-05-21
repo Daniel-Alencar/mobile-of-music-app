@@ -14,7 +14,8 @@ import { useAuth } from '../../context/auth';
 
 export default function SettingsScreen() {
 
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
+  console.log('SettingsScreens => Quem é o usuário? ' + user);
 
   function handleSignOut() {
     signOut();
@@ -55,7 +56,7 @@ export default function SettingsScreen() {
                 fontSize: 20,
                 color: '#fff',
               }}>
-                Daniel Alencar
+                { user?.name }
               </Text>
 
             </View>
