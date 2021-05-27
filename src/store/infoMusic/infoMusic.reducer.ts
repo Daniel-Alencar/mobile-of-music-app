@@ -13,6 +13,10 @@ function infoMusic(state = INICIAL_STATE, action: any) {
       return {
         key: action.key
       }
+    case 'SET_INITIAL_CONFIGURATION':
+      return {
+        key: action.key
+      }
 
     default:
       return state;

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import MusicScreen from '../pages/MusicScreen';
 import AppMainScreen from './AppMainScreen';
 
+import { setSettingsInAudio, prepareNewSound } from '../pages/Music';
+
 const Stack = createStackNavigator();
 export default function App() {
+
+  useEffect(() => {
+    setSettingsInAudio().then((response) => {
+      // prepareNewSound();
+    });
+  },[]);
+
   return(
     <>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

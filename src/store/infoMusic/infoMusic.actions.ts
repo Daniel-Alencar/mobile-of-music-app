@@ -12,3 +12,10 @@ export function toggleMusicAndArtist(key: number) {
     key: key
   };
 }
+
+export function setInitialConfiguration(key: boolean) {
+  return {
+    type: 'SET_INITIAL_CONFIGURATION',
+    key: key
+  }
+}

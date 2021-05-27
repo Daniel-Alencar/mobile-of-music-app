@@ -1,15 +1,12 @@
 import React from 'react';
 import { 
   FlatList, 
-  NativeSyntheticEvent, 
-  NativeScrollEvent, 
   Image, 
   View 
 } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Audio, AVPlaybackStatus } from 'expo-av';
 
 import songs from '../songsOfPlaylist';
 
@@ -29,24 +26,12 @@ import Slider from './Slider';
 
 import ChevronIcon from './icons/ChevronIcon/ChevronIcon';
 import MoreVertIcon from './icons/MoreVerIcon/MoreVertIcon';
-import PauseIcon from './icons/PauseIcon/PauseIcon';
 import PlayIcon from './icons/PlayIcon/PlayIcon';
 
-import { useDispatch } from 'react-redux';
-import * as sliderValueActions from '../../store/sliderValue/sliderValue.actions';
-import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
-
-import { maxSliderValue, windowWidth } from '../../settingsDefault';
-
 // =====================================================================================
-
 // =====================================================================================
 
 function MusicScreen() {
-  const dispatch = useDispatch();
-
-  
-
   // ==================================================================
 
   const navigation = useNavigation();
@@ -55,8 +40,6 @@ function MusicScreen() {
   }
 
   // ==================================================================
-
-  
   // =====================================================================================
 
   function renderImageFromFlatList({item}: any) {
@@ -69,12 +52,8 @@ function MusicScreen() {
       </View>
     );
   }
-
-
-
+  
   // ==================================================================
-
-
   // ==================================================================
 
   return(
