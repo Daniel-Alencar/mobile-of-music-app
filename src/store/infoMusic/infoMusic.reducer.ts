@@ -1,8 +1,10 @@
 const INICIAL_STATE = {
-  key: 0
+  key: 0,
+  playing: false,
 }
 
 function infoMusic(state = INICIAL_STATE, action: any) {
+  console.log(action);
 
   switch(action.type) {
     case 'SET_INITIAL_MUSIC':
@@ -13,9 +15,9 @@ function infoMusic(state = INICIAL_STATE, action: any) {
       return {
         key: action.key
       }
-    case 'SET_INITIAL_CONFIGURATION':
+    case 'PLAY_MUSIC':
       return {
-        key: action.key
+        playing: action.playing
       }
 
     default:

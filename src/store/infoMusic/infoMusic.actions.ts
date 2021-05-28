@@ -13,9 +13,9 @@ export function toggleMusicAndArtist(key: number) {
   };
 }
 
-export function setInitialConfiguration(key: boolean) {
+export function playMusic(playing: boolean) {
   return {
-    type: 'SET_INITIAL_CONFIGURATION',
-    key: key
+    type: 'PLAY_MUSIC',
+    playing: playing
   }
 }

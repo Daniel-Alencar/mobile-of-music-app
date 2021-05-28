@@ -9,10 +9,10 @@ import {
 
 import styles from './style';
 
-import { useNavigation } from '@react-navigation/native';
-
 import FavoriteButton from '../../../components/FavoriteButton';
 
+import { useDispatch } from 'react-redux';
+import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
 
 interface propsMusicContainer {
   musicName: string,
@@ -23,17 +23,17 @@ interface propsMusicContainer {
 }
 
 function MusicContainer(props: propsMusicContainer) {
-  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  function handleNavigateToMusicScreen() {
-    navigation.navigate('MusicScreen');
+  function playMusic() {
+    dispatch(infoMusicActions.playMusic(true));
   }
 
   return(
     <View style={styles.musicContainer}>
       <TouchableOpacity 
         style={styles.musicButton}
-        onPress={handleNavigateToMusicScreen}
+        onPress={playMusic}
       >
         
         {props.centerTextMusic ? 

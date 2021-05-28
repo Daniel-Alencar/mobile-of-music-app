@@ -11,8 +11,9 @@ const Stack = createStackNavigator();
 export default function App() {
 
   useEffect(() => {
-    setSettingsInAudio().then((response) => {
-      // prepareNewSound();
+    setSettingsInAudio()
+      .then(() => {
+        prepareNewSound();
     });
   },[]);
 

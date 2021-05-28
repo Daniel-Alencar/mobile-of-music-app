@@ -11,8 +11,18 @@ import { Feather } from '@expo/vector-icons';
 
 import MusicBar from '../components/MusicBar';
 
+import { useSelector } from 'react-redux';
+
 const Bottom = createBottomTabNavigator();
 export default function AppMainScreen() {
+
+  const propsFromRedux = useSelector((state: any) => {
+    return {
+      playing: state.infoMusic.playing,
+    }
+  });
+  console.log('está tocando? ' + propsFromRedux.playing);
+
   return(
     <>
       <Bottom.Navigator
@@ -94,11 +104,11 @@ export default function AppMainScreen() {
       </Bottom.Navigator>
 
       {
-      true 
-        ? <View style={styles.musicBarContainer}>
-            <MusicBar/>
-          </View>
-        : undefined
+        propsFromRedux.playing 
+          ? <View style={styles.musicBarContainer}>
+              <MusicBar/>
+            </View>
+          : undefined
       }
     </>
   );
