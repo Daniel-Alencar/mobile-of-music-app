@@ -15,7 +15,7 @@ function infoMusic(state = INICIAL_STATE, action: any) {
       return {
         key: action.key
       }
-    case 'PLAY_MUSIC':
+    case 'PLAY_OR_PAUSE_MUSIC':
       return {
         playing: action.playing
       }

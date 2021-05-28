@@ -13,9 +13,9 @@ export function toggleMusicAndArtist(key: number) {
   };
 }
 
-export function playMusic(playing: boolean) {
+export function playOrPauseMusic(playing: boolean) {
   return {
-    type: 'PLAY_MUSIC',
+    type: 'PLAY_OR_PAUSE_MUSIC',
     playing: playing
   }
 }

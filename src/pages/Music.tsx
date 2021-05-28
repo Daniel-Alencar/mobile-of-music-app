@@ -1,7 +1,7 @@
-import { Audio } from 'expo-av';
+import { Audio,  } from 'expo-av';
 import songs from './songsOfPlaylist';
 
-let musicSong;
+let musicSong: Audio.Sound; 
 let playing = false;
 
 export async function setSettingsInAudio() {
@@ -46,12 +46,16 @@ export async function playOrPauseMusic() {
   }
 }
 
-export function playSound() {
+export async function playSound() {
   console.log('Tocando o áudio');
   playing = true;
+
+  await musicSong?.playAsync();
 }
 
-export function pauseSound() {
+export async function pauseSound() {
   console.log('Pausando o áudio');
   playing = false;
+
+  await musicSong?.pauseAsync();
 }

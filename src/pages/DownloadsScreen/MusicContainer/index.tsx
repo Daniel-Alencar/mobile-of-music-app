@@ -13,6 +13,7 @@ import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
 import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
+import { playSound } from '../../Music';
 
 interface propsMusicContainer {
   musicName: string,
@@ -26,7 +27,8 @@ function MusicContainer(props: propsMusicContainer) {
   const dispatch = useDispatch();
 
   function playMusic() {
-    dispatch(infoMusicActions.playMusic(true));
+    playSound();
+    dispatch(infoMusicActions.playOrPauseMusic(true));
   }
 
   return(
