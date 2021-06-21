@@ -26,7 +26,7 @@ export async function prepareNewSound()  {
         shouldPlay: false,
         progressUpdateIntervalMillis: 1000,
       },
-      onPlayBackStatusUpdate,
+      null,
       true
     );
     console.log('Áudio preparado');
@@ -36,6 +36,26 @@ export async function prepareNewSound()  {
     console.log('ERRO no carregamento do áudio\n' + error + '\n\n');
   }
 }
+
+// export async function prepareNewSoundOfPlaylist(index: number)  {
+//   console.log('Carregando o áudio');
+//   try {
+//     const { sound } = await Audio.Sound.createAsync(
+//       songs[index].musicSource,
+//       { 
+//         shouldPlay: false,
+//         progressUpdateIntervalMillis: 1000,
+//       },
+//       null,
+//       true
+//     );
+//     console.log('Áudio preparado');
+//     musicSong = sound;
+
+//   } catch(error) {
+//     console.log('ERRO no carregamento do áudio\n' + error + '\n\n');
+//   }
+// }
 
 export async function playSound() {
   await musicSong?.playAsync();
@@ -47,22 +67,6 @@ export async function pauseSound() {
 
 export async function getStatusFromSong() {
   return musicSong.getStatusAsync();
-}
-
-export function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
-  let position: number;
-
-  PlaybackStatus.isLoaded ? 
-    (
-      PlaybackStatus.positionMillis === undefined ?
-        position = 0
-      :
-        position = PlaybackStatus.positionMillis
-    )
-  :
-    position = 0
-  
-  console.log("# " + position);
 }
 
 export function getCurrentMilliseconds(PlaybackStatus: AVPlaybackStatus) {

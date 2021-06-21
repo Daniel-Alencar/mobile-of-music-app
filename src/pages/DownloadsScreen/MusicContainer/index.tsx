@@ -21,12 +21,15 @@ interface propsMusicContainer {
   centerTextMusic?: boolean,
   artistName: string,
   isFavorite: boolean,
+  indexOfMusicInArray: number,
 }
 
 function MusicContainer(props: propsMusicContainer) {
   const dispatch = useDispatch();
 
   async function playMusic() {
+    dispatch(infoMusicActions.toggleMusicAndArtist(props.indexOfMusicInArray));
+
     dispatch(infoMusicActions.playOrPauseMusic(true));
     dispatch(infoMusicActions.setSongsIncomplete(true));
     await playSound();
@@ -53,7 +56,7 @@ function MusicContainer(props: propsMusicContainer) {
                 {props.musicName}
               </Text>
               <Text style={styles.artistText}>
-                John Mayer
+                {props.artistName}
               </Text>
             </View>
           </>

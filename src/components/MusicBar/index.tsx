@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
@@ -15,8 +15,7 @@ import songs from '../../pages/songsOfPlaylist';
 import { windowWidth } from '../../settingsDefault';
 import { pauseSound, playSound } from '../../pages/Music';
 
-import { musicSong, onPlayBackStatusUpdate } from '../../pages/Music';
-import { AVPlaybackStatus } from 'expo-av';
+import { musicSong } from '../../pages/Music';
 
 function MusicBar() {
 
@@ -25,8 +24,10 @@ function MusicBar() {
     return {
       playing: state.infoMusic.playing,
       sliderValue: state.sliderValue,
+      indexOfMusicInArray: state.infoMusic.key
     }
   });
+  console.log("! " + propsFromRedux.indexOfMusicInArray);
 
   async function pauseMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
@@ -61,7 +62,7 @@ function MusicBar() {
         if(currentSeconds && durationSeconds) {
           setCurrentSecondsOfMusic(currentSeconds);
           setWidth(Math.floor(currentSeconds * windowWidth / durationSeconds));
-          
+
           console.log("* " + currentSeconds);
           console.log("- " + width);
         }
@@ -87,21 +88,21 @@ function MusicBar() {
 
         <View style={styles.leftContainer}>
           <Image 
-            source={{ uri:songs[0].imageSource }}
+            source={{ uri:songs[propsFromRedux.indexOfMusicInArray].imageSource }}
             style={styles.musicImage}
           />
           <View style={styles.textContainer}>
             <Text style={styles.musicName}>
-              {songs[0].name}
+              {songs[propsFromRedux.indexOfMusicInArray].name}
             </Text>
             <Text style={styles.artistName}>
-              {songs[0].artist}
+              {songs[propsFromRedux.indexOfMusicInArray].artist}
             </Text>
           </View>
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={songs[0].favorite}
+            isFavorite={songs[propsFromRedux.indexOfMusicInArray].favorite}
           />
           {
             propsFromRedux.playing ?
