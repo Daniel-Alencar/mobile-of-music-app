@@ -1,5 +1,5 @@
 const INICIAL_STATE = {
-  value: 50
+  value: 0
 }
 
 function sliderValue(state = INICIAL_STATE, action: any) {

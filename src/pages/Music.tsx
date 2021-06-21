@@ -1,8 +1,7 @@
-import { Audio,  } from 'expo-av';
+import { Audio, AVPlaybackStatus } from 'expo-av';
 import songs from './songsOfPlaylist';
 
-let musicSong: Audio.Sound; 
-let playing = false;
+export let musicSong: Audio.Sound; 
 
 export async function setSettingsInAudio() {
   try {
@@ -27,7 +26,7 @@ export async function prepareNewSound()  {
         shouldPlay: false,
         progressUpdateIntervalMillis: 1000,
       },
-      null,
+      onPlayBackStatusUpdate,
       true
     );
     console.log('Áudio preparado');
@@ -38,22 +37,62 @@ export async function prepareNewSound()  {
   }
 }
 
-export async function playOrPauseMusic() {
-  if(playing) {
-    await pauseSound();
-  } else {
-    await playSound();
-  }
-}
-
 export async function playSound() {
-  playing = true;
-
   await musicSong?.playAsync();
 }
 
 export async function pauseSound() {
-  playing = false;
-
   await musicSong?.pauseAsync();
+}
+
+export async function getStatusFromSong() {
+  return musicSong.getStatusAsync();
+}
+
+export function onPlayBackStatusUpdate(PlaybackStatus: AVPlaybackStatus) {
+  let position: number;
+
+  PlaybackStatus.isLoaded ? 
+    (
+      PlaybackStatus.positionMillis === undefined ?
+        position = 0
+      :
+        position = PlaybackStatus.positionMillis
+    )
+  :
+    position = 0
+  
+  console.log("# " + position);
+}
+
+export function getCurrentMilliseconds(PlaybackStatus: AVPlaybackStatus) {
+  let position: number;
+
+  PlaybackStatus.isLoaded ? 
+    (
+      PlaybackStatus.positionMillis === undefined ?
+        position = 0
+      :
+        position = PlaybackStatus.positionMillis
+    )
+  :
+    position = 0
+  
+  return position;
+}
+
+export function getMilliseconds(PlaybackStatus: AVPlaybackStatus) {
+  let position: number;
+
+  PlaybackStatus.isLoaded ? 
+    (
+      PlaybackStatus.durationMillis === undefined ?
+        position = 0
+      :
+        position = PlaybackStatus.durationMillis
+    )
+  :
+    position = 0
+  
+  return position;
 }
