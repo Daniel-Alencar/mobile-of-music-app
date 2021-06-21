@@ -26,9 +26,10 @@ interface propsMusicContainer {
 function MusicContainer(props: propsMusicContainer) {
   const dispatch = useDispatch();
 
-  function playMusic() {
-    playSound();
+  async function playMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(true));
+    dispatch(infoMusicActions.setSongsIncomplete(true));
+    await playSound();
   }
 
   return(

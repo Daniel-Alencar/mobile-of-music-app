@@ -47,14 +47,12 @@ export async function playOrPauseMusic() {
 }
 
 export async function playSound() {
-  console.log('Tocando o áudio');
   playing = true;
 
   await musicSong?.playAsync();
 }
 
 export async function pauseSound() {
-  console.log('Pausando o áudio');
   playing = false;
 
   await musicSong?.pauseAsync();

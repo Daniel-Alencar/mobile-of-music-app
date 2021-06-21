@@ -17,5 +17,12 @@ export function playOrPauseMusic(playing: boolean) {
   return {
     type: 'PLAY_OR_PAUSE_MUSIC',
     playing: playing
-  }
+  };
+}
+
+export function setSongsIncomplete(incomplete: boolean) {
+  return {
+    type: 'ARE_THE_SONGS_INCOMPLETE',
+    incomplete: incomplete
+  };
 }

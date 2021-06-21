@@ -18,10 +18,9 @@ export default function AppMainScreen() {
 
   const propsFromRedux = useSelector((state: any) => {
     return {
-      playing: state.infoMusic.playing,
+      incompleteSong: state.infoMusic.incomplete
     }
   });
-  console.log('está tocando? ' + propsFromRedux.playing);
 
   return(
     <>
@@ -104,7 +103,7 @@ export default function AppMainScreen() {
       </Bottom.Navigator>
 
       {
-        propsFromRedux.playing 
+        propsFromRedux.incompleteSong
           ? <View style={styles.musicBarContainer}>
               <MusicBar/>
             </View>

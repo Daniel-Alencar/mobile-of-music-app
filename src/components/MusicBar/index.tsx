@@ -7,7 +7,7 @@ import styles from './style';
 
 import FavoriteButton from '../FavoriteButton';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
 
 import songs from '../../pages/songsOfPlaylist';
@@ -19,15 +19,13 @@ function MusicBar() {
 
   const dispatch = useDispatch();
 
-  // const propsFromRedux = useSelector((state: any) => {
-  //   return {
-  //     keyOfMusic: state.infoMusic.key,
-  //     value: state.sliderValue.value
-  //   }
-  // });
-
   function convertValueFromSliderToWidth(valueFromSlider: number) {
     return valueFromSlider * windowWidth / maxSliderValue;
+  }
+
+  async function pauseMusic() {
+    dispatch(infoMusicActions.playOrPauseMusic(false));
+    await pauseSound();
   }
 
   return (
@@ -54,10 +52,7 @@ function MusicBar() {
           <FavoriteButton
             isFavorite={songs[0].favorite}
           />
-          <TouchableOpacity style={styles.playAndPauseButton} onPress={() => {
-            dispatch(infoMusicActions.playOrPauseMusic(false));
-            pauseSound();
-          }}>
+          <TouchableOpacity style={styles.playAndPauseButton} onPress={pauseMusic}>
             <Feather name={'play'} color='#fff' size={25}/>
           </TouchableOpacity>
         </View>
