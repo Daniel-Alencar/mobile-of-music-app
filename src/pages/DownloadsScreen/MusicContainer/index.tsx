@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 
 interface propsMusicContainer {
   musicName: string,
-  imageSource?: ImageSourcePropType,
+  imageSource?: string,
   centerTextMusic?: boolean,
   artistName: string,
   isFavorite: boolean,
@@ -61,7 +61,9 @@ function MusicContainer(props: propsMusicContainer) {
           <>
             <Image
               source={
-                props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
+                {
+                  uri: props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
+                }
               }
               style={styles.imageMusic}
               
@@ -79,9 +81,8 @@ function MusicContainer(props: propsMusicContainer) {
           <>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Image
-                source={
-                  props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
-                }
+                source={{ uri: props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
+                }}
                 style={styles.imageMusic}
               />
 

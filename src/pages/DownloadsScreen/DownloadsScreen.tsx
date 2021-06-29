@@ -19,6 +19,7 @@ export default function DownloadsScreen() {
                   isFavorite={song.favorite}
                   centerTextMusic
                   indexOfMusicInArray={index}
+                  imageSource={song.imageSource}
                 />
               );
             })}
