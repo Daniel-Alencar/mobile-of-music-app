@@ -80,3 +80,8 @@ export function getMilliseconds(PlaybackStatus: AVPlaybackStatus) {
   
   return position;
 }
+
+export function convertMillisInSeconds(millis: number | undefined) {
+  if(millis)
+    return Math.floor(millis / 1000);
+}

@@ -13,7 +13,7 @@ import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
 import songs from '../../pages/songsOfPlaylist';
 
 import { windowWidth } from '../../settingsDefault';
-import { pauseSound, playSound } from '../../pages/Music';
+import { convertMillisInSeconds, pauseSound, playSound } from '../../pages/Music';
 
 import { musicSong } from '../../pages/Music';
 
@@ -23,11 +23,9 @@ function MusicBar() {
   const propsFromRedux = useSelector((state: any) => {
     return {
       playing: state.infoMusic.playing,
-      sliderValue: state.sliderValue,
       indexOfMusicInArray: state.infoMusic.key
     }
   });
-  console.log("! " + propsFromRedux.indexOfMusicInArray);
 
   async function pauseMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
@@ -44,12 +42,9 @@ function MusicBar() {
   const [width, setWidth] = useState(0);
   const [currentSecondsOfMusic, setCurrentSecondsOfMusic] = useState(0);
 
-  function convertMillisInSeconds(millis: number | undefined) {
-    if(millis)
-      return Math.floor(millis / 1000);
-  }
-
   async function convertMillisecondsOfMusicToWidth() {
+    console.log("=> convertMillisecondsOfMusicToWidth");
+
     const statusOfMusic = await musicSong.getStatusAsync();
     if(statusOfMusic.isLoaded) {
       let durationMillis = statusOfMusic.durationMillis;
@@ -62,14 +57,10 @@ function MusicBar() {
         if(currentSeconds && durationSeconds) {
           setCurrentSecondsOfMusic(currentSeconds);
           setWidth(Math.floor(currentSeconds * windowWidth / durationSeconds));
-
-          console.log("* " + currentSeconds);
-          console.log("- " + width);
         }
       }
     }
   }
-
   musicSong.setOnPlaybackStatusUpdate(convertMillisecondsOfMusicToWidth);
 
   // ====================================================================================
