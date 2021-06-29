@@ -13,7 +13,7 @@ export default function App() {
   useEffect(() => {
     setSettingsInAudio()
       .then(() => {
-        prepareNewSound();
+        prepareNewSound(0, false);
     });
   },[]);
 

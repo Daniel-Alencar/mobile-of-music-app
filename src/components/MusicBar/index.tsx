@@ -106,12 +106,12 @@ function MusicBar() {
           />
           {
             propsFromRedux.playing ?
-              <TouchableOpacity style={styles.playAndPauseButton} onPress={playMusic}>
-                <Feather name={'play'} color='#fff' size={25}/>
-              </TouchableOpacity>
-            :
               <TouchableOpacity style={styles.playAndPauseButton} onPress={pauseMusic}>
                 <Feather name={'pause'} color='#fff' size={25}/>
+              </TouchableOpacity>
+            :
+              <TouchableOpacity style={styles.playAndPauseButton} onPress={playMusic}>
+                <Feather name={'play'} color='#fff' size={25}/>
               </TouchableOpacity>
           }
           
