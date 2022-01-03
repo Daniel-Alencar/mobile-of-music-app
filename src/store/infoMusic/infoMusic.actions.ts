@@ -1,4 +1,3 @@
-
 export function setInitialMusic(key: number) {
   return {
     type: 'SET_INITIAL_MUSIC',
@@ -24,5 +23,12 @@ export function setSongsIncomplete(incomplete: boolean) {
   return {
     type: 'ARE_THE_SONGS_INCOMPLETE',
     incomplete: incomplete
+  };
+}
+
+export function changeFavorite(isFavorite: boolean) {
+  return {
+    type: 'CHANGE_FAVORITE',
+    isFavorite: isFavorite
   };
 }

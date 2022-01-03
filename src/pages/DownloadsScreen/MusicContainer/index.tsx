@@ -14,7 +14,9 @@ import FavoriteButton from '../../../components/FavoriteButton';
 import { useDispatch } from 'react-redux';
 import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
 import { musicSong, playSound, prepareNewSound } from '../../Music';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import songs from '../../songsOfPlaylist';
 
 interface propsMusicContainer {
   musicName: string,
@@ -22,10 +24,16 @@ interface propsMusicContainer {
   centerTextMusic?: boolean,
   artistName: string,
   isFavorite: boolean,
-  indexOfMusicInArray: number,
+  indexOfMusicInArray: number
 }
 
 function MusicContainer(props: propsMusicContainer) {
+
+  const [isFavorite, setIsFavorite] = useState(props.isFavorite);
+  useEffect(() => {
+    setIsFavorite(props.isFavorite);
+  }, [props.isFavorite]);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -98,7 +106,8 @@ function MusicContainer(props: propsMusicContainer) {
           </>
         }
         <FavoriteButton 
-          isFavorite={props.isFavorite}
+          isFavorite={isFavorite}
+          indexOfMusic={props.indexOfMusicInArray}
         />
 
       </TouchableOpacity>

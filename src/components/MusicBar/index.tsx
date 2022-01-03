@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
@@ -26,6 +26,11 @@ function MusicBar() {
       indexOfMusicInArray: state.infoMusic.key
     }
   });
+
+  const [isFavorite, setIsFavorite] = useState(songs[propsFromRedux.indexOfMusicInArray].favorite);
+  useEffect(() => {
+    setIsFavorite(songs[propsFromRedux.indexOfMusicInArray].favorite);
+  }, [songs[propsFromRedux.indexOfMusicInArray].favorite]);
 
   async function pauseMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
@@ -93,7 +98,8 @@ function MusicBar() {
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={songs[propsFromRedux.indexOfMusicInArray].favorite}
+            isFavorite={isFavorite}
+            indexOfMusic={propsFromRedux.indexOfMusicInArray}
           />
           {
             propsFromRedux.playing ?

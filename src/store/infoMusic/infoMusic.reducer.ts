@@ -28,6 +28,11 @@ function infoMusic(state = INICIAL_STATE, action: any) {
         ...state,
         incomplete: action.incomplete
       }
+    case 'CHANGE_FAVORITE':
+      return {
+        ...state,
+        isFavorite: action.isFavorite
+      }
 
     default:
       return state;
