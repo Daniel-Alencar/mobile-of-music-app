@@ -3,8 +3,7 @@ import {
   View, 
   TouchableOpacity, 
   Image, 
-  Text, 
-  ImageSourcePropType 
+  Text
 } from 'react-native';
 
 import styles from './style';
@@ -13,10 +12,8 @@ import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
 import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
-import { musicSong, playSound, prepareNewSound } from '../../Music';
+import { musicSong, prepareNewSound } from '../../Music';
 import { useEffect, useState } from 'react';
-
-import songs from '../../songsOfPlaylist';
 
 interface propsMusicContainer {
   musicName: string,
@@ -35,15 +32,6 @@ function MusicContainer(props: propsMusicContainer) {
   }, [props.isFavorite]);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    musicSong 
-    ? () => {
-      console.log('Unloading Sound');
-      musicSong.unloadAsync(); }
-    : undefined;
-  }, [musicSong]);
-
   async function playMusic() {
     const status = await musicSong.getStatusAsync();
 
@@ -89,7 +77,8 @@ function MusicContainer(props: propsMusicContainer) {
           <>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Image
-                source={{ uri: props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
+                source={{ 
+                  uri: props.imageSource ? props.imageSource : require('../../../assets/images/Music/musicDefault.jpg')
                 }}
                 style={styles.imageMusic}
               />

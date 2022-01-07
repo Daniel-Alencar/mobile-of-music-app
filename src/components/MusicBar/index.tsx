@@ -19,7 +19,6 @@ import { musicSong } from '../../pages/Music';
 
 function MusicBar() {
 
-  const dispatch = useDispatch();
   const propsFromRedux = useSelector((state: any) => {
     return {
       playing: state.infoMusic.playing,
@@ -27,11 +26,7 @@ function MusicBar() {
     }
   });
 
-  const [isFavorite, setIsFavorite] = useState(songs[propsFromRedux.indexOfMusicInArray].favorite);
-  useEffect(() => {
-    setIsFavorite(songs[propsFromRedux.indexOfMusicInArray].favorite);
-  }, [songs[propsFromRedux.indexOfMusicInArray].favorite]);
-
+  const dispatch = useDispatch();
   async function pauseMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
     await pauseSound();
@@ -71,7 +66,7 @@ function MusicBar() {
   // ====================================================================================
 
   return (
-    <>
+    <TouchableOpacity>
       <View 
         style={{ 
           width: width, 
@@ -98,7 +93,7 @@ function MusicBar() {
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={isFavorite}
+            isFavorite={songs[propsFromRedux.indexOfMusicInArray].favorite}
             indexOfMusic={propsFromRedux.indexOfMusicInArray}
           />
           {
@@ -114,7 +109,7 @@ function MusicBar() {
           
         </View>
       </View>
-    </>
+    </TouchableOpacity>
   );
 }
 

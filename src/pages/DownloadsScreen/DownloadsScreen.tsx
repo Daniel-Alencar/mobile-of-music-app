@@ -6,18 +6,12 @@ import DefaultScreen from '../../components/DefaultScreen';
 import songs from '../songsOfPlaylist';
 
 export default function DownloadsScreen() {
-
-  const [sounds, setSounds] = useState(songs);
-  useEffect(() => {
-    setSounds(songs);
-  }, [songs]);
-
   return (
     <>
       <DefaultScreen 
         content={
           <>
-            {sounds.map((song, index) => {
+            {songs.map((song, index) => {
               return (
                 <MusicContainer 
                   key={song.key}

@@ -22,15 +22,7 @@ export default function FavoriteButton(props: propsFavoriteButton) {
     setIsFavorite(props.isFavorite);
   }, [props.isFavorite]);
 
-  // const dispatch = useDispatch();
-  // const propsFromRedux = useSelector((state: any) => {
-  //   return {
-  //     isFavorite: state.infoMusic.isFavorite
-  //   }
-  // });
-
   function toggleFavorite() {
-    // dispatch(infoMusicActions.changeFavorite(!isFavorite));
     songs[props.indexOfMusic].favorite = !isFavorite;
     setIsFavorite(!isFavorite);
   }
