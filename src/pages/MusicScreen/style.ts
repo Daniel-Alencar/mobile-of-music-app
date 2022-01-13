@@ -97,10 +97,7 @@ PlayerArea.Content.Info.Author = styled.Text`
   font-size: 14px;
 `;
 
-
-PlayerArea.Content.FavoriteButton = styled(FavoriteButton)`
-
-`;
+PlayerArea.Content.FavoriteButton = styled(FavoriteButton)``;
 
 // =======================================================
 

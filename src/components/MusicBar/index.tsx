@@ -10,8 +10,14 @@ import FavoriteButton from '../FavoriteButton';
 import { StateReducerData } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { playOrPauseMusic } from '../../store/MusicInformation/MusicInformation.actions';
+import { useNavigation } from '@react-navigation/native';
 
 function MusicBar() {
+
+  const navigation = useNavigation()
+  function handleToMusicScreen() {
+    navigation.navigate('MusicScreen', { fromMusicBar: true });
+  }
 
   const propsFromRedux = useSelector((state: StateReducerData) => {
     return {
@@ -37,7 +43,9 @@ function MusicBar() {
   // ====================================================================================
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={handleToMusicScreen}
+    >
       <View 
         style={{ 
           width: width, 

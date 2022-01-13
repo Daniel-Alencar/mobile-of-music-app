@@ -6,6 +6,7 @@ import HomeScreen from '../pages/HomeScreen';
 import PlaylistScreen from '../pages/PlaylistScreen';
 import ArtistDetailsScreen from '../pages/ArtistDetailsScreen';
 import SettingsScreen from '../pages/SettingsScreen';
+import MusicScreen from '../pages/MusicScreen';
 
 import Header from '../components/Header';
 
@@ -38,6 +39,11 @@ export default function AppHomeScreen() {
           name="SettingsScreen" 
           component={SettingsScreen}
           options={{ headerShown: true, header: () => <Header title="Configurações"/> }}  
+        />
+        <Stack.Screen 
+          name="MusicScreen" 
+          component={MusicScreen}
+          options={{ headerShown: false, header: () => <Header title="Tela de Música"/> }}  
         />
       </Stack.Navigator>
     </>
