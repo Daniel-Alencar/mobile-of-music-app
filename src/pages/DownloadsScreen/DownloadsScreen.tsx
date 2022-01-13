@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import MusicContainer from './MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
 
-import songs from '../../assets/playlists/songsOfPlaylist';
+import { useSelector } from 'react-redux';
+import { StateReducerData } from '../../store';
 
-export default function DownloadsScreen() {
+function DownloadsScreen() {
+
+  const songs = useSelector((state: StateReducerData) => {
+    return state.MusicPlaylist;
+  });
+
   return (
     <>
       <DefaultScreen 
@@ -32,3 +38,5 @@ export default function DownloadsScreen() {
     </>
   );
 }
+
+export default DownloadsScreen;

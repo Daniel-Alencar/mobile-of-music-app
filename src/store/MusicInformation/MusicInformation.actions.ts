@@ -6,23 +6,10 @@ export function toggleMusicAndArtist(indexOfMusic: number) {
   };
 }
 
-export function playOrPauseMusic(playing: boolean) {
+export function playOrPauseMusic(playing: boolean, index: number) {
   return {
     type: 'PLAY_OR_PAUSE_MUSIC',
+    index: index,
     playing: playing
-  };
-}
-
-export function setSongsIncomplete(incomplete: boolean) {
-  return {
-    type: 'ARE_THE_SONGS_INCOMPLETE',
-    incomplete: incomplete
-  };
-}
-
-export function changeFavorite(isFavorite: boolean) {
-  return {
-    type: 'CHANGE_FAVORITE',
-    isFavorite: isFavorite
   };
 }

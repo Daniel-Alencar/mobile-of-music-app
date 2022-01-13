@@ -18,17 +18,14 @@ export default function(state = INICIAL_STATE, action: any) {
     case 'PLAY_OR_PAUSE_MUSIC':
       return {
         ...state,
-        playing: action.playing
+        playing: action.playing,
+        indexOfMusic: action.index,
+        incomplete: true
       }
     case 'ARE_THE_SONGS_INCOMPLETE':
       return {
         ...state,
         incomplete: action.incomplete
-      }
-    case 'CHANGE_FAVORITE':
-      return {
-        ...state,
-        isFavorite: action.isFavorite
       }
 
     default:

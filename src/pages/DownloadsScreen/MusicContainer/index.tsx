@@ -13,8 +13,7 @@ import styles from './style';
 import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
-import { addMusicInLastPosition, clearPlaylist } from '../../../store/MusicPlaylist/MusicPlaylist.actions';
-import { playOrPauseMusic } from '../../../store/MusicInformation/MusicInformation.actions';
+import { playOrPauseMusic, toggleMusicAndArtist } from '../../../store/MusicInformation/MusicInformation.actions';
 
 interface propsMusicContainer {
   musicName: string,
@@ -45,9 +44,8 @@ function MusicContainer(props: propsMusicContainer) {
 
   const dispatch = useDispatch();
   function playMusic() {
-    dispatch(clearPlaylist());
-    dispatch(addMusicInLastPosition(song, 0));
-    dispatch(playOrPauseMusic(true));
+    dispatch(toggleMusicAndArtist(props.indexOfMusicInArray))
+    dispatch(playOrPauseMusic(true, props.indexOfMusicInArray));
   }
 
   return(

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
@@ -9,11 +9,7 @@ import FavoriteButton from '../FavoriteButton';
 
 import { StateReducerData } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
-import * as infoMusicActions from '../../store/MusicInformation/MusicInformation.actions';
-
-import songs from '../../assets/playlists/songsOfPlaylist';
-
-import { windowWidth } from '../../settingsDefault';
+import { playOrPauseMusic } from '../../store/MusicInformation/MusicInformation.actions';
 
 function MusicBar() {
 
@@ -24,13 +20,13 @@ function MusicBar() {
     }
   });
 
-  const dispatch = useDispatch();
-  async function pauseMusic() {
-    dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
-  }
+  const musicPlaylist = useSelector((state: StateReducerData) => {
+    return state.MusicPlaylist;
+  })
 
-  async function playMusic() {
-    dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
+  const dispatch = useDispatch();
+  function playOrPauseTheSong(playing: boolean, index: number) {
+    dispatch(playOrPauseMusic(playing, index));
   }
 
   // ====================================================================================
@@ -54,30 +50,34 @@ function MusicBar() {
 
         <View style={styles.leftContainer}>
           <Image 
-            source={{ uri:songs[propsFromRedux.indexOfMusic].imageSource }}
+            source={{ uri:musicPlaylist[propsFromRedux.indexOfMusic].imageSource }}
             style={styles.musicImage}
           />
           <View style={styles.textContainer}>
             <Text style={styles.musicName}>
-              {songs[propsFromRedux.indexOfMusic].name}
+              {musicPlaylist[propsFromRedux.indexOfMusic].name}
             </Text>
             <Text style={styles.artistName}>
-              {songs[propsFromRedux.indexOfMusic].artist}
+              {musicPlaylist[propsFromRedux.indexOfMusic].artist}
             </Text>
           </View>
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={songs[propsFromRedux.indexOfMusic].favorite}
+            isFavorite={musicPlaylist[propsFromRedux.indexOfMusic].favorite}
             indexOfMusic={propsFromRedux.indexOfMusic}
           />
           {
             propsFromRedux.playing ?
-              <TouchableOpacity style={styles.playAndPauseButton} onPress={pauseMusic}>
+              <TouchableOpacity style={styles.playAndPauseButton} onPress={
+                () => playOrPauseTheSong(false, propsFromRedux.indexOfMusic)
+              }>
                 <Feather name={'pause'} color='#fff' size={25}/>
               </TouchableOpacity>
             :
-              <TouchableOpacity style={styles.playAndPauseButton} onPress={playMusic}>
+              <TouchableOpacity style={styles.playAndPauseButton} onPress={
+                () => playOrPauseTheSong(true, propsFromRedux.indexOfMusic)
+              }>
                 <Feather name={'play'} color='#fff' size={25}/>
               </TouchableOpacity>
           }

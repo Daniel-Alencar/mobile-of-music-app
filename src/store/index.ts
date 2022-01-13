@@ -11,7 +11,7 @@ export interface MusicData {
   key: string,
   name: string,
   artist: string,
-  favorite: boolean
+  favorite: boolean,
 }
 
 export interface MusicInformation {

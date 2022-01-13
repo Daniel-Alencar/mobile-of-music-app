@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import songs from '../assets/playlists/songsOfPlaylist';
-
-import { useDispatch, useSelector } from 'react-redux';
-import * as infoMusicActions from '../store/MusicInformation/MusicInformation.actions';
-
 import { Feather } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import { changeFavorite } from '../store/MusicPlaylist/MusicPlaylist.actions';
 
 interface propsFavoriteButton {
   isFavorite: boolean,
@@ -17,13 +14,14 @@ interface propsFavoriteButton {
 export default function FavoriteButton(props: propsFavoriteButton) {
 
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
-
   useEffect(() => {
     setIsFavorite(props.isFavorite);
   }, [props.isFavorite]);
 
+  const dispatch = useDispatch();
+
   function toggleFavorite() {
-    songs[props.indexOfMusic].favorite = !isFavorite;
+    dispatch(changeFavorite(props.indexOfMusic));
     setIsFavorite(!isFavorite);
   }
   
