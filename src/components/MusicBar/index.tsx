@@ -10,12 +10,9 @@ import FavoriteButton from '../FavoriteButton';
 import { useDispatch, useSelector } from 'react-redux';
 import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
 
-import songs from '../../pages/songsOfPlaylist';
+import songs from '../../assets/playlists/songsOfPlaylist';
 
 import { windowWidth } from '../../settingsDefault';
-import { convertMillisInSeconds, pauseSound, playSound } from '../../pages/Music';
-
-import { musicSong } from '../../pages/Music';
 
 function MusicBar() {
 
@@ -29,39 +26,16 @@ function MusicBar() {
   const dispatch = useDispatch();
   async function pauseMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
-    await pauseSound();
   }
 
   async function playMusic() {
     dispatch(infoMusicActions.playOrPauseMusic(!propsFromRedux.playing));
-    await playSound();
   }
 
   // ====================================================================================
 
   const [width, setWidth] = useState(0);
   const [currentSecondsOfMusic, setCurrentSecondsOfMusic] = useState(0);
-
-  async function convertMillisecondsOfMusicToWidth() {
-    console.log("=> convertMillisecondsOfMusicToWidth");
-
-    const statusOfMusic = await musicSong.getStatusAsync();
-    if(statusOfMusic.isLoaded) {
-      let durationMillis = statusOfMusic.durationMillis;
-      let currentMillis = statusOfMusic.positionMillis;
-
-      let durationSeconds = convertMillisInSeconds(durationMillis);
-      let currentSeconds = convertMillisInSeconds(currentMillis);
-
-      if(currentSeconds !== currentSecondsOfMusic) {
-        if(currentSeconds && durationSeconds) {
-          setCurrentSecondsOfMusic(currentSeconds);
-          setWidth(Math.floor(currentSeconds * windowWidth / durationSeconds));
-        }
-      }
-    }
-  }
-  musicSong.setOnPlaybackStatusUpdate(convertMillisecondsOfMusicToWidth);
 
   // ====================================================================================
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import songs from '../pages/songsOfPlaylist';
+import songs from '../assets/playlists/songsOfPlaylist';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as infoMusicActions from '../store/infoMusic/infoMusic.actions';

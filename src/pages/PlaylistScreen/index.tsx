@@ -22,7 +22,7 @@ import Animated, {
   useAnimatedGestureHandler
 } from 'react-native-reanimated';
 
-import playlist from '../../assets/playlists/playlist';
+import songs from '../../assets/playlists/songsOfPlaylist';
 
 import MusicContainer from '../DownloadsScreen/MusicContainer';
 
@@ -136,9 +136,10 @@ export default function PlaylistScreen() {
         </View>
 
         {
-          playlist.map((song) => {
+          songs.map((song, index) => {
             return(
               <MusicContainer 
+                indexOfMusicInArray={index}
                 key={song.key}
                 musicName={song.name}
                 artistName={song.artist}

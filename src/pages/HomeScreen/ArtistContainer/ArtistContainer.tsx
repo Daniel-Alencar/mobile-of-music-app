@@ -20,7 +20,6 @@ export default function ArtistContainer(props: propsArtistContainer) {
 
   const navigation = useNavigation();
   const handleToArtistDetailsScreen = () => {
-    navigation.navigate('ArtistDetailsScreen');
   }
 
   return (

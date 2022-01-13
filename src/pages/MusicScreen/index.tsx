@@ -8,7 +8,7 @@ import {
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import songs from '../songsOfPlaylist';
+import songs from '../../assets/playlists/songsOfPlaylist';
 
 import {
   TopBar, 

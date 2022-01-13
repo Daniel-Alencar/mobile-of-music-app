@@ -12,7 +12,6 @@ import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
 import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
-import { musicSong, prepareNewSound } from '../../Music';
 import { useEffect, useState } from 'react';
 
 interface propsMusicContainer {
@@ -33,17 +32,6 @@ function MusicContainer(props: propsMusicContainer) {
 
   const dispatch = useDispatch();
   async function playMusic() {
-    const status = await musicSong.getStatusAsync();
-
-    if(status.isLoaded && status.isPlaying) {
-      await musicSong.stopAsync();
-    }
-
-    dispatch(infoMusicActions.toggleMusicAndArtist(props.indexOfMusicInArray));
-    dispatch(infoMusicActions.playOrPauseMusic(true));
-    dispatch(infoMusicActions.setSongsIncomplete(true));
-
-    await prepareNewSound(props.indexOfMusicInArray, true);
   }
 
   return(

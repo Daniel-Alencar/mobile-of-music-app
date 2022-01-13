@@ -1,7 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 
 import infoMusic from './infoMusic/infoMusic.reducer';
-import sliderValue from './sliderValue/sliderValue.reducer';
 
 export interface StateReducerData {
   infoMusicData: {
@@ -16,7 +15,6 @@ export interface StateReducerData {
 
 const rootReducer = combineReducers({
   infoMusic,
-  sliderValue
 });
 
 const store = createStore(rootReducer);

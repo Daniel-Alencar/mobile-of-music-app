@@ -5,17 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MusicScreen from '../pages/MusicScreen';
 import AppMainScreen from './AppMainScreen';
 
-import { setSettingsInAudio, prepareNewSound } from '../pages/Music';
-
 const Stack = createStackNavigator();
 export default function App() {
-
-  useEffect(() => {
-    setSettingsInAudio()
-      .then(() => {
-        prepareNewSound(0, false);
-    });
-  },[]);
 
   return(
     <>

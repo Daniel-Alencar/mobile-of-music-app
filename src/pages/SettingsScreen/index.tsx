@@ -10,15 +10,9 @@ import {
 
 import {Feather} from '@expo/vector-icons';
 
-import { useAuth } from '../../context/auth';
-
 export default function SettingsScreen() {
 
-  const { signOut, user } = useAuth();
-  console.log('SettingsScreens => Quem é o usuário? ' + user);
-
   function handleSignOut() {
-    signOut();
   }
 
   return (
@@ -56,7 +50,7 @@ export default function SettingsScreen() {
                 fontSize: 20,
                 color: '#fff',
               }}>
-                { user?.name }
+                { "Daniel" }
               </Text>
 
             </View>

@@ -1,16 +1,12 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 
-import { useAuth } from '../../context/auth';
-
 import styles from './style';
 
 export default function LoginScreen() {
-  const { signed, signIn } = useAuth();
-  console.log('LoginScreen => Tem alguém logado? ' + signed);
+  const { signed } = { signed: true }
 
   function handleSignIn() {
-    signIn();
   }
 
   return(

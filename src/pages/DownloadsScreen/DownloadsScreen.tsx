@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import MusicContainer from './MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
 
-import songs from '../songsOfPlaylist';
+import songs from '../../assets/playlists/songsOfPlaylist';
 
 export default function DownloadsScreen() {
   return (
