@@ -8,7 +8,7 @@ import styles from './style';
 import FavoriteButton from '../FavoriteButton';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as infoMusicActions from '../../store/infoMusic/infoMusic.actions';
+import * as infoMusicActions from '../../store/MusicInformation/MusicInformation.actions';
 
 import songs from '../../assets/playlists/songsOfPlaylist';
 

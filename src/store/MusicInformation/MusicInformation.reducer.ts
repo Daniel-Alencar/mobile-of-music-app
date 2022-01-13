@@ -1,22 +1,19 @@
-const INICIAL_STATE = {
-  key: 0,
+import { MusicInformation } from "../index";
+
+const INICIAL_STATE: MusicInformation = {
+  indexOfMusic: 0,
   playing: false,
   incomplete: false,
 }
 
-function infoMusic(state = INICIAL_STATE, action: any) {
+export default function(state = INICIAL_STATE, action: any) {
   console.log(action);
 
   switch(action.type) {
-    case 'SET_INITIAL_MUSIC':
-      return {
-        ...state,
-        key: action.key
-      }
     case 'TOOGLE_MUSIC_AND_ARTIST':
       return {
         ...state,
-        key: action.key
+        indexOfMusic: action.indexOfMusic
       }
     case 'PLAY_OR_PAUSE_MUSIC':
       return {
@@ -38,5 +35,3 @@ function infoMusic(state = INICIAL_STATE, action: any) {
       return state;
   }
 }
-
-export default infoMusic;

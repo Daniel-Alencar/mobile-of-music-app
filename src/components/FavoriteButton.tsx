@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import songs from '../assets/playlists/songsOfPlaylist';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as infoMusicActions from '../store/infoMusic/infoMusic.actions';
+import * as infoMusicActions from '../store/MusicInformation/MusicInformation.actions';
 
 import { Feather } from '@expo/vector-icons';
 

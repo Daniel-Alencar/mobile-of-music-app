@@ -1,22 +1,37 @@
 import { createStore, combineReducers } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import infoMusic from './infoMusic/infoMusic.reducer';
+import MusicInformation from './MusicInformation/MusicInformation.reducer';
+
+export interface MusicData {
+  imageSource: string,
+  musicSource: any,
+  key: string,
+  name: string,
+  artist: string,
+  favorite: boolean
+}
+
+export interface MusicInformation {
+  indexOfMusic: number,
+  playing: boolean,
+  incomplete: boolean
+}
 
 export interface StateReducerData {
-  infoMusicData: {
-    key: number,
-    playing: boolean,
-    incomplete: boolean,
-  },
-  sliderValueData: {
-    value: number,
-  }
+  MusicInformation: MusicInformation,
+  MusicPlaylist: MusicData[]
 }
 
 const rootReducer = combineReducers({
-  infoMusic,
+  MusicInformation: MusicInformation
 });
 
-const store = createStore(rootReducer);
+const persistedReducer = persistReducer({
+  key: 'root',
+  storage: storage
+}, rootReducer);
 
-export default store;
+export const store = createStore(persistedReducer);
+export const persistedStore = persistStore(store);

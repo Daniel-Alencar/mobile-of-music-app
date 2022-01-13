@@ -11,7 +11,7 @@ import styles from './style';
 import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
-import * as infoMusicActions from '../../../store/infoMusic/infoMusic.actions';
+import * as infoMusicActions from '../../../store/MusicInformation/MusicInformation.actions';
 import { useEffect, useState } from 'react';
 
 interface propsMusicContainer {
