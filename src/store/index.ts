@@ -1,11 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import MusicInformation from './MusicInformation/MusicInformation.reducer';
+import MusicInformationReducer from './MusicInformation/MusicInformation.reducer';
+import MusicPlaylistReducer from './MusicPlaylist/MusicPlaylist.reducer';
 
 export interface MusicData {
-  imageSource: string,
+  imageSource?: string,
   musicSource: any,
   key: string,
   name: string,
@@ -25,12 +26,13 @@ export interface StateReducerData {
 }
 
 const rootReducer = combineReducers({
-  MusicInformation: MusicInformation
+  MusicInformation: MusicInformationReducer,
+  MusicPlaylist: MusicPlaylistReducer
 });
 
 const persistedReducer = persistReducer({
   key: 'root',
-  storage: storage
+  storage: AsyncStorage
 }, rootReducer);
 
 export const store = createStore(persistedReducer);

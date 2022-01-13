@@ -12,13 +12,14 @@ import { Feather } from '@expo/vector-icons';
 import MusicBar from '../components/MusicBar';
 
 import { useSelector } from 'react-redux';
+import { StateReducerData } from '../store';
 
 const Bottom = createBottomTabNavigator();
 export default function AppMainScreen() {
 
-  const propsFromRedux = useSelector((state: any) => {
+  const propsFromRedux = useSelector((state: StateReducerData) => {
     return {
-      incompleteSong: state.infoMusic.incomplete
+      incompleteSong: state.MusicInformation.incomplete
     }
   });
 

@@ -15,19 +15,20 @@ export default function DownloadsScreen() {
               return (
                 <MusicContainer 
                   key={song.key}
+                  keyValue={song.key}
                   musicName={song.name}
                   artistName={song.artist}
                   isFavorite={song.favorite}
                   centerTextMusic
                   indexOfMusicInArray={index}
                   imageSource={song.imageSource}
+                  musicSource={song.musicSource}
                 />
               );
             })}
           </>
         }
       />
-
     </>
   );
 }

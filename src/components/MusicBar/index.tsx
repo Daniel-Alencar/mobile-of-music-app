@@ -7,6 +7,7 @@ import styles from './style';
 
 import FavoriteButton from '../FavoriteButton';
 
+import { StateReducerData } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import * as infoMusicActions from '../../store/MusicInformation/MusicInformation.actions';
 
@@ -16,10 +17,10 @@ import { windowWidth } from '../../settingsDefault';
 
 function MusicBar() {
 
-  const propsFromRedux = useSelector((state: any) => {
+  const propsFromRedux = useSelector((state: StateReducerData) => {
     return {
-      playing: state.infoMusic.playing,
-      indexOfMusicInArray: state.infoMusic.key
+      playing: state.MusicInformation.playing,
+      indexOfMusic: state.MusicInformation.indexOfMusic
     }
   });
 
@@ -53,22 +54,22 @@ function MusicBar() {
 
         <View style={styles.leftContainer}>
           <Image 
-            source={{ uri:songs[propsFromRedux.indexOfMusicInArray].imageSource }}
+            source={{ uri:songs[propsFromRedux.indexOfMusic].imageSource }}
             style={styles.musicImage}
           />
           <View style={styles.textContainer}>
             <Text style={styles.musicName}>
-              {songs[propsFromRedux.indexOfMusicInArray].name}
+              {songs[propsFromRedux.indexOfMusic].name}
             </Text>
             <Text style={styles.artistName}>
-              {songs[propsFromRedux.indexOfMusicInArray].artist}
+              {songs[propsFromRedux.indexOfMusic].artist}
             </Text>
           </View>
         </View>
         <View style={styles.rightContainer}>
           <FavoriteButton
-            isFavorite={songs[propsFromRedux.indexOfMusicInArray].favorite}
-            indexOfMusic={propsFromRedux.indexOfMusicInArray}
+            isFavorite={songs[propsFromRedux.indexOfMusic].favorite}
+            indexOfMusic={propsFromRedux.indexOfMusic}
           />
           {
             propsFromRedux.playing ?

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+
 import { 
   View, 
   TouchableOpacity, 
@@ -11,19 +13,30 @@ import styles from './style';
 import FavoriteButton from '../../../components/FavoriteButton';
 
 import { useDispatch } from 'react-redux';
-import * as infoMusicActions from '../../../store/MusicInformation/MusicInformation.actions';
-import { useEffect, useState } from 'react';
+import { addMusicInLastPosition, clearPlaylist } from '../../../store/MusicPlaylist/MusicPlaylist.actions';
+import { playOrPauseMusic } from '../../../store/MusicInformation/MusicInformation.actions';
 
 interface propsMusicContainer {
   musicName: string,
+  keyValue: string,
   imageSource?: string,
+  musicSource: any,
   centerTextMusic?: boolean,
   artistName: string,
   isFavorite: boolean,
-  indexOfMusicInArray: number
+  indexOfMusicInArray: number,
 }
 
 function MusicContainer(props: propsMusicContainer) {
+
+  const song = {
+    name: props.musicName,
+    artist: props.artistName,
+    favorite: props.isFavorite,
+    musicSource: props.musicSource,
+    key: props.keyValue,
+    imageSource: props.imageSource
+  };
 
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   useEffect(() => {
@@ -31,7 +44,10 @@ function MusicContainer(props: propsMusicContainer) {
   }, [props.isFavorite]);
 
   const dispatch = useDispatch();
-  async function playMusic() {
+  function playMusic() {
+    dispatch(clearPlaylist());
+    dispatch(addMusicInLastPosition(song, 0));
+    dispatch(playOrPauseMusic(true));
   }
 
   return(
