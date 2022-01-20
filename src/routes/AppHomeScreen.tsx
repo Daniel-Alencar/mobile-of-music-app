@@ -11,6 +11,7 @@ import MusicScreen from '../pages/MusicScreen';
 import UserScreen from '../pages/UserScreen';
 import UploadMusicsScreen from '../pages/UploadMusicsScreen';
 import PlaylistChoiceScreen from '../pages/PlaylistChoiceScreen';
+import PlaylistCreationScreen from '../pages/PlaylistCreationScreen';
 
 import Header from '../components/Header';
 
@@ -74,6 +75,11 @@ export default function AppHomeScreen() {
           name="PlaylistChoiceScreen" 
           component={PlaylistChoiceScreen}
           options={{ headerShown: true, header: () => <Header title="Adicionando a uma playlist"/> }}  
+        />
+        <Stack.Screen 
+          name="PlaylistCreationScreen" 
+          component={PlaylistCreationScreen}
+          options={{ headerShown: true, header: () => <Header title="Criando Playlist"/> }}  
         />
       </Stack.Navigator>
     </>

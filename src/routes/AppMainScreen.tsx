@@ -105,9 +105,10 @@ export default function AppMainScreen() {
 
       {
         propsFromRedux.incompleteSong
-          ? <View style={styles.musicBarContainer}>
-              <MusicBar/>
-            </View>
+          // ? <View style={styles.musicBarContainer}>
+          //     <MusicBar/>
+          //   </View>
+          ? undefined
           : undefined
       }
     </>
