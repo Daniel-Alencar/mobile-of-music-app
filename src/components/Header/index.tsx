@@ -10,6 +10,8 @@ import styles from './style';
 interface propsHeader {
   title?: string,
   colors?: string[],
+  rightIcon?: string,
+  rightFunction?(): void,
 }
 
 export default function Header(props: propsHeader) {
@@ -33,9 +35,24 @@ export default function Header(props: propsHeader) {
           {props.title ? props.title : "Playlist"}
         </Text>
 
-        <TouchableOpacity style={styles.goBackButton}>
-          <Feather name="more-vertical" color="#fff" size={20}/>
-        </TouchableOpacity>
+        {
+          props.rightIcon
+          ? <TouchableOpacity 
+              style={styles.goBackButton}
+              onPress={
+                props.rightFunction
+                ? props.rightFunction
+                : () => {}
+              }
+            >
+              <Feather name={props.rightIcon} color="#fff" size={20}/>
+            </TouchableOpacity>
+          : <TouchableOpacity style={styles.goBackButton}>
+              <Feather name="more-vertical" color="#fff" size={20}/>
+            </TouchableOpacity>
+        }
+
+        
       </View>
     </SafeAreaView>
   );

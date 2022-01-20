@@ -9,11 +9,17 @@ import {
 } from 'react-native';
 
 import {Feather} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SettingsScreen() {
 
   function handleSignOut() {
   }
+
+  const navigate = useNavigation();
+  const handleToUserScreen = () => {
+    navigate.navigate('UserScreen');
+  };
 
   return (
     <View style={styles.container}>
@@ -21,6 +27,7 @@ export default function SettingsScreen() {
       <View style={styles.contentContainerView}>
         <ScrollView style={styles.contentContainer}>
           <TouchableOpacity 
+            onPress={handleToUserScreen}
             style={{ 
               height: 70, 
               width: '100%', 

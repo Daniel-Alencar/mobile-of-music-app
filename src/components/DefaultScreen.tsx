@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
+
+import { useDispatch } from 'react-redux';
 
 interface propsDefaultScreen {
   content: JSX.Element,
@@ -7,6 +9,7 @@ interface propsDefaultScreen {
 }
 
 export default function DefaultScreen(props: propsDefaultScreen) {
+
   return (
     <View style={styles.container}>
 

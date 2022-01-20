@@ -7,11 +7,17 @@ import PlaylistScreen from '../pages/PlaylistScreen';
 import ArtistDetailsScreen from '../pages/ArtistDetailsScreen';
 import SettingsScreen from '../pages/SettingsScreen';
 import MusicScreen from '../pages/MusicScreen';
+import UserScreen from '../pages/UserScreen';
+import UploadMusicsScreen from '../pages/UploadMusicsScreen';
 
 import Header from '../components/Header';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 export default function AppHomeScreen() {
+
+  const navigate = useNavigation()
+
   return(
     <>
       <Stack.Navigator 
@@ -44,6 +50,24 @@ export default function AppHomeScreen() {
           name="MusicScreen" 
           component={MusicScreen}
           options={{ headerShown: false, header: () => <Header title="Tela de Música"/> }}  
+        />
+        <Stack.Screen 
+          name="UserScreen" 
+          component={UserScreen}
+          options={{ 
+            headerShown: true, 
+            header: () => 
+              <Header 
+                title="Meu Perfil" 
+                rightIcon='file-plus'
+                rightFunction={() => navigate.navigate('UploadMusicsScreen')}
+              /> 
+          }}  
+        />
+        <Stack.Screen 
+          name="UploadMusicsScreen" 
+          component={UploadMusicsScreen}
+          options={{ headerShown: true, header: () => <Header title="Adicionando música"/> }}  
         />
       </Stack.Navigator>
     </>
