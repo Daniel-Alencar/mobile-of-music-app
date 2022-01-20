@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { windowWidth } from "../../settingsDefault";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -14,14 +13,13 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: '#f0f',
 
-    height: 100,
+    height: 170,
 
     alignItems: 'center',
-    justifyContent: 'center',
   },
   uploadMusicButton: {
     borderWidth: 0,
-    borderColor: '#f0f',
+    borderColor: '#f00',
 
     flexDirection: 'row',
     alignItems: 'center',
@@ -31,7 +29,8 @@ const styles = StyleSheet.create({
   },
   uploadMusicText: {
     color: '#fff',
-    fontSize: 18
+    fontSize: 18,
+    marginLeft: 10,
   },
 
   inputsContainer: {
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     width: '100%',
 
     alignItems: 'center',
-    justifyContent: 'center',
   },
   textOfTextInput: {
     color: '#fff',
@@ -55,25 +53,26 @@ const styles = StyleSheet.create({
 
     width: '90%',
     height: 50,
+
+    color: '#fff',
+
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   playlistPrivadaContainer: {
     borderWidth: 0,
     borderColor: '#00f',
 
-    height: 35,
+    height: 45,
 
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   selector: {
-    borderColor: '#fff',
-    borderWidth: 1,
-    borderRadius: 5,
-
     height: 18,
     width: 18,
 
-    marginRight: 5,
+    marginRight: 15,
   },
 
   buttonsContainer: {
