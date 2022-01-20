@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../pages/HomeScreen';
@@ -9,9 +10,9 @@ import SettingsScreen from '../pages/SettingsScreen';
 import MusicScreen from '../pages/MusicScreen';
 import UserScreen from '../pages/UserScreen';
 import UploadMusicsScreen from '../pages/UploadMusicsScreen';
+import PlaylistChoiceScreen from '../pages/PlaylistChoiceScreen';
 
 import Header from '../components/Header';
-import { useNavigation } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 export default function AppHomeScreen() {
@@ -68,6 +69,11 @@ export default function AppHomeScreen() {
           name="UploadMusicsScreen" 
           component={UploadMusicsScreen}
           options={{ headerShown: true, header: () => <Header title="Adicionando música"/> }}  
+        />
+        <Stack.Screen 
+          name="PlaylistChoiceScreen" 
+          component={PlaylistChoiceScreen}
+          options={{ headerShown: true, header: () => <Header title="Adicionando a uma playlist"/> }}  
         />
       </Stack.Navigator>
     </>
