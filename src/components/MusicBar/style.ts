@@ -1,9 +1,8 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
+import { MusicBarHeight, windowWidth } from '../../settingsDefault';
 
-const defaultDimension = 65;
 const defaultColorText = '#fff';
-const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4e4b4b',
 
     width: windowWidth,
-    height: defaultDimension,
+    height: MusicBarHeight,
   },
   leftContainer: {
     borderWidth: 0,
@@ -47,8 +46,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   musicImage: {
-    width: defaultDimension,
-    height: defaultDimension,
+    width: MusicBarHeight,
+    height: MusicBarHeight,
   },
 
   playAndPauseButton: {
