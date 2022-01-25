@@ -1,18 +1,13 @@
 import { StyleSheet } from "react-native";
 import { 
-  windowWidth, 
-  windowHeight, 
-  HeaderHeight, 
-  MusicBarHeight, 
-  NavigationBarHeight, 
-  SafeAreaViewHeight
+  windowWidth
 } from "../../settingsDefault";
 
 const styles = StyleSheet.create({
   pageContainer: {
     backgroundColor: '#000',
 
-    height: windowHeight - HeaderHeight - NavigationBarHeight - SafeAreaViewHeight - MusicBarHeight,
+    flex: 1,
   },
   mainInformationContainer: {
     borderColor: '#f0f',

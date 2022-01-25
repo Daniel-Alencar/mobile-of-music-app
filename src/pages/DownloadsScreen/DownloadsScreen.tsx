@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import MusicContainer from './MusicContainer';
 import DefaultScreen from '../../components/DefaultScreen';
 
 import { useSelector } from 'react-redux';
 import { StateReducerData } from '../../store';
+import { View } from 'react-native';
+import { MusicBarHeight } from '../../settingsDefault';
 
 function DownloadsScreen() {
 
-  const songs = useSelector((state: StateReducerData) => {
-    return state.MusicPlaylist;
+  const { songs, IncompleteSong } = useSelector((state: StateReducerData) => {
+    return {
+      songs: state.MusicPlaylist,
+      IncompleteSong: state.MusicInformation.incomplete
+    };
   });
 
   return (
@@ -35,6 +40,7 @@ function DownloadsScreen() {
           </>
         }
       />
+      <View style={{ height: IncompleteSong ? MusicBarHeight : 0 }}/>
     </>
   );
 }

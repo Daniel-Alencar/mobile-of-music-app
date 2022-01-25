@@ -1,7 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import {View, Dimensions, StyleSheet, ScrollView } from 'react-native';
-
-import { useDispatch } from 'react-redux';
 
 interface propsDefaultScreen {
   content: JSX.Element,
@@ -30,12 +28,11 @@ export default function DefaultScreen(props: propsDefaultScreen) {
 }
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000',
-    height: '100%',
+    flex: 1,
     width: windowWidth,
 
     borderColor: '#f0f',

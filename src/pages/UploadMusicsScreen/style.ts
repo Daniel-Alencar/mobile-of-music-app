@@ -2,6 +2,14 @@ import { StyleSheet } from "react-native";
 import { windowWidth } from "../../settingsDefault";
 
 const styles = StyleSheet.create({
+  generalContainer: {
+    backgroundColor: '#000',
+    flex: 1,
+
+    borderColor: '#ff0',
+    borderWidth: 0,
+  },
+
   uploadMusicView: {
     borderWidth: 0,
     borderColor: '#f0f',
@@ -27,13 +35,16 @@ const styles = StyleSheet.create({
   },
 
   musicsScrollView: {
-    height: '100%',
+    flex: 1,
+
+    borderWidth: 0,
+    borderColor: '#00f',
   },
 
   addPlaylistButton: {
     position: 'absolute',
     zIndex: 1,
-    bottom: 180,
+    bottom: 20,
     left: (windowWidth / 2) - (180 / 2),
 
     height: 65,

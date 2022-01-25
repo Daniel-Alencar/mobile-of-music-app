@@ -104,12 +104,10 @@ export default function AppMainScreen() {
       </Bottom.Navigator>
 
       {
-        propsFromRedux.incompleteSong
-          // ? <View style={styles.musicBarContainer}>
-          //     <MusicBar/>
-          //   </View>
-          ? undefined
-          : undefined
+        propsFromRedux.incompleteSong &&
+          <View style={styles.musicBarContainer}>
+            <MusicBar/>
+          </View>
       }
     </>
   );

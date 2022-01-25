@@ -7,8 +7,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import SearchBar from './SearchBar/SearchBar';
 import GenreContainer from './GenreContainer/GenreContainer';
+import { useSelector } from 'react-redux';
+import { StateReducerData } from '../../store';
+import { MusicBarHeight } from '../../settingsDefault';
 
 export default function SearchScreen() {
+
+  const IncompleteSong = useSelector((state: StateReducerData) => {
+    return state.MusicInformation.incomplete;
+  });
 
   const [fontsLoaded] = useFonts({
     Nunito_600SemiBold
@@ -19,56 +26,70 @@ export default function SearchScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <>
+      <SafeAreaView style={styles.container}>
 
-      <View style={styles.contentContainerView}>
-        <ScrollView 
-          style={styles.contentContainer} 
-          contentContainerStyle={{ 
-            borderWidth: 0, 
-            borderColor: '#0f0',
-          }}
-          showsVerticalScrollIndicator={false}
-          stickyHeaderIndices={[1]}
-        >
+        <View style={styles.contentContainerView}>
+          <ScrollView 
+            style={styles.contentContainer} 
+            contentContainerStyle={{ 
+              borderWidth: 0, 
+              borderColor: '#0f0',
+            }}
+            showsVerticalScrollIndicator={false}
+            stickyHeaderIndices={[1]}
+          >
 
-          <View style={styles.searchTitleContainer} >
-            <Text style={styles.searchTitle}>
-              Explore
-            </Text>
-          </View>
-          
-          <SearchBar/>
+            <View style={styles.searchTitleContainer} >
+              <Text style={styles.searchTitle}>
+                Explore
+              </Text>
+            </View>
+            
+            <SearchBar/>
 
-          <View style={styles.genresContainer}>
-            <GenreContainer 
-              imageSource={require('../../assets/images/Genre/background-rock.jpg')}
-              name="Rock"
-            />
-            <GenreContainer 
-              imageSource={require('../../assets/images/Genre/background-jazz.jpg')}
-              name="Jazz"
-            />
-            <GenreContainer 
-              imageSource={require('../../assets/images/Genre/background-blues.jpg')}
-              name="Blues"
-            />
-          </View>
+            <View style={styles.genresContainer}>
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-rock.jpg')}
+                name="Rock"
+              />
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-jazz.jpg')}
+                name="Jazz"
+              />
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-blues.jpg')}
+                name="Blues"
+              />
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-rock.jpg')}
+                name="Rock"
+              />
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-jazz.jpg')}
+                name="Jazz"
+              />
+              <GenreContainer 
+                imageSource={require('../../assets/images/Genre/background-blues.jpg')}
+                name="Blues"
+              />
+            </View>
 
-        </ScrollView>
-      </View>
+          </ScrollView>
+        </View>
 
-    </SafeAreaView>
+      </SafeAreaView>
+      <View style={{ height: IncompleteSong ? MusicBarHeight : 0 }}/>
+    </>
   );
 }
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000',
-    height: '100%',
+    flex: 1,
     width: windowWidth,
 
     borderColor: '#f0f',
