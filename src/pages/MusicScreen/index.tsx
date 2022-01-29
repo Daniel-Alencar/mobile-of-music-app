@@ -4,6 +4,7 @@ import {
   Image, 
   NativeScrollEvent, 
   NativeSyntheticEvent, 
+  TouchableOpacity, 
   View 
 } from 'react-native';
 
@@ -95,6 +96,10 @@ function MusicScreen({ route }: any) {
   
   // ==================================================================
   // ==================================================================
+
+  const handleToActualPlaylistScreen = () => {
+    navigation.navigate('ActualPlaylistScreen');
+  };
 
   return(
     <Background 
@@ -196,7 +201,9 @@ function MusicScreen({ route }: any) {
                 <Feather name="skip-forward" color="#fff" size={27}/>
               </Controls.SkipForward>
               
-              <RepeatButton isClicked={false}/>
+              <TouchableOpacity onPress={handleToActualPlaylistScreen}>
+                <Feather name="align-justify" color={'#fff'} size={25}/>
+              </TouchableOpacity>
 
             </Controls>
           </ScreenArea>

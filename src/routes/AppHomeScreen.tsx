@@ -81,6 +81,11 @@ export default function AppHomeScreen() {
           component={PlaylistCreationScreen}
           options={{ headerShown: true, header: () => <Header title="Criando Playlist"/> }}  
         />
+        <Stack.Screen 
+          name="ActualPlaylistScreen" 
+          component={PlaylistCreationScreen}
+          options={{ headerShown: true, header: () => <Header title="Actual Playlist"/> }}  
+        />
       </Stack.Navigator>
     </>
   );
