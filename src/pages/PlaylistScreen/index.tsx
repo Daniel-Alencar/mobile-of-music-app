@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { 
   View, 
   ScrollView, 
@@ -7,66 +7,18 @@ import {
   Switch,
   Image,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-
-import { PanGestureHandler } from 'react-native-gesture-handler';
-
-import Animated, { 
-  useSharedValue, 
-  useAnimatedStyle, 
-  withTiming,
-  Easing,
-  interpolate,
-  Extrapolate,
-  withSequence,
-  useAnimatedGestureHandler
-} from 'react-native-reanimated';
-
-import songs from '../../assets/playlists/songsOfPlaylist';
-
-import MusicContainer from '../DownloadsScreen/MusicContainer';
 
 import styles from './style';
+
 import { useSelector } from 'react-redux';
 import { StateReducerData } from '../../store';
 import { MusicBarHeight } from '../../settingsDefault';
+import SimpleMusicContainer from '../UploadMusicsScreen/SimpleMusicContainer';
 
 export default function PlaylistScreen() {
 
   const [switchValue, setSwitchValue] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
-
-  const [scrollY, setScrollY] = useState(0);
-
-  const imageStyle = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(
-        scrollY,
-        [0, 200],
-        [1, 0],
-        Extrapolate.CLAMP
-      ),
-      height: interpolate(
-        scrollY,
-        [0, 200],
-        [170, 140],
-        Extrapolate.CLAMP
-      ),
-      width: interpolate(
-        scrollY,
-        [0, 200],
-        [170, 140],
-        Extrapolate.CLAMP
-      ),
-    }
-  });
-
-  function animationForImagePlaylist(event: any) {
-    const scrollY = event.nativeEvent.contentOffset.y
-    console.log(event.nativeEvent.contentOffset.y);
-
-    setScrollY(scrollY);
-  }
 
   // ===================================================================
 
@@ -79,28 +31,29 @@ export default function PlaylistScreen() {
       <View style={styles.generalContainer}>
 
         <ScrollView
-          stickyHeaderIndices={[1,0]}
+          stickyHeaderIndices={[1]}
           showsVerticalScrollIndicator={false}
           overScrollMode="never" 
-          onScroll={animationForImagePlaylist}
-          
         >
         
-          <LinearGradient style={styles.linearGradient} colors={['#464779',"#000"]}>
+          <View style={styles.linearGradient}>
 
             <View style={styles.shortInformationsContainer}>
 
-              <Animated.Image 
-                source={require('../../assets/images/Playlist/playlistDefault.png')}
-                style={[styles.playlistImage, imageStyle, {  }]}
+              <Image
+                source={require('../../assets/images/Playlist/Continuum.jpg')}
+                style={styles.playlistImage}
               />
 
               <Text style={styles.playlistName}>
-                Playlist
+                Evangélicas - Adoração
               </Text>
 
               <TouchableOpacity
-                style={styles.followButton}
+                style={{
+                  ...styles.followButton,
+                  borderColor: isFollowing ? '#42E12C' : '#fff',
+                }}
                 onPress={() => setIsFollowing(!isFollowing)}
               >
                 <Text style={{ color: '#fff', fontSize: 12 }}>
@@ -114,7 +67,7 @@ export default function PlaylistScreen() {
 
             </View>
 
-          </LinearGradient>
+          </View>
           
           <View style={styles.shuffleButtonContainer}>
             <TouchableOpacity style={styles.shuffleButton}>
@@ -133,17 +86,76 @@ export default function PlaylistScreen() {
 
             <Switch 
               value={switchValue}
-              onValueChange={() => setSwitchValue(!switchValue)}
+              onValueChange={(value) => setSwitchValue(value)}
               style={styles.switchButton}
-              thumbColor="#b0b0b0"
+              thumbColor={"#538631"}
               trackColor={{
                 false: "#818181",
-                true: "#818181"
+                true: "#81e014"
               }}
-            >
-
-            </Switch>
+            />
           </View>
+
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
+          <SimpleMusicContainer
+            rightIcon='more-vertical'
+            centerText={false}
+            rightFunction={() => {}}
+          />
 
         </ScrollView>
       </View>

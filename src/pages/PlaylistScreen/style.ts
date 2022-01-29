@@ -18,21 +18,20 @@ const styles = StyleSheet.create({
     borderColor: '#0ff',
     borderWidth: 0,
 
-    height: 300,
+    height: 270,
 
     alignItems: 'center',
     justifyContent: 'center',
 
     position: 'relative',
-    zIndex: 1,
   },
   playlistImage: {
-    height: 170,
-    width: 170,
+    height: 160,
+    width: 160,
   },
   playlistName: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 18,
 
     padding: 6,
   },
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#42E12C',
 
     height: 55,
-    width: 220,
+    width: 180,
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
   },
   shuffleButtonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 15,
   },
 
   downloadContainer: {
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   },
   downloadText: {
     color: '#fff',
-    padding: 20,
+    marginLeft: 20,
   },
   switchButton: {
     margin: 20,
