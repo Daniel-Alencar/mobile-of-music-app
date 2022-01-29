@@ -20,6 +20,10 @@ export default function UploadMusicsScreen() {
     return state.MusicInformation.incomplete;
   });
 
+  // ==================================================================
+
+  const removeMusic = () => {};
+
   return (
     <>
       <View style={styles.generalContainer}>
@@ -37,15 +41,11 @@ export default function UploadMusicsScreen() {
               paddingBottom: 100
             }}
           >
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
-            <SimpleMusicContainer />
+            <SimpleMusicContainer 
+              centerText
+              rightIcon="trash-2"
+              rightFunction={removeMusic}
+            />
           </ScrollView>
         </View>
 

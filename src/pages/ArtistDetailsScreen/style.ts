@@ -9,10 +9,14 @@ const styles = StyleSheet.create({
   },
 
   shortInformationsContainer: {
-    height: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
 
     borderWidth: 0,
     borderColor: "#f00",
+
+    height: 250,
+    width: '100%',
   },
   artistImage: {
     alignItems: 'center',
@@ -20,19 +24,20 @@ const styles = StyleSheet.create({
 
     borderWidth: 0,
     borderColor: "#f00",
+    borderRadius: 100,
 
-    height: '100%',
-    width: '100%',
+    height: 140,
+    width: 140,
   },
   artistName: {
     color: '#fff',
-    fontSize: 40,
+    fontSize: 22,
 
     padding: 6,
   },
   followButton: {
     borderColor: '#42E12C',
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 50,
 
     height: 25,
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#42E12C',
 
     height: 55,
-    width: 220,
+    width: 180,
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -68,7 +73,30 @@ const styles = StyleSheet.create({
   },
   shuffleButtonText: {
     color: '#fff',
+    fontSize: 15,
+  },
+
+  musicsView: { 
+    borderWidth: 0,
+    borderColor: "#f00",
+    width: '100%',
+
+    alignItems: 'center',
+
+    padding: 10
+  },
+  musicsViewText: { 
+    borderWidth: 0,
+    borderColor: "#f00",
+
+    width: '70%',
+    
+    color: '#fff',
     fontSize: 18,
+
+    alignItems:'center',
+    textAlign: 'center'
+
   },
 });
 

@@ -4,7 +4,8 @@ import {
   ScrollView, 
   TouchableOpacity, 
   ImageBackground,
-  Text
+  Text,
+  Image
 } from 'react-native';
 
 
@@ -14,6 +15,8 @@ import ArtistsContainer from '../HomeScreen/ArtistsContainer/ArtistsContainer';
 import { useSelector } from 'react-redux';
 import { StateReducerData } from '../../store';
 import { MusicBarHeight } from '../../settingsDefault';
+import MusicContainer from '../DownloadsScreen/MusicContainer';
+import SimpleMusicContainer from '../UploadMusicsScreen/SimpleMusicContainer';
 
 export default function ArtistDetailsScreen() {
 
@@ -36,26 +39,28 @@ export default function ArtistDetailsScreen() {
 
           <View style={styles.shortInformationsContainer}>
 
-            <ImageBackground
-              style={styles.artistImage}
+            <Image 
               source={require('../../assets/images/Artist/JohnMayer.png')}
+              style={styles.artistImage}
+            />
+            <Text style={styles.artistName}>
+              John Mayer
+            </Text>
+            <TouchableOpacity
+              style={{
+                ...styles.followButton,
+                borderColor: isFollowing ? '#42E12C' : '#fff',
+              }}
+              onPress={() => setIsFollowing(!isFollowing)}
             >
-              <Text style={styles.artistName}>
-                John Mayer
+              <Text style={{ color: '#fff', fontSize: 12 }}>
+              {
+                isFollowing
+                ? "FOLLOWING"
+                : "FOLLOW"
+              }
               </Text>
-              <TouchableOpacity
-                style={styles.followButton}
-                onPress={() => setIsFollowing(!isFollowing)}
-              >
-                <Text style={{ color: '#fff', fontSize: 12 }}>
-                {
-                  isFollowing
-                  ? "FOLLOWING"
-                  : "FOLLOW"
-                }
-                </Text>
-              </TouchableOpacity>
-            </ImageBackground>
+            </TouchableOpacity>
 
           </View>
 
@@ -67,8 +72,29 @@ export default function ArtistDetailsScreen() {
             </TouchableOpacity>
           </View>
 
+          <View style={styles.musicsView}>
+            <Text style={styles.musicsViewText}>Músicas recentemente adicionadas</Text>
+            <SimpleMusicContainer 
+              rightIcon='more-vertical'
+              rightFunction={() => {}}
+              centerText={false}
+            />
+            <SimpleMusicContainer 
+              rightIcon='more-vertical'
+              rightFunction={() => {}}
+              centerText={false}
+            />
+            <SimpleMusicContainer 
+              rightIcon='more-vertical'
+              rightFunction={() => {}}
+              centerText={false}
+            />
+          </View>
           <PlaylistsContainer 
-            title="Álbuns mais famosos"
+            title="Álbuns"
+          />
+          <PlaylistsContainer 
+            title="Playlists"
           />
           <ArtistsContainer 
             title="Artistas parecidos"

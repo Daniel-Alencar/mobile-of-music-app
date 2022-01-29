@@ -19,6 +19,7 @@ export default function PlaylistContainer(props: propsPlaylistContainer) {
 
   const navigation = useNavigation();
   const handleToPlaylistScreen = () => {
+    navigation.navigate('PlaylistScreen');
   }
   
   const defaultPlaylistImage = require('../../../assets/images/Playlist/playlistDefault.png');
