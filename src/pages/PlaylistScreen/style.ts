@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { windowWidth } from '../../settingsDefault';
 
 const styles = StyleSheet.create({
   generalContainer: {
@@ -14,11 +15,15 @@ const styles = StyleSheet.create({
     zIndex: -1,
     position: 'relative',
   },
+  flatList: {
+
+  },
   shortInformationsContainer: {
     borderColor: '#0ff',
     borderWidth: 0,
 
     height: 270,
+    width: windowWidth,
 
     alignItems: 'center',
     justifyContent: 'center',

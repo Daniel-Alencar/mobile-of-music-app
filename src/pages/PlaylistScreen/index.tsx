@@ -6,6 +6,7 @@ import {
   Text,
   Switch,
   Image,
+  FlatList,
 } from 'react-native';
 
 import styles from './style';
@@ -19,12 +20,81 @@ export default function PlaylistScreen() {
 
   const [switchValue, setSwitchValue] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [FlatListIndex, setFlatListIndex] = useState(true);
 
   // ===================================================================
 
   const IncompleteSong = useSelector((state: StateReducerData) => {
     return state.MusicInformation.incomplete;
   });
+
+  // ===================================================================
+
+  let components: JSX.Element[] = []
+  components.push(
+    <View style={styles.shortInformationsContainer}>
+      <Image
+        source={require('../../assets/images/Playlist/Continuum.jpg')}
+        style={styles.playlistImage}
+      />
+
+      <Text style={styles.playlistName}>
+        Evangélicas - Adoração
+      </Text>
+
+      <TouchableOpacity
+        style={{
+          ...styles.followButton,
+          borderColor: isFollowing ? '#42E12C' : '#fff',
+        }}
+        onPress={() => setIsFollowing(!isFollowing)}
+      >
+        <Text style={{ color: '#fff', fontSize: 12 }}>
+        {
+          isFollowing
+          ? "FOLLOWING"
+          : "FOLLOW"
+        }
+        </Text>
+      </TouchableOpacity>
+    </View>
+  )
+  components.push(
+    <View style={styles.shortInformationsContainer}>
+      <Image
+        source={require('../../assets/images/Artist/JohnMayer.png')}
+        style={{ height: 100, width: 100, borderRadius: 100 }}
+      />
+
+      <Text style={{
+        color: "#fff",
+        fontSize: 13,
+
+        margin: 15,
+        marginTop: 0
+      }}>
+        John Mayer
+      </Text>
+
+      <Text style={{ 
+        color: '#fff',
+        fontSize: 15,
+
+        width: '70%',
+
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        Músicas de louvor e adoração aquele que é digno de toda a glória
+      </Text>
+    </View>
+  )
+  const render = (index: number) => {
+    setFlatListIndex(index === 0 ? true : false);
+    return components[index];
+  };
+  
 
   return(
     <>
@@ -38,35 +108,42 @@ export default function PlaylistScreen() {
         
           <View style={styles.linearGradient}>
 
-            <View style={styles.shortInformationsContainer}>
+            <FlatList style={styles.flatList}
+              pagingEnabled
+              overScrollMode="never" 
+              showsHorizontalScrollIndicator={false}
+              horizontal
 
-              <Image
-                source={require('../../assets/images/Playlist/Continuum.jpg')}
-                style={styles.playlistImage}
-              />
+              data={components}
+              renderItem={({ index }) => render(index)}
+            />
 
-              <Text style={styles.playlistName}>
-                Evangélicas - Adoração
-              </Text>
+            <View style={{ 
+              height: 25, 
+              flexDirection: 'row', 
+              alignItems: 'center',  
+              justifyContent: 'center',
 
-              <TouchableOpacity
-                style={{
-                  ...styles.followButton,
-                  borderColor: isFollowing ? '#42E12C' : '#fff',
-                }}
-                onPress={() => setIsFollowing(!isFollowing)}
-              >
-                <Text style={{ color: '#fff', fontSize: 12 }}>
-                {
-                  isFollowing
-                  ? "FOLLOWING"
-                  : "FOLLOW"
-                }
-                </Text>
-              </TouchableOpacity>
-
+              borderWidth: 0,
+              borderColor: "#f00",
+              paddingBottom: 10
+            }}>
+              <View style={{ 
+                height: 10, 
+                width: 10, 
+                borderRadius: 100, 
+                backgroundColor: false ? '#818181' : '#fff',
+                margin: 2,
+              }}/>
+              <View style={{ 
+                height: 10, 
+                width: 10, 
+                borderRadius: 100, 
+                backgroundColor: false ? '#fff' : '#818181',
+                margin: 2,
+              }}/>
             </View>
-
+            
           </View>
           
           <View style={styles.shuffleButtonContainer}>
