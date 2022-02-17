@@ -35,6 +35,7 @@ import { StateReducerData } from '../../store';
 import { playOrPauseMusic, toggleMusicAndArtist } from '../../store/MusicInformation/MusicInformation.actions';
 
 import { windowWidth } from '../../settingsDefault';
+import PlaylistIcon from './icons/PlaylistIcon';
 
 // =====================================================================================
 // =====================================================================================
@@ -202,7 +203,7 @@ function MusicScreen({ route }: any) {
               </Controls.SkipForward>
               
               <TouchableOpacity onPress={handleToActualPlaylistScreen}>
-                <Feather name="align-justify" color={'#fff'} size={25}/>
+                <PlaylistIcon />
               </TouchableOpacity>
 
             </Controls>
