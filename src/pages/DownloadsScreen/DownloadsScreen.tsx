@@ -21,23 +21,7 @@ function DownloadsScreen() {
     <>
       <DefaultScreen 
         content={
-          <>
-            {songs.map((song, index) => {
-              return (
-                <MusicContainer 
-                  key={song.key}
-                  keyValue={song.key}
-                  musicName={song.name}
-                  artistName={song.artist}
-                  isFavorite={song.favorite}
-                  centerTextMusic
-                  indexOfMusicInArray={index}
-                  imageSource={song.imageSource}
-                  musicSource={song.musicSource}
-                />
-              );
-            })}
-          </>
+          <></>
         }
       />
       <View style={{ height: IncompleteSong ? MusicBarHeight : 0 }}/>

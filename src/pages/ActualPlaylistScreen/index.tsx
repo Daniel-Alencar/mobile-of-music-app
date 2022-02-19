@@ -1,9 +1,20 @@
 import { ScrollView, View, TouchableOpacity, Text } from "react-native";
+
 import MusicView from "./MusicView";
+
+import { useSelector } from "react-redux";
+import { StateReducerData } from "../../store";
 
 import styles from './styles';
 
 export default function ActualPlaylistScreen() {
+
+  const { songs } = useSelector((state: StateReducerData) => {
+    return {
+      songs: state.MusicPlaylist,
+    };
+  });
+
   return(
     <>
       <ScrollView 
@@ -11,16 +22,18 @@ export default function ActualPlaylistScreen() {
         style={{ backgroundColor: "#000" }}
       >
         <View style={{ marginLeft: 10, marginRight: 10 }}>
-          <MusicView playing/>
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
-          <MusicView />
+          {
+            songs.map((song, index) => {
+              return (
+                <MusicView 
+                  key={song.key}
+                  musicName={song.name}
+                  artistName={song.artist}
+                  indexOfMusicInArray={index}
+                />
+              );
+            })
+          }
         </View>
       </ScrollView>
 

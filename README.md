@@ -40,11 +40,11 @@
 ### Layout
 
 <p align="center">
-  <h1 style="display: flex;">
-    <img width="400" alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/ArtistScreen.jpg" />
-    <img width="400" alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/PlaylistScreen.jpg" />
-    <img width="400" alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/MusicScreen.jpg" />
-    <img width="400" alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/SearchScreen.jpg" />
+  <h1 style="display: flex; flex-wrap: wrap;">
+    <img width="400" alt="ArtistScreen" title="#ArtistScreen" src="./assets/ArtistScreen.jpg" />
+    <img width="400" alt="PlaylistScreen" title="#PlaylistScreen" src="./assets/PlaylistScreen.jpg" />
+    <img width="400" alt="MusicScreen" title="#MusicScreen" src="./assets/MusicScreen.jpg" />
+    <img width="400" alt="SearchScreen" title="#SearchScreen" src="./assets/SearchScreen.jpg" />
 
   </h1>
 </p>

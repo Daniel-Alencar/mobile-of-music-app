@@ -4,19 +4,31 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import PlaylistIcon from "../../MusicScreen/icons/PlaylistIcon";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-import { Feather } from '@expo/vector-icons';
 import styles from './styles';
+
+import { useDispatch } from "react-redux";
+import { playOrPauseMusic, toggleMusicAndArtist } from '../../../store/MusicInformation/MusicInformation.actions';
 
 interface MusicViewProps {
   playing?: boolean
+  selected?: boolean
+  musicName: string
+  artistName: string
+  indexOfMusicInArray: number
 }
 
 export default function MusicView(props: MusicViewProps) {
 
   const [checkBoxState, setCheckBoxState] = useState(false);
 
+  const dispatch = useDispatch();
+  function playMusic() {
+    dispatch(toggleMusicAndArtist(props.indexOfMusicInArray))
+    dispatch(playOrPauseMusic(true, props.indexOfMusicInArray));
+  }
+
   return(
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={playMusic}>
       <View style={styles.left}>
         <View style={styles.selectButton}>
           {
@@ -51,14 +63,20 @@ export default function MusicView(props: MusicViewProps) {
               ...styles.musicName, 
               color: props.playing ? '#0f0' : '#fff',
             }}
-          >Gravity</Text>
-          <Text style={styles.artistName}>John Mayer</Text>
+          >
+            {props.musicName}
+          </Text>
+          <Text 
+            style={styles.artistName}
+          >
+            {props.artistName}
+          </Text>
         </View>
       </View>
 
       <TouchableOpacity style={styles.right}>
         <PlaylistIcon />
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 }

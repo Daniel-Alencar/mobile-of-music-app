@@ -173,8 +173,8 @@ function MusicScreen({ route }: any) {
             <Controls>
 
               <Slider
-                musicDuration={160}
-                currentMusicTime={130}
+                musicDuration={'2:31'}
+                currentMusicTime={'0:15'}
 
                 value={100}
 
