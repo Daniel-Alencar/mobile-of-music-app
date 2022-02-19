@@ -33,6 +33,8 @@
  <a href="#autor">Autor</a>
 </p>
 
+Projeto sendo desenvolvido no [Figma](https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2).
+
 ### Objetivo
 
 <p align="center"> Este projeto foi feito com o objetivo de criar algo concreto com react-native + expo. O projeto é uma aplicação para escutar músicas salvas em algum armazenamento na nuvem sem precisar salvá-las no próprio dispositivo.</p>
@@ -99,5 +101,3 @@ Feito por Daniel Alencar!
 Entre em contato!
 
 [![Instagram Badge](https://img.shields.io/badge/-@daniel_alencar_-de2099?style=flat-square&logo=Instagram&logoColor=white&link=https://www.linkedin.com/in/Daniel746/)](https://www.instagram.com/daniel_alencar_/) [![Linkedin Badge](https://img.shields.io/badge/-Daniel-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/Daniel746/)](https://www.linkedin.com/in/Daniel746/) [![Gmail Badge](https://img.shields.io/badge/-danielalencar746@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:danielalencar746@gmail.com)](mailto:danielalencar746@gmail.com)
-
-Projeto sendo desenvolvido no [Figma](https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2).
