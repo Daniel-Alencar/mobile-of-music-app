@@ -16,6 +16,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "scheme": "musicapp",
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
