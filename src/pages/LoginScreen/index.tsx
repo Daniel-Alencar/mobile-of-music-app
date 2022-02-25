@@ -8,13 +8,11 @@ import styles from './style';
 
 export default function LoginScreen() {
 
-  const [redirectedData, setRedirectedData] = useState<Linking.ParsedURL>();
+  const [token, setToken] = useState<any>();
 
   const link = "https://www.dropbox.com/oauth2/authorize?client_id=bupw6noqoenygsa&response_type=token";
   const redirect_uri = Linking.createURL("");
-
   const full_link = link + '&redirect_uri=' + redirect_uri;
-
 
 
 
@@ -25,10 +23,10 @@ export default function LoginScreen() {
 
   
   const redirectData = () => {
-    if(redirectedData) {
+    if(token) {
       return (
         <Text style={{ marginTop: 30 }}>
-          {JSON.stringify(redirectedData)}
+          {JSON.stringify(token)}
         </Text>
       );
     }
@@ -38,7 +36,23 @@ export default function LoginScreen() {
 
 
 
+  const getParameter = (url: string, parameter: string) => {
+    const initialIndex = url.indexOf(parameter + '=') + parameter.length + 1;
+    console.log(initialIndex)
 
+    const str = url.substring(initialIndex);
+    console.log(str);
+
+    let length = str.indexOf('&');
+    if(length === -1) {
+      length = str.length;
+    }
+    console.log(length)
+
+    const value = url.substring(initialIndex, initialIndex + length);
+    console.log(value);
+    return value;
+  } 
 
   const _handleRedirect = (event: any) => {
     if (Constants.platform?.ios) {
@@ -47,9 +61,10 @@ export default function LoginScreen() {
       _removeLinkingListener();
     }
 
-    console.log(event.url)
-    let data = Linking.parse(event.url);
-    setRedirectedData(data);
+    console.log(event.url);
+
+    const access_token = getParameter(event.url, 'access_token');
+    setToken(access_token);
   };
 
   const _addLinkingListener = () => {
@@ -73,7 +88,7 @@ export default function LoginScreen() {
 
   return(
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={_openBrowserAsync}>
+      <TouchableOpacity style={styles.button} onPress={() => _openBrowserAsync()}>
         <Text>Login</Text>
       </TouchableOpacity>
       <Text>
