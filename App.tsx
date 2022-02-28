@@ -1,3 +1,5 @@
+require('node-libs-react-native/globals');
+
 import React from 'react';
 
 import Routes from './src/routes';

@@ -4,6 +4,8 @@ import * as WebBrowser from 'expo-web-browser';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Constants from 'expo-constants';
 
+import { Dropbox } from 'dropbox';
+
 import styles from './style';
 
 export default function LoginScreen() {
@@ -18,7 +20,16 @@ export default function LoginScreen() {
 
 
 
-
+  const dropboxAccess = () => {
+    const dbx = new Dropbox({ accessToken: token });
+    dbx.usersGetCurrentAccount()
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+  };
 
 
   
@@ -65,6 +76,7 @@ export default function LoginScreen() {
 
     const access_token = getParameter(event.url, 'access_token');
     setToken(access_token);
+    dropboxAccess();
   };
 
   const _addLinkingListener = () => {
