@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=status&message=finalizado&color=d4f002&style=flat-square&logo=dev">
+  <img src="https://img.shields.io/static/v1?label=Status&message=Finalizado&color=d4f002&style=flat-square&logo=dev">
   
   <img alt="GitHub followers" src="https://img.shields.io/github/followers/Daniel-Alencar?logo=github&style=flat-square">
 </p>
@@ -19,11 +19,11 @@
  <a href="#autor">Autor</a>
 </p>
 
-Projeto sendo desenvolvido no [Figma](https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2).
+Projeto desenvolvido no [Figma](https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2).
 
 ### Objetivo
 
-<p align="center"> Este projeto foi feito com o objetivo de criar algo concreto com react-native + expo. O projeto é uma aplicação para escutar músicas salvas em algum armazenamento na nuvem sem precisar salvá-las no próprio dispositivo.</p>
+<p align="center"> Este projeto foi feito com o objetivo de criar algo concreto com react-native + expo. É uma Aplicação Front-End genérica para ouvir músicas.</p>
 
 ### Layout
 
