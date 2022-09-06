@@ -5,7 +5,6 @@
 
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=Status&message=Finalizado&color=d4f002&style=flat-square&logo=dev">
-  
   <img alt="GitHub followers" src="https://img.shields.io/github/followers/Daniel-Alencar?logo=github&style=flat-square">
 </p>
 
@@ -19,11 +18,9 @@
  <a href="#autor">Autor</a>
 </p>
 
-Projeto desenvolvido no [Figma](https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2).
-
 ### Objetivo
 
-<p align="center"> Este projeto foi feito com o objetivo de criar algo concreto com react-native + expo. É uma Aplicação Front-End genérica para ouvir músicas.</p>
+<p align="center"> Este projeto foi feito com o objetivo de criar algo concreto com react-native + expo. É uma Aplicação Front-End genérica para ouvir músicas fortemente baseada no layout do Spotify. Projeto desenvolvido no <a href="https://www.figma.com/file/SyrEVI36hw0MtH06IUeseN/music-app?node-id=5%3A2">Figma</a>.</p>
 
 ### Layout
 
@@ -57,7 +54,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone https://github.com/Daniel-Alencar/mobile-of-music-app
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd music-app
+$ cd mobile-of-music-app
 
 # Instale as dependências
 $ yarn install
