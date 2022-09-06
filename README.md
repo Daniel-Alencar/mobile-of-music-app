@@ -4,21 +4,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=status&message=adicionando+novas+features&color=d4f002&style=flat-square&logo=dev">
-
-  <a href="https://github.com/Daniel-Alencar/music-app">
-    <img alt="GitHub" src="https://img.shields.io/github/license/Daniel-Alencar/music-app?color=6cb810&style=flat-square">
-  </a>
-  
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Daniel-Alencar/music-app?logo=git&style=flat-square">
-  
-  <a href="https://github.com/Daniel-Alencar/music-app/network">
-    <img alt="GitHub forks" src="https://img.shields.io/github/forks/Daniel-Alencar/music-app?logo=github&style=flat-square">
-  </a>
-
-  <a href="https://github.com/Daniel-Alencar/music-app/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/Daniel-Alencar/music-app?logo=github&style=flat-square">
-  </a>
+  <img src="https://img.shields.io/static/v1?label=status&message=finalizado&color=d4f002&style=flat-square&logo=dev">
   
   <img alt="GitHub followers" src="https://img.shields.io/github/followers/Daniel-Alencar?logo=github&style=flat-square">
 </p>
@@ -68,7 +54,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/Daniel-Alencar/music-app
+$ git clone https://github.com/Daniel-Alencar/mobile-of-music-app
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd music-app
